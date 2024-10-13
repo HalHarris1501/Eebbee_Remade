@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _beeRigidBody;
-    private PlayerInputActions playerInputActions;
+    private PlayerInputActions _playerInputActions;
     [SerializeField] private float _acceleration = 5f;
     [SerializeField] private float _speed;
     [SerializeField] private float _maxSpeed;
@@ -15,14 +15,14 @@ public class PlayerMovement : MonoBehaviour
     {
         _beeRigidBody = GetComponent<Rigidbody2D>();
 
-        playerInputActions = new PlayerInputActions();
-        playerInputActions.Keyboard.Enable();
+        _playerInputActions = new PlayerInputActions();
+        _playerInputActions.Keyboard.Enable();
     }
 
     //movebee
     private void Movement()
     {
-        Vector2 inputVector = playerInputActions.Keyboard.Movement.ReadValue<Vector2>();
+        Vector2 inputVector = _playerInputActions.Keyboard.Movement.ReadValue<Vector2>();
         _beeRigidBody.AddForce(new Vector3(inputVector.x, inputVector.y, 0) * _acceleration, ForceMode2D.Force);
         if (_beeRigidBody.velocity.magnitude > _maxSpeed)
         {
