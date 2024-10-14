@@ -28,6 +28,12 @@ public class PlayerMovement : MonoBehaviour
         {
             _beeRigidBody.velocity = Vector2.ClampMagnitude(_beeRigidBody.velocity, _maxSpeed);
         }
+
+        if(_playerInputActions.Keyboard.GoBack.IsPressed())
+        {
+            GameManager.Instance.GoBack();
+            this.GetComponentInChildren<SpriteRenderer>().flipX = true;
+        }
     }
 
     // Start is called before the first frame update

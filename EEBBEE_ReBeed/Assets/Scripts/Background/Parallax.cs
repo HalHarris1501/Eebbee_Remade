@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parallax : MonoBehaviour
+public class Parallax : MonoBehaviour, IObserver<Direction>
 {
-    [SerializeField] private float _length, _startPosition;
+    [SerializeField] private float _length;
     [SerializeField] private float _forwardParallaxSpeed, _backwordParallaxSpeed;
+    private float _currentSpeed;
     [SerializeField] private LayerMask _resetterLayer;
     [SerializeField] private float _resetPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        _startPosition = transform.position.x;
+        GameManager.Instance.RegisterObserver(this);
+
+        _currentSpeed = _forwardParallaxSpeed;
         _length = GetComponent<SpriteRenderer>().bounds.size.x;
         _resetPosition = _length * 3;
     }
@@ -26,7 +29,7 @@ public class Parallax : MonoBehaviour
     //Bad, need different approach
     private void MoveBackground()
     {
-        transform.position = new Vector3(transform.position.x + _forwardParallaxSpeed, transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x + _currentSpeed, transform.position.y, transform.position.z);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,5 +38,21 @@ public class Parallax : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x + _resetPosition, transform.position.y, transform.position.z);
         }
+    }
+
+    public void NewItemAdded(Direction type)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ItemRemoved(Direction type)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ItemAltered(Direction type, int count)
+    {
+        _currentSpeed = _backwordParallaxSpeed;
+        _resetPosition = -_resetPosition;
     }
 }
