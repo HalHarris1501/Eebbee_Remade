@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(_playerInputActions.Keyboard.GoBack.IsPressed())
         {
+            _playerInputActions.Keyboard.GoBack.Disable();
             GameManager.Instance.GoBack();
             this.GetComponentInChildren<SpriteRenderer>().flipX = true;
         }
