@@ -4,42 +4,79 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] private Texture2D _obstacleMap;
-    [SerializeField] private ColourToPrefab[] _colourMappings;
+    private Obstacle _obstacle;
+    private List<SaveableObjectPrefab> _prefabList = new List<SaveableObjectPrefab>();
 
-    // Start is called before the first frame update
-    void Start()
+    private void SaveLevel()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void GenerateObstacle()
-    {
-        for (int x = 0; x < _obstacleMap.width; x++)
+        if(_obstacle == null)
         {
-            for (int y = 0; y < _obstacleMap.height; y++)
-            {
-
-            }
-        }
-    }
-
-    private void GenerateTile(int x, int y)
-    {
-        Color pixelColour = _obstacleMap.GetPixel(x, y);
-
-        if(pixelColour.a == 0)
-        {
-            //transparent pixels are ignored
+            Debug.LogError("No Obstacle object found!");
             return;
         }
 
-        Debug.Log(pixelColour);
+        _obstacle.ClearObjectList();
+
+        SaveableObject[] saveableObjects = FindObjectsOfType<SaveableObject>();
+        foreach(SaveableObject saveableObject in saveableObjects)
+        {
+            _obstacle.AddObjectInfo(saveableObject);
+        }
+#if UNITY_EDITOR
+        UnityEditor.EditorUtility.SetDirty(_obstacle);
+#endif
     }
+
+    public void LoadCurrentObstacle()
+    {
+        if(_obstacle == null)
+        {
+            Debug.LogError("No Obstacle object found!");
+            return;
+        }
+
+        ClearObstacle();
+
+        foreach(SaveableObjectInfo saveableObject in _obstacle.ObjectList)
+        {
+            GameObject prefab = null;
+            foreach(SaveableObjectPrefab saveableObjectPrefab in _prefabList)
+            {
+                if(saveableObject.Type == saveableObjectPrefab.Type)
+                {
+                    prefab = saveableObjectPrefab.Prefab;
+                    break;
+                }
+            }
+
+            if(prefab == null)
+            {
+                Debug.LogWarning("Couldnt find prefab of type: " + saveableObject.Type.ToString());
+                continue;
+            }
+
+            GameObject newInstance = Instantiate(prefab);
+
+            newInstance.transform.position = saveableObject.Position;
+        }
+    }
+
+    public void LoadObstacle(Obstacle obstacle)
+    {
+        this._obstacle = obstacle;
+        LoadCurrentObstacle();
+    }
+
+    private void ClearObstacle()
+    {
+        SaveableObject[] saveableObjects = FindObjectsOfType<SaveableObject>();
+        foreach (SaveableObject saveableObject in saveableObjects)
+        {
+            if (saveableObject == null)
+                continue;
+            if (Application.isEditor)
+                DestroyImmediate(saveableObject.gameObject);
+            else
+                Destroy(saveableObject.gameObject);
+        }
 }
