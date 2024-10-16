@@ -79,4 +79,5 @@ public class LevelGenerator : MonoBehaviour
             else
                 Destroy(saveableObject.gameObject);
         }
+    }
 }
