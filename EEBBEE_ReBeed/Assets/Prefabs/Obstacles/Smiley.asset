@@ -10,18 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba85de93b392fd94abe37d64fd59bacc, type: 3}
-  m_Name: Test
+  m_Name: Smiley
   m_EditorClassIdentifier: 
   ObjectList:
   - Type: 0
-    Position: {x: 2, y: 0, z: 0}
+    Position: {x: -1.4440751, y: 1.3486309, z: 0}
   - Type: 0
-    Position: {x: 1, y: 1, z: 0}
+    Position: {x: -4.2396564, y: 1.2234559, z: 0}
   - Type: 0
-    Position: {x: 2, y: 2, z: 0}
+    Position: {x: 0.60045457, y: -1.5304003, z: 0}
   - Type: 0
-    Position: {x: 3, y: 1, z: 0}
+    Position: {x: -0.90164876, y: -2.6152527, z: 0}
   - Type: 0
-    Position: {x: 2, y: 1, z: 0}
+    Position: {x: -2.1951265, y: -2.5735276, z: 0}
   - Type: 0
-    Position: {x: 1, y: 1, z: 0}
+    Position: {x: -3.2799792, y: -2.5735276, z: 0}
+  - Type: 0
+    Position: {x: -4.531732, y: -2.5318024, z: 0}
+  - Type: 0
+    Position: {x: -5.5748596, y: -1.4886751, z: 0}

@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _acceleration = 5f;
     [SerializeField] private float _speed;
     [SerializeField] private float _maxSpeed;
+    [SerializeField] private LayerMask _obstacleLayer;
 
     private void Awake()
     {
@@ -53,5 +54,13 @@ public class PlayerMovement : MonoBehaviour
     {
         _speed = _beeRigidBody.velocity.magnitude;
         Movement();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {    
+        if ((1 << collision.gameObject.layer) == _obstacleLayer.value)
+        {
+            Debug.Log("Bee Ded");
+        }
     }
 }
