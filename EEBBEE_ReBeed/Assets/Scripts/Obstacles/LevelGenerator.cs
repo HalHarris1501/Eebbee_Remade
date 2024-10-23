@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class LevelGenerator : MonoBehaviour
 {
-    private Obstacle _obstacle;
-    private List<SaveableObjectPrefab> _prefabList = new List<SaveableObjectPrefab>();
+    [SerializeField] private Obstacle _obstacle;
+    [SerializeField] private List<SaveableObjectPrefab> _prefabList = new List<SaveableObjectPrefab>();
 
-    private void SaveLevel()
+    public void SaveObstacle()
     {
         if(_obstacle == null)
         {
@@ -67,7 +68,7 @@ public class LevelGenerator : MonoBehaviour
         LoadCurrentObstacle();
     }
 
-    private void ClearObstacle()
+    public void ClearObstacle()
     {
         SaveableObject[] saveableObjects = FindObjectsOfType<SaveableObject>();
         foreach (SaveableObject saveableObject in saveableObjects)
