@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 352112064}
   - component: {fileID: 352112065}
   - component: {fileID: 352112066}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -393,7 +393,7 @@ BoxCollider2D:
     m_Bits: 192
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 127
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -467,7 +467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624034477646acb469300e4be419239c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _obstacle: {fileID: 11400000, guid: 4640335996c7d0040a4799eb7d0506ce, type: 2}
+  _obstacle: {fileID: 11400000, guid: 12e0819f77620094fa99141e04339922, type: 2}
   _prefabList:
   - Type: 0
     Prefab: {fileID: 5655350015716585278, guid: d0e2fa8ff01c6db4cbfd7ad4bcb70aba, type: 3}
@@ -721,6 +721,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4640335996c7d0040a4799eb7d0506ce, type: 2}
   - {fileID: 11400000, guid: 5aa5f57f6ffeff144a70f6732e4a637b, type: 2}
   - {fileID: 11400000, guid: 12e0819f77620094fa99141e04339922, type: 2}
+  _currentBox: 0
 --- !u!1 &600221158
 GameObject:
   m_ObjectHideFlags: 0
@@ -1669,7 +1670,7 @@ GameObject:
   - component: {fileID: 809868946}
   - component: {fileID: 809868947}
   - component: {fileID: 809868948}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1777,7 +1778,7 @@ BoxCollider2D:
     m_Bits: 192
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 127
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -2669,7 +2670,7 @@ GameObject:
   - component: {fileID: 969193202}
   - component: {fileID: 969193203}
   - component: {fileID: 969193204}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Obstacle 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2777,7 +2778,7 @@ BoxCollider2D:
     m_Bits: 192
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 127
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

@@ -37,6 +37,7 @@ public class Parallax : MonoBehaviour, IObserver<Direction>
         if ((1 << collision.gameObject.layer) == _resetterLayer.value)
         {
             transform.position = new Vector3(transform.position.x + _resetPosition, transform.position.y, transform.position.z);
+            CheckIfObstacle();
         }
     }
 
@@ -54,5 +55,13 @@ public class Parallax : MonoBehaviour, IObserver<Direction>
     {
         _currentSpeed = _backwordParallaxSpeed;
         _resetPosition = -_resetPosition;
+    }
+
+    private void CheckIfObstacle()
+    {
+        if(this.gameObject.layer == 0)
+        {
+            ObstacleManager.Instance.LoadObstacle();
+        }
     }
 }
