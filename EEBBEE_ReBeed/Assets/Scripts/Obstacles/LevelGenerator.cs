@@ -17,6 +17,7 @@ public class LevelGenerator : MonoBehaviour
         }
 
         _obstacle.ClearObjectList();
+        _obstacle.SetFreeSpace();
 
         SaveableObject[] saveableObjects = FindObjectsOfType<SaveableObject>();
         foreach(SaveableObject saveableObject in saveableObjects)
