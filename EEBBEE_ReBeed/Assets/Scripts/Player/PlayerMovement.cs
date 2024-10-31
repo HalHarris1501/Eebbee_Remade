@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private LayerMask _obstacleLayer;
+    [SerializeField] private LayerMask _collectableLayer;
 
     private void Awake()
     {
@@ -61,6 +62,19 @@ public class PlayerMovement : MonoBehaviour
         if ((1 << collision.gameObject.layer) == _obstacleLayer.value)
         {
             Debug.Log("Bee Ded");
+        }
+        if ((1 << collision.gameObject.layer) == _collectableLayer.value)
+        {
+            CheckCollectable(collision);
+        }
+    }
+
+    private void CheckCollectable(Collider2D collision)
+    {
+        if(collision.GetComponent<SaveableObject>().ObjectType == ObjectType.Nectar)
+        {
+            ScoreManager.Instance.AlterScore(1);
+            Debug.Log("Increase Score");
         }
     }
 }

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     private static GameManager _instance;
     public static GameManager Instance
     {
-        get //making sure that a money manager always exists
+        get //making sure that a game manager always exists
         {
             if (_instance == null)
             {

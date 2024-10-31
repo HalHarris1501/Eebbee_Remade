@@ -6,7 +6,7 @@ public class Resetter : MonoBehaviour, IObserver<Direction>
 {
     public void ItemAltered(Direction type, int count)
     {
-        this.gameObject.transform.position = new Vector3(36f, 0f, 0f);
+        this.gameObject.transform.position = new Vector3(42f, 0f, 0f);
     }
 
     public void ItemRemoved(Direction type)

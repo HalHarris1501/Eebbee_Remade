@@ -16,5 +16,6 @@ public enum ObjectType
     BLCorner,
     Flower,
     Smoker,
-    Honey
+    Honey,
+    Nectar
 }

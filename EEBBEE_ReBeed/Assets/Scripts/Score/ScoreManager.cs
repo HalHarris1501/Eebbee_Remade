@@ -5,7 +5,28 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour, ISubject<Score>
 {
     private List<IObserver<Score>> _observers = new List<IObserver<Score>>();
-    private Score _currentScore;
+    [SerializeField] private Score _currentScore;
+
+    //Singleton pattern
+    #region Singleton
+    private static ScoreManager _instance;
+    public static ScoreManager Instance
+    {
+        get //making sure that a Score manager always exists
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<ScoreManager>();
+            }
+            if (_instance == null)
+            {
+                GameObject go = new GameObject("ScoreManager");
+                _instance = go.AddComponent<ScoreManager>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
 
     public void NotifyObservers(Score type, ISubject<Score>.NotificationType notificationType)
     {
@@ -13,6 +34,7 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
         {
             Observer.ItemAltered(_currentScore, 0);
         }
+        Debug.Log("Notfiying score change");
     }
 
     public void RegisterObserver(IObserver<Score> o)

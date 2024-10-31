@@ -56,7 +56,7 @@ public class ObstacleManager : MonoBehaviour
 
         foreach (SaveableObjectInfo saveableObject in currentObstacle.ObjectList)
         {
-            GameObject currentObject = ObjectPooler.Instance.SpawnFromPool("Block", _obstacleBoxes[_currentBox].transform.position + saveableObject.Position, Quaternion.identity);
+            GameObject currentObject = ObjectPooler.Instance.SpawnFromPool(GetObstacleType(saveableObject), _obstacleBoxes[_currentBox].transform.position + saveableObject.Position, Quaternion.identity);
             currentObject.transform.SetParent(_obstacleBoxes[_currentBox].transform);
         }
 
@@ -64,6 +64,63 @@ public class ObstacleManager : MonoBehaviour
         if(_currentBox > 2)
         {
             _currentBox = 0;
+        }
+    }
+
+    private string GetObstacleType(SaveableObjectInfo saveableObject)
+    {
+        switch (saveableObject.Type)
+        {
+            case ObjectType.Wall:
+                return "Wall";
+#pragma warning disable CS0162 // Unreachable code detected
+                break;
+#pragma warning restore CS0162 // Unreachable code detected
+            case ObjectType.URCorner:
+                return null;
+#pragma warning disable CS0162 // Unreachable code detected
+                break;
+#pragma warning restore CS0162 // Unreachable code detected
+            case ObjectType.ULCorner:
+                return null;
+#pragma warning disable CS0162 // Unreachable code detected
+                break;
+#pragma warning restore CS0162 // Unreachable code detected
+            case ObjectType.BRCorner:
+                return null;
+#pragma warning disable CS0162 // Unreachable code detected
+                break;
+#pragma warning restore CS0162 // Unreachable code detected
+            case ObjectType.BLCorner:
+                return null;
+#pragma warning disable CS0162 // Unreachable code detected
+                break;
+#pragma warning restore CS0162 // Unreachable code detected
+            case ObjectType.Flower:
+                return null;
+#pragma warning disable CS0162 // Unreachable code detected
+                break;
+#pragma warning restore CS0162 // Unreachable code detected
+            case ObjectType.Smoker:
+                return null;
+#pragma warning disable CS0162 // Unreachable code detected
+                break;
+#pragma warning restore CS0162 // Unreachable code detected
+            case ObjectType.Honey:
+                return null;
+#pragma warning disable CS0162 // Unreachable code detected
+                break;
+#pragma warning restore CS0162 // Unreachable code detected
+            case ObjectType.Nectar:
+                return "Nectar";
+#pragma warning disable CS0162 // Unreachable code detected
+                break;
+#pragma warning restore CS0162 // Unreachable code detected
+            default:
+                return null;
+#pragma warning disable CS0162 // Unreachable code detected
+                break;
+#pragma warning restore CS0162 // Unreachable code detected
         }
     }
 }
