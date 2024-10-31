@@ -3484,7 +3484,7 @@ MonoBehaviour:
   pools:
   - tag: Block
     prefab: {fileID: 5655350015716585278, guid: d0e2fa8ff01c6db4cbfd7ad4bcb70aba, type: 3}
-    size: 100
+    size: 1200
 --- !u!4 &1550381576
 Transform:
   m_ObjectHideFlags: 0
