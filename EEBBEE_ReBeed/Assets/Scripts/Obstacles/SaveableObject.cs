@@ -9,5 +9,12 @@ public class SaveableObject : MonoBehaviour
 
 public enum ObjectType
 {
-    Wall
+    Wall,
+    URCorner,
+    ULCorner,
+    BRCorner,
+    BLCorner,
+    Flower,
+    Smoker,
+    Honey
 }
