@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Parallax : MonoBehaviour, IObserver<Direction>
+public abstract class ParallaxMover : MonoBehaviour, IObserver<Direction>
 {
     [SerializeField] private float _length;
     [SerializeField] private float _forwardParallaxSpeed, _backwordParallaxSpeed;
@@ -36,8 +36,7 @@ public class Parallax : MonoBehaviour, IObserver<Direction>
     {
         if ((1 << collision.gameObject.layer) == _resetterLayer.value)
         {
-            transform.position = new Vector3(transform.position.x + _resetPosition, transform.position.y, transform.position.z);
-            CheckIfObstacle();
+            ResetterCollision();
         }
     }
 
@@ -57,11 +56,9 @@ public class Parallax : MonoBehaviour, IObserver<Direction>
         _resetPosition = -_resetPosition;
     }
 
-    private void CheckIfObstacle()
+    public virtual void ResetterCollision()
     {
-        if(this.gameObject.layer == 0)
-        {
-            ObstacleManager.Instance.LoadObstacle();
-        }
+        transform.position = new Vector3(transform.position.x + _resetPosition, transform.position.y, transform.position.z);
     }
 }
+

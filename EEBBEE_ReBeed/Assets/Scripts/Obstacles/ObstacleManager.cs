@@ -33,7 +33,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     [SerializeField] private List<Obstacle> _obstacles = new List<Obstacle>();
     [SerializeField] private int _currentBox = 0;
 
-    private Stack<int> _obstacleStack = new Stack<int>();
+    private Stack<Obstacle> _obstacleStack = new Stack<Obstacle>();
     private Direction _direction = Direction.Forward;
 
     private void Awake()
@@ -71,8 +71,8 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         ClearObstaclesBox();
 
         int obstacleID = Random.Range(0, _obstacles.Count);
-        _obstacleStack.Push(obstacleID);
         Obstacle currentObstacle = _obstacles[obstacleID];
+        _obstacleStack.Push(currentObstacle);
 
         LoadObjects(currentObstacle);
 
@@ -89,7 +89,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
 
         if (_obstacleStack.Count > 0)
         {
-            LoadObjects(_obstacles[_obstacleStack.Pop()]);
+            LoadObjects(_obstacleStack.Pop());
         }
 
         _currentBox--;
@@ -113,6 +113,14 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     private void LoadObjects(Obstacle currentObstacle)
     {
         foreach (SaveableObjectInfo saveableObject in currentObstacle.ObjectList)
+        {
+            CheckObjectActive(currentObstacle, saveableObject);
+        }
+    }
+
+    private void CheckObjectActive(Obstacle currentObstacle, SaveableObjectInfo saveableObject)
+    {
+        if(currentObstacle.ActiveObjects[saveableObject.Position] == true)
         {
             GameObject currentObject = ObjectPooler.Instance.SpawnFromPool(saveableObject.Type.ToString(), _obstacleBoxes[_currentBox].transform.position + saveableObject.Position, Quaternion.identity); ;
             currentObject.transform.SetParent(_obstacleBoxes[_currentBox].transform);
