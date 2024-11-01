@@ -7,7 +7,6 @@ public class Obstacle : ScriptableObject
 {
     public List<SaveableObjectInfo> ObjectList = new List<SaveableObjectInfo>();
     public List<Vector2> FreeSpace = new List<Vector2>();
-    public Dictionary<Vector2, bool> ActiveObjects = new Dictionary<Vector2, bool>();
 
     public void ClearObjectList()
     {
@@ -22,7 +21,6 @@ public class Obstacle : ScriptableObject
             FreeSpace.Remove(saveableObjectInfo.Position);
         }
         ObjectList.Add(saveableObjectInfo);
-        ActiveObjects.Add(saveableObjectInfo.Position, true);
     }
 
     public void SetFreeSpace()

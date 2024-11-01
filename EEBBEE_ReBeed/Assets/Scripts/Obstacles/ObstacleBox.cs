@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ObstacleBox : ParallaxMover
 {
+    public List<SaveableObjectInfo> CurrentObstacle;
+
     public override void ResetterCollision()
     {
         base.ResetterCollision();
@@ -16,5 +18,10 @@ public class ObstacleBox : ParallaxMover
         {
             ObstacleManager.Instance.LoadObstacle();
         }
+    }
+
+    public void UpdateObstacle(GameObject objectToRemove)
+    {
+        GetComponentInParent<ObstacleManager>().UpdateObstacle(objectToRemove, CurrentObstacle);
     }
 }

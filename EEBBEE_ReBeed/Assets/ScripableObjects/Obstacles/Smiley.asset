@@ -13,24 +13,24 @@ MonoBehaviour:
   m_Name: Smiley
   m_EditorClassIdentifier: 
   ObjectList:
-  - Type: 9
-    Position: {x: 13, y: 0, z: 0}
   - Type: 0
-    Position: {x: -6, y: -1, z: 0}
-  - Type: 0
-    Position: {x: -5, y: -2, z: 0}
-  - Type: 0
-    Position: {x: -4, y: -2, z: 0}
-  - Type: 0
-    Position: {x: -3, y: -2, z: 0}
-  - Type: 0
-    Position: {x: -2, y: -2, z: 0}
-  - Type: 0
-    Position: {x: -1, y: -1, z: 0}
+    Position: {x: -2, y: 2, z: 0}
   - Type: 0
     Position: {x: -5, y: 2, z: 0}
   - Type: 0
-    Position: {x: -2, y: 2, z: 0}
+    Position: {x: -1, y: -1, z: 0}
+  - Type: 0
+    Position: {x: -2, y: -2, z: 0}
+  - Type: 0
+    Position: {x: -3, y: -2, z: 0}
+  - Type: 0
+    Position: {x: -4, y: -2, z: 0}
+  - Type: 0
+    Position: {x: -5, y: -2, z: 0}
+  - Type: 0
+    Position: {x: -6, y: -1, z: 0}
+  - Type: 9
+    Position: {x: 13, y: 0, z: 0}
   FreeSpace:
   - {x: -13, y: -6}
   - {x: -13, y: -5}

@@ -29,11 +29,11 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     [SerializeField] private int _currentSeed = 0;
 
     [Header("Obstacles")]
-    [SerializeField] private List<GameObject> _obstacleBoxes = new List<GameObject>();
-    [SerializeField] private List<Obstacle> _obstacles = new List<Obstacle>();
+    [SerializeField] private List<ObstacleBox> _obstacleBoxes;
+    [SerializeField] private List<Obstacle> _obstacles;
     [SerializeField] private int _currentBox = 0;
 
-    private Stack<Obstacle> _obstacleStack = new Stack<Obstacle>();
+    private Stack<List<SaveableObjectInfo>> _obstacleStack = new Stack<List<SaveableObjectInfo>>();
     private Direction _direction = Direction.Forward;
 
     private void Awake()
@@ -72,9 +72,10 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
 
         int obstacleID = Random.Range(0, _obstacles.Count);
         Obstacle currentObstacle = _obstacles[obstacleID];
-        _obstacleStack.Push(currentObstacle);
+        _obstacleStack.Push(currentObstacle.ObjectList);
 
-        LoadObjects(currentObstacle);
+        LoadObjects(currentObstacle.ObjectList);
+
 
         _currentBox++;
         if (_currentBox > 2)
@@ -110,20 +111,60 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         }
     }
 
-    private void LoadObjects(Obstacle currentObstacle)
+    private void LoadObjects(List<SaveableObjectInfo> objectList)
     {
-        foreach (SaveableObjectInfo saveableObject in currentObstacle.ObjectList)
+        foreach (SaveableObjectInfo saveableObject in objectList)
         {
-            CheckObjectActive(currentObstacle, saveableObject);
+            GameObject currentObject = ObjectPooler.Instance.SpawnFromPool(saveableObject.Type.ToString(), _obstacleBoxes[_currentBox].transform.position + saveableObject.Position, Quaternion.identity);
+            CheckIfCollectable(currentObject, saveableObject);
+            currentObject.transform.SetParent(_obstacleBoxes[_currentBox].transform);
+        }
+        _obstacleBoxes[_currentBox].CurrentObstacle = objectList;
+    }
+
+    private void CheckIfCollectable(GameObject currentObject, SaveableObjectInfo saveableObject)
+    {
+        if(currentObject.GetComponent<Collectable>() != null)
+        {
+            currentObject.GetComponent<Collectable>().CollectableData.StartPosition = saveableObject.Position;
         }
     }
 
-    private void CheckObjectActive(Obstacle currentObstacle, SaveableObjectInfo saveableObject)
+    public void UpdateObstacle(GameObject objectToRemove, List<SaveableObjectInfo> obstacleToUpdate)
     {
-        if(currentObstacle.ActiveObjects[saveableObject.Position] == true)
+        Debug.Log("Updating obstacle");
+        if(!_obstacleStack.Contains(obstacleToUpdate))
         {
-            GameObject currentObject = ObjectPooler.Instance.SpawnFromPool(saveableObject.Type.ToString(), _obstacleBoxes[_currentBox].transform.position + saveableObject.Position, Quaternion.identity); ;
-            currentObject.transform.SetParent(_obstacleBoxes[_currentBox].transform);
+            Debug.Log("Obstacle not in stack");
+            return;
+        }
+
+        Stack<List<SaveableObjectInfo>> temp = new Stack<List<SaveableObjectInfo>>();
+        while(_obstacleStack.Count > 0)
+        {
+            List<SaveableObjectInfo> obstacleToCheck = _obstacleStack.Pop();
+            if (obstacleToCheck == obstacleToUpdate)
+            {
+                Debug.Log("obstacle found");
+                SaveableObjectInfo objectInfoToRemove = new SaveableObjectInfo(objectToRemove.GetComponent<SaveableObject>());
+                objectInfoToRemove.Position = objectToRemove.GetComponent<Collectable>().CollectableData.StartPosition;
+                foreach (SaveableObjectInfo objectToFind in obstacleToCheck)
+                {
+                    if(objectToFind == objectInfoToRemove)
+                    {
+                        Debug.Log("Found object info to remove");
+                        obstacleToCheck.Remove(objectInfoToRemove);
+                        break;
+                    }
+                }
+                
+            }
+            temp.Push(obstacleToCheck);
+        }
+        while (temp.Count > 0)
+        {
+            
+            _obstacleStack.Push(temp.Pop());
         }
     }
 
@@ -140,7 +181,14 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     public void ItemAltered(Direction type, int count)
     {
         _direction = type;
-        _currentBox--;
+        if (_currentBox > 0)
+        {
+            _currentBox--;
+        }
+        else
+        {
+            _currentBox = 2;
+        }
         LoadPreviousObstacle();
         LoadPreviousObstacle();
     }

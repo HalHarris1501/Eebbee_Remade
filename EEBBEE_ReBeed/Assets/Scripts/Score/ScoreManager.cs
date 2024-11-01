@@ -34,7 +34,6 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
         {
             Observer.ItemAltered(_currentScore, 0);
         }
-        Debug.Log("Notfiying score change");
     }
 
     public void RegisterObserver(IObserver<Score> o)

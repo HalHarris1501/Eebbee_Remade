@@ -8,7 +8,8 @@ public class NectarCollectable : CollectableData
     public override void OnCollect(GameObject nectar)
     {
         ScoreManager.Instance.AlterScore(1);
-        //nectar.pa
+        nectar.GetComponentInParent<ObstacleBox>().UpdateObstacle(nectar);
         nectar.SetActive(false);
+               
     }
 }
