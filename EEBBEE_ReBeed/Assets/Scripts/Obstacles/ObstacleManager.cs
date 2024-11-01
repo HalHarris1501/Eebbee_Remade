@@ -24,10 +24,19 @@ public class ObstacleManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField] private string _gameSeed = "Normal";
+    [SerializeField] private int _currentSeed = 0;
+
     [SerializeField] private List<GameObject> _obstacleBoxes = new List<GameObject>();
     [SerializeField] private List<Obstacle> _obstacles = new List<Obstacle>();
     
     [SerializeField] private int _currentBox = 0;
+
+    private void Awake()
+    {
+        _currentSeed = _gameSeed.GetHashCode();
+        Random.InitState(_currentSeed);
+    }
 
     // Start is called before the first frame update
     void Start()
