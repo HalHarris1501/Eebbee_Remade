@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6568160094618827480}
   - component: {fileID: 2412309444196237189}
   - component: {fileID: 8700716185605976816}
+  - component: {fileID: -4524711508918608352}
   m_Layer: 9
   m_Name: Nectar
   m_TagString: Collectable
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.74628437, b: 0, a: 1}
   m_FlipX: 0
@@ -144,3 +145,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectType: 8
+--- !u!114 &-4524711508918608352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538747979659598753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6eeb8e91e9017438ce23a8879f8063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectableData: {fileID: 11400000, guid: 32c7364d376c0f14685b77d68271b6a0, type: 2}

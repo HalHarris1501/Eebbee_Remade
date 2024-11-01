@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewObstacle", menuName = "New Obstacle")]
+[CreateAssetMenu(fileName = "Obstacles", menuName = "ScriptableObjects/Obstacles", order = 1)]
 public class Obstacle : ScriptableObject
 {
     [SerializeField] public List<SaveableObjectInfo> ObjectList = new List<SaveableObjectInfo>();

@@ -24,13 +24,16 @@ public class ObstacleManager : MonoBehaviour
     }
     #endregion
 
+    [Header("Seed Generation")]
     [SerializeField] private string _gameSeed = "Normal";
     [SerializeField] private int _currentSeed = 0;
 
+    [Header("Obstacles")]
     [SerializeField] private List<GameObject> _obstacleBoxes = new List<GameObject>();
     [SerializeField] private List<Obstacle> _obstacles = new List<Obstacle>();
-    
     [SerializeField] private int _currentBox = 0;
+
+    private Stack<int> _obstacleStack;
 
     private void Awake()
     {
@@ -61,11 +64,12 @@ public class ObstacleManager : MonoBehaviour
         };
 
         int obstacleID = Random.Range(0, _obstacles.Count);
+        _obstacleStack.Push(obstacleID);
         Obstacle currentObstacle = _obstacles[obstacleID];
 
         foreach (SaveableObjectInfo saveableObject in currentObstacle.ObjectList)
         {
-            GameObject currentObject = ObjectPooler.Instance.SpawnFromPool(GetObstacleType(saveableObject), _obstacleBoxes[_currentBox].transform.position + saveableObject.Position, Quaternion.identity);
+            GameObject currentObject = ObjectPooler.Instance.SpawnFromPool(saveableObject.Type.ToString(), _obstacleBoxes[_currentBox].transform.position + saveableObject.Position, Quaternion.identity); ;
             currentObject.transform.SetParent(_obstacleBoxes[_currentBox].transform);
         }
 
@@ -76,60 +80,8 @@ public class ObstacleManager : MonoBehaviour
         }
     }
 
-    private string GetObstacleType(SaveableObjectInfo saveableObject)
+    public void DisableEndingNectar()
     {
-        switch (saveableObject.Type)
-        {
-            case ObjectType.Wall:
-                return "Wall";
-#pragma warning disable CS0162 // Unreachable code detected
-                break;
-#pragma warning restore CS0162 // Unreachable code detected
-            case ObjectType.URCorner:
-                return null;
-#pragma warning disable CS0162 // Unreachable code detected
-                break;
-#pragma warning restore CS0162 // Unreachable code detected
-            case ObjectType.ULCorner:
-                return null;
-#pragma warning disable CS0162 // Unreachable code detected
-                break;
-#pragma warning restore CS0162 // Unreachable code detected
-            case ObjectType.BRCorner:
-                return null;
-#pragma warning disable CS0162 // Unreachable code detected
-                break;
-#pragma warning restore CS0162 // Unreachable code detected
-            case ObjectType.BLCorner:
-                return null;
-#pragma warning disable CS0162 // Unreachable code detected
-                break;
-#pragma warning restore CS0162 // Unreachable code detected
-            case ObjectType.Flower:
-                return null;
-#pragma warning disable CS0162 // Unreachable code detected
-                break;
-#pragma warning restore CS0162 // Unreachable code detected
-            case ObjectType.Smoker:
-                return null;
-#pragma warning disable CS0162 // Unreachable code detected
-                break;
-#pragma warning restore CS0162 // Unreachable code detected
-            case ObjectType.Honey:
-                return null;
-#pragma warning disable CS0162 // Unreachable code detected
-                break;
-#pragma warning restore CS0162 // Unreachable code detected
-            case ObjectType.Nectar:
-                return "Nectar";
-#pragma warning disable CS0162 // Unreachable code detected
-                break;
-#pragma warning restore CS0162 // Unreachable code detected
-            default:
-                return null;
-#pragma warning disable CS0162 // Unreachable code detected
-                break;
-#pragma warning restore CS0162 // Unreachable code detected
-        }
+
     }
 }
