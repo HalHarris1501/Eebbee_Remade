@@ -68,13 +68,4 @@ public class PlayerMovement : MonoBehaviour
             collision.GetComponent<Collectable>().CollectableData.OnCollect(collision.gameObject);
         }
     }
-
-    //private void CheckCollectable(Collider2D collision)
-    //{
-    //    if(collision.GetComponent<SaveableObject>().ObjectType == ObjectType.Nectar)
-    //    {
-    //        ScoreManager.Instance.AlterScore(1);
-    //        Debug.Log("Increase Score");
-    //    }
-    //}
 }
