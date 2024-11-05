@@ -616,7 +616,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
-  CurrentObstacle: {fileID: 0}
+  ObstacleNumber: 0
 --- !u!1 &422043404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2005,7 +2005,7 @@ GameObject:
   - component: {fileID: 809868948}
   - component: {fileID: 809868949}
   m_Layer: 0
-  m_Name: Obstacle 1
+  m_Name: Obstacle 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2142,7 +2142,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
-  CurrentObstacle: {fileID: 0}
+  ObstacleNumber: 0
 --- !u!1 &813000822
 GameObject:
   m_ObjectHideFlags: 0
@@ -3006,7 +3006,7 @@ GameObject:
   - component: {fileID: 969193205}
   - component: {fileID: 969193204}
   m_Layer: 0
-  m_Name: Obstacle 2
+  m_Name: Obstacle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3143,7 +3143,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
-  CurrentObstacle: {fileID: 0}
+  ObstacleNumber: 0
 --- !u!1 &1017074958
 GameObject:
   m_ObjectHideFlags: 0
