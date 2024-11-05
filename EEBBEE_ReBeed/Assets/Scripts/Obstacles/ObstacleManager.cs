@@ -33,7 +33,10 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     [SerializeField] private List<Obstacle> _obstacles;
     [SerializeField] private int _currentBox = 0;
 
-    private Stack<List<SaveableObjectInfo>> _obstacleStack = new Stack<List<SaveableObjectInfo>>();
+    //obstacle saving info
+    private Stack<List<SaveableObjectInfo>> _obstacleStack;
+    private Dictionary<int, List<ObjectType>> _activeCollectablesDictionary;
+    private int _obstacleNumTracker;
     private Direction _direction = Direction.Forward;
 
     private void Awake()
@@ -46,7 +49,11 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     void Start()
     {
         GameManager.Instance.RegisterObserver(this);
+        _obstacleStack = new Stack<List<SaveableObjectInfo>>();
+        _activeCollectablesDictionary = new Dictionary<int, List<ObjectType>>();
+        _obstacleNumTracker = 0;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -68,6 +75,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
 
     private void GenerateNewObstacle()
     {
+        _obstacleNumTracker++;
         ClearObstaclesBox();
 
         int obstacleID = Random.Range(0, _obstacles.Count);
@@ -75,7 +83,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         _obstacleStack.Push(currentObstacle.ObjectList);
 
         LoadObjects(currentObstacle.ObjectList);
-
+        
 
         _currentBox++;
         if (_currentBox > 2)
@@ -85,13 +93,15 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     }
 
     private void LoadPreviousObstacle()
-    {
+    {       
         ClearObstaclesBox();
 
         if (_obstacleStack.Count > 0)
         {
             LoadObjects(_obstacleStack.Pop());
         }
+        _obstacleNumTracker--;
+
 
         _currentBox--;
         if (_currentBox < 0)
@@ -113,58 +123,51 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
 
     private void LoadObjects(List<SaveableObjectInfo> objectList)
     {
+        _obstacleBoxes[_currentBox].ObstacleNumber = _obstacleNumTracker;
+        List<ObjectType> currentObstacleCollectableTypeList = new List<ObjectType>();
         foreach (SaveableObjectInfo saveableObject in objectList)
         {
             GameObject currentObject = ObjectPooler.Instance.SpawnFromPool(saveableObject.Type.ToString(), _obstacleBoxes[_currentBox].transform.position + saveableObject.Position, Quaternion.identity);
-            CheckIfCollectable(currentObject, saveableObject);
+            CheckIfCollectable(currentObject, currentObstacleCollectableTypeList);
             currentObject.transform.SetParent(_obstacleBoxes[_currentBox].transform);
         }
-        _obstacleBoxes[_currentBox].CurrentObstacle = objectList;
-    }
-
-    private void CheckIfCollectable(GameObject currentObject, SaveableObjectInfo saveableObject)
-    {
-        if(currentObject.GetComponent<Collectable>() != null)
+        //only add new entry if going forward
+        if (_direction == Direction.Forward)
         {
-            currentObject.GetComponent<Collectable>().CollectableData.StartPosition = saveableObject.Position;
+            _activeCollectablesDictionary.Add(_obstacleNumTracker, currentObstacleCollectableTypeList);
         }
     }
 
-    public void UpdateObstacle(GameObject objectToRemove, List<SaveableObjectInfo> obstacleToUpdate)
+    private void CheckIfCollectable(GameObject currentObject, List<ObjectType> currentList)
     {
-        Debug.Log("Updating obstacle");
-        if(!_obstacleStack.Contains(obstacleToUpdate))
+        //ignore if not collectable
+        if (currentObject.GetComponent<Collectable>() == null)     
+            return;
+        
+        if(_direction == Direction.Forward)
         {
-            Debug.Log("Obstacle not in stack");
+            //add to dictionary if going forwards
+            currentList.Add(currentObject.GetComponent<SaveableObject>().ObjectType);
             return;
         }
 
-        Stack<List<SaveableObjectInfo>> temp = new Stack<List<SaveableObjectInfo>>();
-        while(_obstacleStack.Count > 0)
+        //ignore if no more obstacles
+        if (_obstacleNumTracker <= 0)
+            return;
+
+        //default deactivate collectables going back
+        currentObject.SetActive(false);
+        if(_activeCollectablesDictionary[_obstacleNumTracker].Contains(currentObject.GetComponent<SaveableObject>().ObjectType))
         {
-            List<SaveableObjectInfo> obstacleToCheck = _obstacleStack.Pop();
-            if (obstacleToCheck == obstacleToUpdate)
-            {
-                Debug.Log("obstacle found");
-                SaveableObjectInfo objectInfoToRemove = new SaveableObjectInfo(objectToRemove.GetComponent<SaveableObject>());
-                objectInfoToRemove.Position = objectToRemove.GetComponent<Collectable>().CollectableData.StartPosition;
-                foreach (SaveableObjectInfo objectToFind in obstacleToCheck)
-                {
-                    if(objectToFind == objectInfoToRemove)
-                    {
-                        Debug.Log("Found object info to remove");
-                        obstacleToCheck.Remove(objectInfoToRemove);
-                        break;
-                    }
-                }
-                
-            }
-            temp.Push(obstacleToCheck);
+            currentObject.SetActive(true);
         }
-        while (temp.Count > 0)
+    }
+
+    public void UpdateObstacle(int obstacleNumber, SaveableObject objectToAffect)
+    {
+        if(_activeCollectablesDictionary[obstacleNumber].Contains(objectToAffect.ObjectType))
         {
-            
-            _obstacleStack.Push(temp.Pop());
+            _activeCollectablesDictionary[obstacleNumber].Remove(objectToAffect.ObjectType);
         }
     }
 
