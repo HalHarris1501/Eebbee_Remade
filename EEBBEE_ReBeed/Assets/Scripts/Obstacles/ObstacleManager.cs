@@ -123,7 +123,6 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
 
     private void LoadObjects(List<SaveableObjectInfo> objectList)
     {
-        Debug.Log("Loading obstacle: " + _obstacleNumTracker + " in box: " + _currentBox);
         _obstacleBoxes[_currentBox].ObstacleNumber = _obstacleNumTracker;
         List<ObjectType> currentObstacleCollectableTypeList = new List<ObjectType>();
         foreach (SaveableObjectInfo saveableObject in objectList)
