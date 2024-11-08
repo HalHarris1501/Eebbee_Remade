@@ -1058,7 +1058,7 @@ MonoBehaviour:
   _currentBox: 0
   _collectables:
   - {fileID: -4524711508918608352, guid: d1aa4f919708375428a718bc726db470, type: 3}
-  _collectableSpawnPercentage: 100
+  _collectableSpawnPercentage: 30
 --- !u!1 &600221158
 GameObject:
   m_ObjectHideFlags: 0
