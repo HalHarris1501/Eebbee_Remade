@@ -39,6 +39,11 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     private int _obstacleNumTracker;
     private Direction _direction = Direction.Forward;
 
+    [Header("Collectables")]
+    [SerializeField] private Collectable[] _collectables;
+    [Range(0f, 100f)]
+    [SerializeField] private float _collectableSpawnPercentage = 35.5f;
+
     private void Awake()
     {
         _currentSeed = _gameSeed.GetHashCode();
@@ -79,7 +84,10 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         ClearObstaclesBox();
 
         int obstacleID = Random.Range(0, _obstacles.Count);
-        Obstacle currentObstacle = _obstacles[obstacleID];
+        ObstacleInfo currentObstacle = new ObstacleInfo(_obstacles[obstacleID]);
+
+        GenerateCollectable(currentObstacle);
+
         _obstacleStack.Push(currentObstacle.ObjectList);
 
         LoadObjects(currentObstacle.ObjectList);
@@ -169,6 +177,23 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         {
             _activeCollectablesDictionary[obstacleNumber].Remove(objectToAffect.ObjectType);
         }
+    }
+
+    private void GenerateCollectable(ObstacleInfo obstacle)
+    {
+        float spawnCheck = Random.Range(0f, 100f);
+        if (spawnCheck > _collectableSpawnPercentage)
+            return; //cancel if it does meet spawn percentage requirements
+
+        int collectableToSpawn = Random.Range(0, _collectables.Length - 1); //decide collectable to spawn from array
+        int placeToSpawn = Random.Range(0, obstacle.FreeSpace.Count); //get a free space to spawn in
+        Vector3 spawnPos = new Vector3(obstacle.FreeSpace[placeToSpawn].x, obstacle.FreeSpace[placeToSpawn].y, 0); //set collectable position
+
+        //set object data
+        SaveableObjectInfo collectableInfo = new SaveableObjectInfo(_collectables[collectableToSpawn].GetComponent<SaveableObject>());
+        collectableInfo.Position = spawnPos;
+        obstacle.ObjectList.Add(collectableInfo); //add collectable to obstacle object list
+        obstacle.FreeSpace.RemoveAt(placeToSpawn);
     }
 
     public void NewItemAdded(Direction type)

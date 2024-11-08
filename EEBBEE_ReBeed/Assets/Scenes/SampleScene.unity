@@ -1056,6 +1056,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5aa5f57f6ffeff144a70f6732e4a637b, type: 2}
   - {fileID: 11400000, guid: 12e0819f77620094fa99141e04339922, type: 2}
   _currentBox: 0
+  _collectables:
+  - {fileID: -4524711508918608352, guid: d1aa4f919708375428a718bc726db470, type: 3}
+  _collectableSpawnPercentage: 100
 --- !u!1 &600221158
 GameObject:
   m_ObjectHideFlags: 0

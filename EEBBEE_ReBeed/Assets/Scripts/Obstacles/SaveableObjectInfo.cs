@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class SaveableObjectInfo
 {
-
     public SaveableObjectInfo(SaveableObject saveableObject)
     {
         this.Type = saveableObject.ObjectType;
