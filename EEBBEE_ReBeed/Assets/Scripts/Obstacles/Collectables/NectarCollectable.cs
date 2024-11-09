@@ -10,6 +10,5 @@ public class NectarCollectable : CollectableData
         ScoreManager.Instance.AlterScore(1);
         nectar.GetComponentInParent<ObstacleBox>().UpdateObstacle(nectar);
         nectar.SetActive(false);
-               
     }
 }
