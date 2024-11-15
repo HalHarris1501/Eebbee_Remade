@@ -14,8 +14,8 @@ public class SmokerCollectable : CollectableData
 
     private void SmokerAffect()
     {
-        AffectManager.Instance.CurrentEffect = SmokerCoroutine();
-        AffectManager.Instance.StartEffect();
+        AffectManager.Instance.SetCurrentEffect( SmokerCoroutine());
+        AffectManager.Instance.StartEffect(this);
     }
 
     private IEnumerator SmokerCoroutine()
@@ -25,10 +25,11 @@ public class SmokerCollectable : CollectableData
 
         while(timeSpent < _affectTime)
         {
-            AffectManager.Instance.EffectTimeRemaining = _affectTime - timeSpent;
-            timeSpent++;
+            AffectManager.Instance.AdjustAffectTime(_affectTime - timeSpent, this);
+            timeSpent++;            
             yield return new WaitForSeconds(1);
         }
         PlayerMovement.SetDefaultControls();
+        AffectManager.Instance.AdjustAffectTime(_affectTime - timeSpent, this);
     }
 }
