@@ -5,19 +5,30 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Collectables", menuName = "ScriptableObjects/Collectables/SmokerCollectable", order = 2)]
 public class SmokerCollectable : CollectableData
 {
-    public float AffectTime;
+    [SerializeField] private int _affectTime;
     public override void OnCollect(GameObject objectToAffect)
     {
-
-
+        SmokerAffect();
         objectToAffect.SetActive(false);
     }
 
     private void SmokerAffect()
     {
-        if(AffectTime > 0)
+        AffectManager.Instance.CurrentEffect = SmokerCoroutine();
+        AffectManager.Instance.StartEffect();
+    }
+
+    private IEnumerator SmokerCoroutine()
+    {
+        PlayerMovement.InvertControls();
+        int timeSpent = 0;
+
+        while(timeSpent < _affectTime)
         {
-            AffectTime -= Time.deltaTime;
+            AffectManager.Instance.EffectTimeRemaining = _affectTime - timeSpent;
+            timeSpent++;
+            yield return new WaitForSeconds(1);
         }
+        PlayerMovement.SetDefaultControls();
     }
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AffectManager : MonoBehaviour
 {
-    public delegate void CurrentAffect();
-    public static CurrentAffect currentAffect;
+    public IEnumerator CurrentEffect;
+    public int EffectTimeRemaining;
 
     //Singleton pattern
     #region Singleton
@@ -37,6 +37,16 @@ public class AffectManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentAffect?.Invoke();
+        
+    }
+
+    public void StartEffect()
+    {
+        if(CurrentEffect == null)
+        {
+            Debug.Log("No Affect set");
+            return;
+        }
+        StartCoroutine(CurrentEffect);
     }
 }

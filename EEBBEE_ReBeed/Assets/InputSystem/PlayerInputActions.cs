@@ -114,6 +114,98 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""InvertedKeyboard"",
+            ""id"": ""b4655097-53a4-4d67-9f7d-0c0c2d867791"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""d596f75e-8bdb-4d22-b7f2-3f63b141964b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Go Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""48725d57-9880-4476-b387-57d823ef9263"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""9fc5e8f7-90a5-413f-a687-de07c7c0c235"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""1de29684-d9e6-41c4-aab0-a2e91fcb2067"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5104a9b5-ace4-4818-b9ff-88127d19434c"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""358e9713-da3b-4759-9730-18ca56337c7d"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""ed6efc91-29da-4b15-a854-72266cd02622"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""afbbed8e-5408-4a7f-a2d9-7e2e893e8f4d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Go Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -122,6 +214,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Keyboard = asset.FindActionMap("Keyboard", throwIfNotFound: true);
         m_Keyboard_Movement = m_Keyboard.FindAction("Movement", throwIfNotFound: true);
         m_Keyboard_GoBack = m_Keyboard.FindAction("Go Back", throwIfNotFound: true);
+        // InvertedKeyboard
+        m_InvertedKeyboard = asset.FindActionMap("InvertedKeyboard", throwIfNotFound: true);
+        m_InvertedKeyboard_Movement = m_InvertedKeyboard.FindAction("Movement", throwIfNotFound: true);
+        m_InvertedKeyboard_GoBack = m_InvertedKeyboard.FindAction("Go Back", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -233,7 +329,66 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         }
     }
     public KeyboardActions @Keyboard => new KeyboardActions(this);
+
+    // InvertedKeyboard
+    private readonly InputActionMap m_InvertedKeyboard;
+    private List<IInvertedKeyboardActions> m_InvertedKeyboardActionsCallbackInterfaces = new List<IInvertedKeyboardActions>();
+    private readonly InputAction m_InvertedKeyboard_Movement;
+    private readonly InputAction m_InvertedKeyboard_GoBack;
+    public struct InvertedKeyboardActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public InvertedKeyboardActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_InvertedKeyboard_Movement;
+        public InputAction @GoBack => m_Wrapper.m_InvertedKeyboard_GoBack;
+        public InputActionMap Get() { return m_Wrapper.m_InvertedKeyboard; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(InvertedKeyboardActions set) { return set.Get(); }
+        public void AddCallbacks(IInvertedKeyboardActions instance)
+        {
+            if (instance == null || m_Wrapper.m_InvertedKeyboardActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_InvertedKeyboardActionsCallbackInterfaces.Add(instance);
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
+            @GoBack.started += instance.OnGoBack;
+            @GoBack.performed += instance.OnGoBack;
+            @GoBack.canceled += instance.OnGoBack;
+        }
+
+        private void UnregisterCallbacks(IInvertedKeyboardActions instance)
+        {
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
+            @GoBack.started -= instance.OnGoBack;
+            @GoBack.performed -= instance.OnGoBack;
+            @GoBack.canceled -= instance.OnGoBack;
+        }
+
+        public void RemoveCallbacks(IInvertedKeyboardActions instance)
+        {
+            if (m_Wrapper.m_InvertedKeyboardActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IInvertedKeyboardActions instance)
+        {
+            foreach (var item in m_Wrapper.m_InvertedKeyboardActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_InvertedKeyboardActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public InvertedKeyboardActions @InvertedKeyboard => new InvertedKeyboardActions(this);
     public interface IKeyboardActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
+        void OnGoBack(InputAction.CallbackContext context);
+    }
+    public interface IInvertedKeyboardActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnGoBack(InputAction.CallbackContext context);
