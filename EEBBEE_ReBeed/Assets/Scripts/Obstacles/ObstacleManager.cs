@@ -185,7 +185,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         if (spawnCheck > _collectableSpawnPercentage)
             return; //cancel if it does meet spawn percentage requirements
 
-        int collectableToSpawn = Random.Range(0, _collectables.Length - 1); //decide collectable to spawn from array
+        int collectableToSpawn = Random.Range(0, _collectables.Length); //decide collectable to spawn from array
         int placeToSpawn = Random.Range(0, obstacle.FreeSpace.Count); //get a free space to spawn in
         Vector3 spawnPos = new Vector3(obstacle.FreeSpace[placeToSpawn].x, obstacle.FreeSpace[placeToSpawn].y, 0); //set collectable position
 
