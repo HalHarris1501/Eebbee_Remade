@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentScore: {fileID: 97048418}
+  _scoreMultiplier: 0
 --- !u!4 &97048417
 Transform:
   m_ObjectHideFlags: 0
@@ -1134,6 +1135,7 @@ MonoBehaviour:
   _collectables:
   - {fileID: 6469429308157142653, guid: d00ffe564bd237b4d86bbfbf3dfb4bc9, type: 3}
   - {fileID: -4524711508918608352, guid: d1aa4f919708375428a718bc726db470, type: 3}
+  - {fileID: 2255069549421285990, guid: fcb2e895f9cd2e5428e7e710c2103941, type: 3}
   _collectableSpawnPercentage: 100
 --- !u!1 &600221158
 GameObject:
@@ -4080,6 +4082,9 @@ MonoBehaviour:
     size: 10
   - tag: Smoker
     prefab: {fileID: 8833159289819679602, guid: d00ffe564bd237b4d86bbfbf3dfb4bc9, type: 3}
+    size: 10
+  - tag: Honey
+    prefab: {fileID: 7732064658892293327, guid: fcb2e895f9cd2e5428e7e710c2103941, type: 3}
     size: 10
 --- !u!4 &1550381576
 Transform:

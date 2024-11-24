@@ -14,7 +14,7 @@ public class SmokerCollectable : CollectableData
 
     private void SmokerAffect()
     {
-        AffectManager.Instance.SetCurrentEffect( SmokerCoroutine());
+        AffectManager.Instance.SetCurrentEffect(SmokerCoroutine());
         AffectManager.Instance.StartEffect(this);
     }
 

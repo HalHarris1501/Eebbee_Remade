@@ -6,6 +6,7 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
 {
     private List<IObserver<Score>> _observers = new List<IObserver<Score>>();
     [SerializeField] private Score _currentScore;
+    [SerializeField] private int _scoreMultiplier = 1;
 
     //Singleton pattern
     #region Singleton
@@ -52,8 +53,13 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
 
     public void AlterScore(int change)
     {
-        _currentScore.ScoreCount += change;
+        _currentScore.ScoreCount += change * _scoreMultiplier;
         NotifyObservers(_currentScore, ISubject<Score>.NotificationType.Changed);
+    }
+
+    public void SetMultiplier(int multiplier)
+    {
+        _scoreMultiplier = multiplier;
     }
 
     // Start is called before the first frame update
