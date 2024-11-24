@@ -15,6 +15,7 @@ public class SmokerCollectable : CollectableData
     private void SmokerAffect()
     {
         AffectManager.Instance.SetCurrentEffect(SmokerCoroutine());
+        AffectManager.EndingEffect = EndEffect;
         AffectManager.Instance.StartEffect(this);
     }
 
@@ -29,7 +30,13 @@ public class SmokerCollectable : CollectableData
             timeSpent++;            
             yield return new WaitForSeconds(1);
         }
-        PlayerMovement.SetDefaultControls();
+
         AffectManager.Instance.AdjustAffectTime(_affectTime - timeSpent, this);
+        EndEffect();
+    }
+
+    private void EndEffect()
+    {
+        PlayerMovement.SetDefaultControls();        
     }
 }

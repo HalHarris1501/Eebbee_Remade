@@ -5,6 +5,8 @@ using UnityEngine;
 public class AffectManager : MonoBehaviour, ISubject<CollectableData>
 {
     private IEnumerator _currentEffect;
+    public delegate void EndEffect();
+    public static EndEffect EndingEffect;
     private int _effectTimeRemaining;
     private List<IObserver<CollectableData>> _observers = new List<IObserver<CollectableData>>();
 
@@ -46,6 +48,7 @@ public class AffectManager : MonoBehaviour, ISubject<CollectableData>
         if(_currentEffect != null)
         {
             StopCoroutine(_currentEffect);
+            EndingEffect();
         }
         _currentEffect = newEffect;
     }

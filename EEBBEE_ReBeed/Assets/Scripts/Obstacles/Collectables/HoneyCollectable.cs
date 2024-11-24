@@ -17,6 +17,7 @@ public class HoneyCollectable : CollectableData
     private void HoneyAffect()
     {
         AffectManager.Instance.SetCurrentEffect(HoneyCoroutine());
+        AffectManager.EndingEffect = EndEffect;
         AffectManager.Instance.StartEffect(this);
     }
 
@@ -33,6 +34,12 @@ public class HoneyCollectable : CollectableData
             yield return new WaitForSeconds(1);
         }
 
+        AffectManager.Instance.AdjustAffectTime(_affectTime - timeSpent, this);
+        EndEffect();
+    }
+
+    private void EndEffect()
+    {
         Time.timeScale = 1f;
         ScoreManager.Instance.SetMultiplier(1);
     }
