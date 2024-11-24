@@ -31,7 +31,7 @@ public class HoneyCollectable : CollectableData
         {
             AffectManager.Instance.AdjustAffectTime(_affectTime - timeSpent, this);
             timeSpent++;
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSecondsRealtime(1);
         }
 
         AffectManager.Instance.AdjustAffectTime(_affectTime - timeSpent, this);

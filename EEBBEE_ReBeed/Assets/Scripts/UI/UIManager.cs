@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour, IObserver<Score>, IObserver<CollectableD
         {
             _affectDisplay.SetActive(true);
             string affectTitleText = type.ToString();
-            affectTitleText = affectTitleText.Substring(0, 6);
+            //affectTitleText = affectTitleText.Substring(0, 6);
             _affectTitleText.text = affectTitleText + " time remaining:";
 
             _effectTimeText.text = count.ToString();
