@@ -57,9 +57,9 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         _obstacleStack = new Stack<List<SaveableObjectInfo>>();
         _activeCollectablesDictionary = new Dictionary<int, List<ObjectType>>();
         _obstacleNumTracker = 0;
-        ObjectPooler.objectPoolerReady += () => GenerateSpecificObstacle(3, false); //i dont understand entirely why this works
-        ObjectPooler.objectPoolerReady += () => GenerateNewObstacle();
-        ObjectPooler.objectPoolerReady += () => GenerateNewObstacle();
+        ObjectPooler.Instance.objectPoolerReady.AddListener(() => GenerateSpecificObstacle(0, false));
+        ObjectPooler.Instance.objectPoolerReady.AddListener(() => GenerateNewObstacle());
+        ObjectPooler.Instance.objectPoolerReady.AddListener(() => GenerateNewObstacle());
     }
 
 
