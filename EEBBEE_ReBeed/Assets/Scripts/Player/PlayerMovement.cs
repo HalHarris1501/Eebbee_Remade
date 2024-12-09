@@ -32,9 +32,9 @@ public class PlayerMovement : MonoBehaviour
             _beeRigidBody.velocity = Vector2.ClampMagnitude(_beeRigidBody.velocity, _maxSpeed);
         }
 
-        if(_playerInputActions.Keyboard.GoBack.IsPressed())
+        if(_playerInputActions.FindAction("Go Back").IsPressed())
         {
-            _playerInputActions.Keyboard.GoBack.Disable();
+            _playerInputActions.FindAction("Go Back").Disable();
             GameManager.Instance.GoBack();
             this.GetComponentInChildren<SpriteRenderer>().flipX = true;
         }
