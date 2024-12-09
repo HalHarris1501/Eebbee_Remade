@@ -10,6 +10,7 @@ public class HoneyCollectable : CollectableData
     // Start is called before the first frame update
     public override void OnCollect(GameObject objectToAffect)
     {
+        objectToAffect.GetComponentInParent<ObstacleBox>().UpdateObstacle(objectToAffect);
         HoneyAffect();
         objectToAffect.SetActive(false);
     }

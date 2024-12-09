@@ -8,6 +8,7 @@ public class SmokerCollectable : CollectableData
     [SerializeField] private int _affectTime;
     public override void OnCollect(GameObject objectToAffect)
     {
+        objectToAffect.GetComponentInParent<ObstacleBox>().UpdateObstacle(objectToAffect);
         SmokerAffect();
         objectToAffect.SetActive(false);
     }
