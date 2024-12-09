@@ -36,7 +36,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     //obstacle saving info
     private Stack<List<SaveableObjectInfo>> _obstacleStack;
     private Dictionary<int, List<ObjectType>> _activeCollectablesDictionary;
-    private int _obstacleNumTracker;
+    private int _obstacleNumTracker = 0;
     private Direction _direction = Direction.Forward;
 
     [Header("Collectables")]
@@ -57,6 +57,9 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         _obstacleStack = new Stack<List<SaveableObjectInfo>>();
         _activeCollectablesDictionary = new Dictionary<int, List<ObjectType>>();
         _obstacleNumTracker = 0;
+        ObjectPooler.objectPoolerReady += () => GenerateSpecificObstacle(3, false); //i dont understand entirely why this works
+        ObjectPooler.objectPoolerReady += () => GenerateNewObstacle();
+        ObjectPooler.objectPoolerReady += () => GenerateNewObstacle();
     }
 
 
@@ -78,12 +81,36 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         }
     }
 
+    private void GenerateSpecificObstacle(int obstacleID, bool spawnCollectable)
+    {
+        _obstacleNumTracker++;
+        ClearObstaclesBox();
+
+        ObstacleInfo currentObstacle = new ObstacleInfo(_obstacles[obstacleID]);
+
+        if (spawnCollectable == true)
+        {
+            GenerateCollectable(currentObstacle);
+        }
+
+        _obstacleStack.Push(currentObstacle.ObjectList);
+
+        LoadObjects(currentObstacle.ObjectList);
+
+
+        _currentBox++;
+        if (_currentBox > 2)
+        {
+            _currentBox = 0;
+        }
+    }
+
     private void GenerateNewObstacle()
     {
         _obstacleNumTracker++;
         ClearObstaclesBox();
 
-        int obstacleID = Random.Range(0, _obstacles.Count);
+        int obstacleID = Random.Range(0, _obstacles.Count - 1);
         ObstacleInfo currentObstacle = new ObstacleInfo(_obstacles[obstacleID]);
 
         GenerateCollectable(currentObstacle);

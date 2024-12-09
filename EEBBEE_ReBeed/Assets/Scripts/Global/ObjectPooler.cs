@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ObjectPooler : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class ObjectPooler : MonoBehaviour
         public GameObject prefab;
         public int size;
     }
+
+    public static event Action objectPoolerReady;
 
     #region Singleton
     private static ObjectPooler _instance;
@@ -53,6 +56,8 @@ public class ObjectPooler : MonoBehaviour
 
             poolDictionary.Add(pool.tag, objectPool); //adds the pool to the dictionary
         }
+
+        Invoke(nameof(objectPoolerReady), 1f);
     }
 
     public GameObject SpawnFromPool(string tag, Vector2 position, Quaternion rotation)
