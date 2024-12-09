@@ -1137,7 +1137,7 @@ MonoBehaviour:
   - {fileID: 6469429308157142653, guid: d00ffe564bd237b4d86bbfbf3dfb4bc9, type: 3}
   - {fileID: -4524711508918608352, guid: d1aa4f919708375428a718bc726db470, type: 3}
   - {fileID: 2255069549421285990, guid: fcb2e895f9cd2e5428e7e710c2103941, type: 3}
-  _collectableSpawnPercentage: 100
+  _collectableSpawnPercentage: 33.3
 --- !u!1 &600221158
 GameObject:
   m_ObjectHideFlags: 0
