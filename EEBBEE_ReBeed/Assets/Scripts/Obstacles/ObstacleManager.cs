@@ -110,7 +110,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         _obstacleNumTracker++;
         ClearObstaclesBox();
 
-        int obstacleID = Random.Range(0, _obstacles.Count - 1);
+        int obstacleID = Random.Range(1, _obstacles.Count);
         ObstacleInfo currentObstacle = new ObstacleInfo(_obstacles[obstacleID]);
 
         GenerateCollectable(currentObstacle);
