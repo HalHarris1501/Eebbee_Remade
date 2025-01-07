@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
     {    
         if ((1 << collision.gameObject.layer) == _obstacleLayer.value)
         {
-            Debug.Log("Bee Ded");
+            GameManager.Instance.ManageLose();
         }
         if ((1 << collision.gameObject.layer) == _collectableLayer.value)
         {
@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if ((1 << collision.gameObject.layer) == _hiveLayer.value)
         {
-            Debug.Log("Bee Win");
+            GameManager.Instance.ManageWin();
         }
     }
 }

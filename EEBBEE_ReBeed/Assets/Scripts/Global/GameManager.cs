@@ -64,13 +64,25 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 
     public void GoBack()
     {
-        _direction = Direction.Backword;
+        _direction = Direction.Backward;
         NotifyObservers(_direction, ISubject<Direction>.NotificationType.Changed);
+    }
+
+    public void ManageWin() // function called when the game is won
+    {
+        Debug.Log("Bee Win");
+        SceneSwapper.Instance.LoadSceneByName("Menu Scene");
+    }
+
+    public void ManageLose() // function called when the game is lost
+    {
+        Debug.Log("Bee ded");
+        SceneSwapper.Instance.LoadSceneByName("Menu Scene");
     }
 }
 
 public enum Direction
 {
     Forward,
-    Backword
+    Backward
 }

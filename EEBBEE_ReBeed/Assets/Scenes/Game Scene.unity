@@ -4828,6 +4828,9 @@ MonoBehaviour:
   _collectableLayer:
     serializedVersion: 2
     m_Bits: 512
+  _hiveLayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &2027282237
 GameObject:
   m_ObjectHideFlags: 0
