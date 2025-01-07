@@ -10,8 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _acceleration = 5f;
     [SerializeField] private float _speed;
     [SerializeField] private float _maxSpeed;
-    [SerializeField] private LayerMask _obstacleLayer;
-    [SerializeField] private LayerMask _collectableLayer;
+    [SerializeField] private LayerMask _obstacleLayer, _collectableLayer, _hiveLayer;
 
     private void Awake()
     {
@@ -79,6 +78,10 @@ public class PlayerMovement : MonoBehaviour
         if ((1 << collision.gameObject.layer) == _collectableLayer.value)
         {
             collision.GetComponent<Collectable>().CollectableData.OnCollect(collision.gameObject);
+        }
+        if ((1 << collision.gameObject.layer) == _hiveLayer.value)
+        {
+            Debug.Log("Bee Win");
         }
     }
 }

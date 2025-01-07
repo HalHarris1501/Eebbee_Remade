@@ -745,6 +745,8 @@ MonoBehaviour:
     Prefab: {fileID: 1538747979659598753, guid: d1aa4f919708375428a718bc726db470, type: 3}
   - Type: 9
     Prefab: {fileID: 6524185809140638969, guid: ae2d5fd5556a7da41a8cdd529e088ee8, type: 3}
+  - Type: 10
+    Prefab: {fileID: 7182221213257458143, guid: 58346a6c11f4d1d4d8a5309a82effb19, type: 3}
 --- !u!1 &424708491
 GameObject:
   m_ObjectHideFlags: 0
@@ -4090,6 +4092,9 @@ MonoBehaviour:
   - tag: Honey
     prefab: {fileID: 7732064658892293327, guid: fcb2e895f9cd2e5428e7e710c2103941, type: 3}
     size: 10
+  - tag: Hive
+    prefab: {fileID: 7182221213257458143, guid: 58346a6c11f4d1d4d8a5309a82effb19, type: 3}
+    size: 2
 --- !u!4 &1550381576
 Transform:
   m_ObjectHideFlags: 0

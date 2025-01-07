@@ -18,5 +18,6 @@ public enum ObjectType
     Smoker,
     Honey,
     Nectar,
-    EndingNectar
+    EndingNectar,
+    Hive
 }
