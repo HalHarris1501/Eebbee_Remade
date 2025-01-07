@@ -19,7 +19,7 @@ public class SeedSetter : MonoBehaviour
         
     }
 
-    public void SetSeed()
+    public void SetSeed() //doesn't work because ObstacleManager isn't loaded
     {
         if(_seedText.text != null)
         {
