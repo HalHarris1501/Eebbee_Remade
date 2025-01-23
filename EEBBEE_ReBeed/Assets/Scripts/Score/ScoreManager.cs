@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
     private List<IObserver<Score>> _observers = new List<IObserver<Score>>();
     [SerializeField] private Score _currentScore;
     [SerializeField] private int _scoreMultiplier = 1;
+    [SerializeField] private ScoreStorage _scoreStorage;
 
     //Singleton pattern
     #region Singleton
@@ -60,6 +61,21 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
     public void SetMultiplier(int multiplier)
     {
         _scoreMultiplier = multiplier;
+    }
+
+    private void SetPreviousScore()
+    {
+        _scoreStorage.PreviousScore = _currentScore.ScoreCount;
+    }
+
+    private void OnEnable()
+    {
+        PlayerMovement.onPlayerWin += SetPreviousScore;
+    }
+
+    private void OnDisable()
+    {
+        PlayerMovement.onPlayerWin -= SetPreviousScore;
     }
 
     // Start is called before the first frame update

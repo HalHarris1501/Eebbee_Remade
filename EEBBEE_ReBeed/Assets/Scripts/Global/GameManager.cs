@@ -40,6 +40,18 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         }
     }
 
+    private void OnEnable()
+    {
+        PlayerMovement.onPlayerDeath += ManageLose;
+        PlayerMovement.onPlayerWin += ManageWin;
+    }
+
+    private void OnDisable()
+    {
+        PlayerMovement.onPlayerDeath -= ManageLose;
+        PlayerMovement.onPlayerWin -= ManageWin;
+    }
+
     public void NotifyObservers(Direction type, ISubject<Direction>.NotificationType notificationType)
     {
         foreach(var Observer in _observers)

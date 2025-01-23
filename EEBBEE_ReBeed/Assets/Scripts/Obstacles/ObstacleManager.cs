@@ -27,6 +27,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     [Header("Seed Generation")]
     [SerializeField] private string _gameSeed;
     [SerializeField] private int _currentSeed;
+    [SerializeField] private SeedStorage _seedStorage;
 
     [Header("Obstacles")]
     [SerializeField] private List<ObstacleBox> _obstacleBoxes;
@@ -46,7 +47,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
 
     private void Awake()
     {
-        
+        SetSeed();
     }
 
     // Start is called before the first frame update
@@ -68,10 +69,9 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
        
     }
 
-    public void SetSeed(string seedText)
+    public void SetSeed()
     {
-        Debug.Log("Recieved Seed: " + seedText);
-        _gameSeed = seedText;
+        _gameSeed = _seedStorage.Seed;
         _currentSeed = _gameSeed.GetHashCode();
         Random.InitState(_currentSeed);
     }

@@ -439,6 +439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentScore: {fileID: 97048418}
   _scoreMultiplier: 1
+  _scoreStorage: {fileID: 11400000, guid: bd7c93eb1b0c48540b4d9af97140eed9, type: 2}
 --- !u!4 &97048417
 Transform:
   m_ObjectHideFlags: 0
@@ -1125,6 +1126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameSeed: 
   _currentSeed: 0
+  _seedStorage: {fileID: 11400000, guid: 89395f773aea56e4c819959d7059acba, type: 2}
   _obstacleBoxes:
   - {fileID: 809868949}
   - {fileID: 969193205}

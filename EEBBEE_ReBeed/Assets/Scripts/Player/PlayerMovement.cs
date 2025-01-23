@@ -11,6 +11,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private LayerMask _obstacleLayer, _collectableLayer, _hiveLayer;
+    public delegate void OnPlayerDeath();
+    public static OnPlayerDeath onPlayerDeath;
+    public delegate void OnPlayerWin();
+    public static OnPlayerWin onPlayerWin;
 
     private void Awake()
     {
@@ -73,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {    
         if ((1 << collision.gameObject.layer) == _obstacleLayer.value)
         {
-            GameManager.Instance.ManageLose();
+            onPlayerDeath?.Invoke();
         }
         if ((1 << collision.gameObject.layer) == _collectableLayer.value)
         {
@@ -81,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if ((1 << collision.gameObject.layer) == _hiveLayer.value)
         {
-            GameManager.Instance.ManageWin();
+            onPlayerWin?.Invoke();
         }
     }
 }

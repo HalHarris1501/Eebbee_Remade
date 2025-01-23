@@ -6,6 +6,7 @@ using TMPro;
 public class SeedSetter : MonoBehaviour
 {
     [SerializeField] private TMP_Text _seedText;
+    [SerializeField] private SeedStorage _seedStorage;
 
     // Start is called before the first frame update
     void Start()
@@ -23,11 +24,11 @@ public class SeedSetter : MonoBehaviour
     {
         if(_seedText.text != null)
         {
-            ObstacleManager.Instance.SetSeed(_seedText.text);
+            _seedStorage.Seed = _seedText.text;
         }
         else
         {
-            ObstacleManager.Instance.SetSeed(Random.Range(0, 999999999).ToString());
+            _seedStorage.Seed = Random.Range(0, 999999999).ToString();
         }
     }
 }
