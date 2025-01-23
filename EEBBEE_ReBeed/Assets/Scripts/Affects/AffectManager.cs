@@ -43,14 +43,31 @@ public class AffectManager : MonoBehaviour, ISubject<CollectableData>
         
     }
 
+    private void OnEnable()
+    {
+        PlayerMovement.onPlayerDeath += ForceEndEffect;
+        PlayerMovement.onPlayerWin += ForceEndEffect;
+    }
+
+    private void OnDisable()
+    {
+        PlayerMovement.onPlayerDeath -= ForceEndEffect;
+        PlayerMovement.onPlayerWin -= ForceEndEffect;
+    }
+
     public void SetCurrentEffect(IEnumerator newEffect)
     {
-        if(_currentEffect != null)
+        ForceEndEffect();        
+        _currentEffect = newEffect;
+    }
+
+    private void ForceEndEffect()
+    {
+        if (_currentEffect != null)
         {
             StopCoroutine(_currentEffect);
             EndingEffect();
         }
-        _currentEffect = newEffect;
     }
 
     public void StartEffect(CollectableData type)

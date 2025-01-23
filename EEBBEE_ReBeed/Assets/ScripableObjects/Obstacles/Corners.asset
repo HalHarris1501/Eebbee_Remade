@@ -13,86 +13,88 @@ MonoBehaviour:
   m_Name: Corners
   m_EditorClassIdentifier: 
   ObjectList:
-  - Type: 2
-    Position: {x: -10, y: 6, z: 0}
-  - Type: 2
-    Position: {x: -11, y: 5, z: 0}
-  - Type: 2
-    Position: {x: -12, y: 4, z: 0}
-  - Type: 2
-    Position: {x: -13, y: 3, z: 0}
+  - Type: 9
+    Position: {x: 13, y: 0, z: 0}
   - Type: 0
-    Position: {x: -11, y: 6, z: 0}
-  - Type: 0
-    Position: {x: -12, y: 6, z: 0}
-  - Type: 0
-    Position: {x: -12, y: 5, z: 0}
-  - Type: 0
-    Position: {x: -13, y: 4, z: 0}
-  - Type: 0
-    Position: {x: -13, y: 5, z: 0}
-  - Type: 0
-    Position: {x: -13, y: 6, z: 0}
-  - Type: 1
-    Position: {x: 13, y: 3, z: 0}
-  - Type: 1
-    Position: {x: 12, y: 4, z: 0}
-  - Type: 1
-    Position: {x: 11, y: 5, z: 0}
-  - Type: 1
-    Position: {x: 10, y: 6, z: 0}
-  - Type: 0
-    Position: {x: 12, y: 6, z: 0}
-  - Type: 0
-    Position: {x: 11, y: 6, z: 0}
-  - Type: 0
-    Position: {x: 12, y: 5, z: 0}
-  - Type: 0
-    Position: {x: 13, y: 4, z: 0}
-  - Type: 0
-    Position: {x: 13, y: 5, z: 0}
-  - Type: 0
-    Position: {x: 13, y: 6, z: 0}
-  - Type: 3
-    Position: {x: 13, y: -3, z: 0}
-  - Type: 3
-    Position: {x: 12, y: -4, z: 0}
-  - Type: 3
-    Position: {x: 11, y: -5, z: 0}
-  - Type: 3
-    Position: {x: 10, y: -6, z: 0}
-  - Type: 0
-    Position: {x: 11, y: -6, z: 0}
-  - Type: 0
-    Position: {x: 12, y: -6, z: 0}
-  - Type: 0
-    Position: {x: 12, y: -5, z: 0}
-  - Type: 0
-    Position: {x: 13, y: -4, z: 0}
-  - Type: 0
-    Position: {x: 13, y: -5, z: 0}
-  - Type: 0
-    Position: {x: 13, y: -6, z: 0}
-  - Type: 4
-    Position: {x: -10, y: -6, z: 0}
-  - Type: 4
-    Position: {x: -11, y: -5, z: 0}
-  - Type: 4
-    Position: {x: -12, y: -4, z: 0}
-  - Type: 4
-    Position: {x: -13, y: -3, z: 0}
-  - Type: 0
-    Position: {x: -12, y: -5, z: 0}
-  - Type: 0
-    Position: {x: -11, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -12, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -13, y: -4, z: 0}
+    Position: {x: -13, y: -6, z: 0}
   - Type: 0
     Position: {x: -13, y: -5, z: 0}
   - Type: 0
-    Position: {x: -13, y: -6, z: 0}
+    Position: {x: -13, y: -4, z: 0}
+  - Type: 0
+    Position: {x: -12, y: -6, z: 0}
+  - Type: 0
+    Position: {x: -11, y: -6, z: 0}
+  - Type: 0
+    Position: {x: -12, y: -5, z: 0}
+  - Type: 4
+    Position: {x: -13, y: -3, z: 0}
+  - Type: 4
+    Position: {x: -12, y: -4, z: 0}
+  - Type: 4
+    Position: {x: -11, y: -5, z: 0}
+  - Type: 4
+    Position: {x: -10, y: -6, z: 0}
+  - Type: 0
+    Position: {x: 13, y: -6, z: 0}
+  - Type: 0
+    Position: {x: 13, y: -5, z: 0}
+  - Type: 0
+    Position: {x: 13, y: -4, z: 0}
+  - Type: 0
+    Position: {x: 12, y: -5, z: 0}
+  - Type: 0
+    Position: {x: 12, y: -6, z: 0}
+  - Type: 0
+    Position: {x: 11, y: -6, z: 0}
+  - Type: 3
+    Position: {x: 10, y: -6, z: 0}
+  - Type: 3
+    Position: {x: 11, y: -5, z: 0}
+  - Type: 3
+    Position: {x: 12, y: -4, z: 0}
+  - Type: 3
+    Position: {x: 13, y: -3, z: 0}
+  - Type: 0
+    Position: {x: 13, y: 6, z: 0}
+  - Type: 0
+    Position: {x: 13, y: 5, z: 0}
+  - Type: 0
+    Position: {x: 13, y: 4, z: 0}
+  - Type: 0
+    Position: {x: 12, y: 5, z: 0}
+  - Type: 0
+    Position: {x: 11, y: 6, z: 0}
+  - Type: 0
+    Position: {x: 12, y: 6, z: 0}
+  - Type: 1
+    Position: {x: 10, y: 6, z: 0}
+  - Type: 1
+    Position: {x: 11, y: 5, z: 0}
+  - Type: 1
+    Position: {x: 12, y: 4, z: 0}
+  - Type: 1
+    Position: {x: 13, y: 3, z: 0}
+  - Type: 0
+    Position: {x: -13, y: 6, z: 0}
+  - Type: 0
+    Position: {x: -13, y: 5, z: 0}
+  - Type: 0
+    Position: {x: -13, y: 4, z: 0}
+  - Type: 0
+    Position: {x: -12, y: 5, z: 0}
+  - Type: 0
+    Position: {x: -12, y: 6, z: 0}
+  - Type: 0
+    Position: {x: -11, y: 6, z: 0}
+  - Type: 2
+    Position: {x: -13, y: 3, z: 0}
+  - Type: 2
+    Position: {x: -12, y: 4, z: 0}
+  - Type: 2
+    Position: {x: -11, y: 5, z: 0}
+  - Type: 2
+    Position: {x: -10, y: 6, z: 0}
   FreeSpace:
   - {x: -13, y: -2}
   - {x: -13, y: -1}
@@ -402,6 +404,5 @@ MonoBehaviour:
   - {x: 12, y: 3}
   - {x: 13, y: -2}
   - {x: 13, y: -1}
-  - {x: 13, y: 0}
   - {x: 13, y: 1}
   - {x: 13, y: 2}

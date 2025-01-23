@@ -22,7 +22,8 @@ public class SeedSetter : MonoBehaviour
 
     public void SetSeed() //doesn't work because ObstacleManager isn't loaded
     {
-        if(_seedText.text.Length < 1)
+        Debug.Log("Seed entered: " + _seedText.text + ". Seed Length: " + _seedText.text.Length);
+        if(_seedText.text.Length > 1)
         {
             _seedStorage.Seed = _seedText.text;
         }
