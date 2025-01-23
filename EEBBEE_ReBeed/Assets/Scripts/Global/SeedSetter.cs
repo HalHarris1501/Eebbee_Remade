@@ -25,11 +25,12 @@ public class SeedSetter : MonoBehaviour
         Debug.Log("Seed entered: " + _seedText.text + ". Seed Length: " + _seedText.text.Length);
         if(_seedText.text.Length > 1)
         {
-            _seedStorage.Seed = _seedText.text;
+            _seedStorage.Seed = _seedText.text.GetHashCode();
         }
         else
         {
-            _seedStorage.Seed = Random.Range(0, 999999999).ToString();
+            _seedStorage.Seed = Random.Range(0, 999999999);
         }
+        Debug.Log("New Seed: (" +  _seedStorage.Seed + ")");
     }
 }

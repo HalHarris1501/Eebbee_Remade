@@ -25,7 +25,6 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     #endregion
 
     [Header("Seed Generation")]
-    [SerializeField] private string _gameSeed;
     [SerializeField] private int _currentSeed;
     [SerializeField] private SeedStorage _seedStorage;
 
@@ -71,8 +70,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
 
     public void SetSeed()
     {
-        _gameSeed = _seedStorage.Seed;
-        _currentSeed = _gameSeed.GetHashCode();
+        _currentSeed = _seedStorage.Seed;
         Random.InitState(_currentSeed);
     }
 
