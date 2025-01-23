@@ -63,19 +63,20 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
         _scoreMultiplier = multiplier;
     }
 
-    private void SetPreviousScore()
+    private void SetScore()
     {
         _scoreStorage.PreviousScore = _currentScore.ScoreCount;
+        _scoreStorage.TotalScore += _currentScore.ScoreCount;
     }
 
     private void OnEnable()
     {
-        PlayerMovement.onPlayerWin += SetPreviousScore;
+        PlayerMovement.onPlayerWin += SetScore;
     }
 
     private void OnDisable()
     {
-        PlayerMovement.onPlayerWin -= SetPreviousScore;
+        PlayerMovement.onPlayerWin -= SetScore;
     }
 
     // Start is called before the first frame update

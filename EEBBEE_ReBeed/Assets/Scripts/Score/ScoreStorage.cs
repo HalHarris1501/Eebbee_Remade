@@ -6,4 +6,5 @@ using UnityEngine;
 public class ScoreStorage : ScriptableObject
 {
     public int PreviousScore = 0;
+    public int TotalScore = 0;
 }
