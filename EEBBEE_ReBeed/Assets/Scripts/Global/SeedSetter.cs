@@ -23,13 +23,15 @@ public class SeedSetter : MonoBehaviour
     public void SetSeed() //doesn't work because ObstacleManager isn't loaded
     {
         Debug.Log("Seed entered: " + _seedText.text + ". Seed Length: " + _seedText.text.Length);
-        if(_seedText.text.Length > 1)
-        {
-            _seedStorage.Seed = _seedText.text.GetHashCode();
-        }
-        else
+        if(_seedText.text.Length <= 1)
         {
             _seedStorage.Seed = Random.Range(0, 999999999);
+            
+        }
+       // else if(_seedText.text.ToIntArray())
+        else
+        {
+            _seedStorage.Seed = _seedText.text.GetHashCode();
         }
         Debug.Log("New Seed: (" +  _seedStorage.Seed + ")");
     }
