@@ -738,7 +738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624034477646acb469300e4be419239c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _obstacle: {fileID: 11400000, guid: ed09f1cc46af1c44487aab55d7a4f651, type: 2}
+  _obstacle: {fileID: 11400000, guid: cd234d041f6c7cf4dbf867a826caa59e, type: 2}
   _prefabList:
   - Type: 0
     Prefab: {fileID: 5655350015716585278, guid: d0e2fa8ff01c6db4cbfd7ad4bcb70aba, type: 3}
@@ -1132,7 +1132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d140724a83669f340bec8b42b33972d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameSeed: 
   _currentSeed: 0
   _seedStorage: {fileID: 11400000, guid: 89395f773aea56e4c819959d7059acba, type: 2}
   _obstacleBoxes:
@@ -1144,6 +1143,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 55fc3bf6c22aeec49a4d65efda34460e, type: 2}
   - {fileID: 11400000, guid: 5aa5f57f6ffeff144a70f6732e4a637b, type: 2}
   - {fileID: 11400000, guid: ed09f1cc46af1c44487aab55d7a4f651, type: 2}
+  - {fileID: 11400000, guid: df6b1d92cc1e95b4b90df428d1213504, type: 2}
+  - {fileID: 11400000, guid: ac77120e8106b66419a5ef1116c814fc, type: 2}
+  - {fileID: 11400000, guid: 6877bb6da14cb874bb39c365d31cdd0b, type: 2}
+  - {fileID: 11400000, guid: a71fa3c9237c48c4e82be737a354e4ac, type: 2}
+  - {fileID: 11400000, guid: e518e8134fcf46e46a09c2cf2e88c2c8, type: 2}
+  - {fileID: 11400000, guid: 0c92d46046ad81f46b7fc35ef2346734, type: 2}
+  - {fileID: 11400000, guid: cd234d041f6c7cf4dbf867a826caa59e, type: 2}
   _currentBox: 0
   _collectables:
   - {fileID: 6469429308157142653, guid: d00ffe564bd237b4d86bbfbf3dfb4bc9, type: 3}
