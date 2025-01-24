@@ -10,109 +10,125 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba85de93b392fd94abe37d64fd59bacc, type: 3}
-  m_Name: MiddleBarBLtoUR
+  m_Name: BottomMiddleBlock
   m_EditorClassIdentifier: 
   ObjectList:
-  - Type: 4
+  - Type: 9
+    Position: {x: 13, y: 0, z: 0}
+  - Type: 0
+    Position: {x: -3, y: 2, z: 0}
+  - Type: 0
+    Position: {x: 3, y: 2, z: 0}
+  - Type: 0
     Position: {x: 2, y: 2, z: 0}
-  - Type: 1
-    Position: {x: -2, y: -2, z: 0}
-  - Type: 2
-    Position: {x: 2, y: 1, z: 0}
-  - Type: 2
-    Position: {x: 1, y: 0, z: 0}
-  - Type: 3
+  - Type: 0
     Position: {x: 1, y: 2, z: 0}
+  - Type: 0
+    Position: {x: 0, y: 2, z: 0}
+  - Type: 0
+    Position: {x: -1, y: 2, z: 0}
+  - Type: 0
+    Position: {x: -2, y: 2, z: 0}
+  - Type: 0
+    Position: {x: -2, y: 1, z: 0}
+  - Type: 0
+    Position: {x: -1, y: 1, z: 0}
+  - Type: 0
+    Position: {x: 0, y: 1, z: 0}
   - Type: 0
     Position: {x: 1, y: 1, z: 0}
   - Type: 0
+    Position: {x: 2, y: 1, z: 0}
+  - Type: 0
+    Position: {x: 3, y: 1, z: 0}
+  - Type: 0
+    Position: {x: -3, y: 1, z: 0}
+  - Type: 0
+    Position: {x: -3, y: 0, z: 0}
+  - Type: 0
+    Position: {x: 3, y: 0, z: 0}
+  - Type: 0
+    Position: {x: 2, y: 0, z: 0}
+  - Type: 0
+    Position: {x: 1, y: 0, z: 0}
+  - Type: 0
     Position: {x: 0, y: 0, z: 0}
-  - Type: 2
-    Position: {x: 0, y: -0.9999999, z: 0}
-  - Type: 3
-    Position: {x: 0, y: 1, z: 0}
-  - Type: 3
+  - Type: 0
     Position: {x: -1, y: 0, z: 0}
   - Type: 0
-    Position: {x: -1, y: -1, z: 0}
-  - Type: 2
-    Position: {x: -1, y: -1.9999999, z: 0}
-  - Type: 3
+    Position: {x: -2, y: 0, z: 0}
+  - Type: 0
     Position: {x: -2, y: -1, z: 0}
   - Type: 0
-    Position: {x: -13, y: 6, z: 0}
+    Position: {x: -1, y: -1, z: 0}
   - Type: 0
-    Position: {x: -12, y: 6, z: 0}
+    Position: {x: 0, y: -1, z: 0}
   - Type: 0
-    Position: {x: -11, y: 6, z: 0}
+    Position: {x: 1, y: -1, z: 0}
   - Type: 0
-    Position: {x: -10, y: 6, z: 0}
+    Position: {x: 2, y: -1, z: 0}
   - Type: 0
-    Position: {x: -9, y: 6, z: 0}
+    Position: {x: 3, y: -1, z: 0}
   - Type: 0
-    Position: {x: -8, y: 6, z: 0}
+    Position: {x: -3, y: -1, z: 0}
   - Type: 0
-    Position: {x: -7, y: 6, z: 0}
+    Position: {x: -3, y: -2, z: 0}
   - Type: 0
-    Position: {x: -6, y: 6, z: 0}
+    Position: {x: 3, y: -2, z: 0}
   - Type: 0
-    Position: {x: -5, y: 6, z: 0}
+    Position: {x: 2, y: -2, z: 0}
   - Type: 0
-    Position: {x: -4, y: 6, z: 0}
+    Position: {x: 1, y: -2, z: 0}
   - Type: 0
-    Position: {x: -3, y: 6, z: 0}
+    Position: {x: 0, y: -2, z: 0}
   - Type: 0
-    Position: {x: -2, y: 6, z: 0}
+    Position: {x: -1, y: -2, z: 0}
   - Type: 0
-    Position: {x: -1, y: 6, z: 0}
+    Position: {x: -2, y: -2, z: 0}
   - Type: 0
-    Position: {x: 0, y: 6, z: 0}
+    Position: {x: -2, y: -3, z: 0}
   - Type: 0
-    Position: {x: 1, y: 6, z: 0}
+    Position: {x: -1, y: -3, z: 0}
   - Type: 0
-    Position: {x: 2, y: 6, z: 0}
+    Position: {x: 0, y: -3, z: 0}
   - Type: 0
-    Position: {x: 3, y: 6, z: 0}
+    Position: {x: 1, y: -3, z: 0}
   - Type: 0
-    Position: {x: 4, y: 6, z: 0}
+    Position: {x: 2, y: -3, z: 0}
   - Type: 0
-    Position: {x: 5, y: 6, z: 0}
+    Position: {x: 3, y: -3, z: 0}
   - Type: 0
-    Position: {x: 6, y: 6, z: 0}
+    Position: {x: -3, y: -3, z: 0}
   - Type: 0
-    Position: {x: 7, y: 6, z: 0}
+    Position: {x: -3, y: -4, z: 0}
   - Type: 0
-    Position: {x: 8, y: 6, z: 0}
+    Position: {x: 3, y: -4, z: 0}
   - Type: 0
-    Position: {x: 9, y: 6, z: 0}
+    Position: {x: 2, y: -4, z: 0}
   - Type: 0
-    Position: {x: 10, y: 6, z: 0}
+    Position: {x: 1, y: -4, z: 0}
   - Type: 0
-    Position: {x: 11, y: 6, z: 0}
+    Position: {x: 0, y: -4, z: 0}
   - Type: 0
-    Position: {x: 12, y: 6, z: 0}
+    Position: {x: -1, y: -4, z: 0}
   - Type: 0
-    Position: {x: 13, y: 6, z: 0}
+    Position: {x: -2, y: -4, z: 0}
   - Type: 0
-    Position: {x: 13, y: -6, z: 0}
+    Position: {x: -2, y: -5, z: 0}
   - Type: 0
-    Position: {x: 12, y: -6, z: 0}
+    Position: {x: -1, y: -5, z: 0}
   - Type: 0
-    Position: {x: 11, y: -6, z: 0}
+    Position: {x: 0, y: -5, z: 0}
   - Type: 0
-    Position: {x: 10, y: -6, z: 0}
+    Position: {x: 1, y: -5, z: 0}
   - Type: 0
-    Position: {x: 9, y: -6, z: 0}
+    Position: {x: 2, y: -5, z: 0}
   - Type: 0
-    Position: {x: 8, y: -6, z: 0}
+    Position: {x: 3, y: -5, z: 0}
   - Type: 0
-    Position: {x: 7, y: -6, z: 0}
+    Position: {x: -3, y: -5, z: 0}
   - Type: 0
-    Position: {x: 6, y: -6, z: 0}
-  - Type: 0
-    Position: {x: 5, y: -6, z: 0}
-  - Type: 0
-    Position: {x: 4, y: -6, z: 0}
+    Position: {x: -3, y: -6, z: 0}
   - Type: 0
     Position: {x: 3, y: -6, z: 0}
   - Type: 0
@@ -125,31 +141,8 @@ MonoBehaviour:
     Position: {x: -1, y: -6, z: 0}
   - Type: 0
     Position: {x: -2, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -3, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -4, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -5, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -6, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -7, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -8, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -9, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -10, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -11, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -12, y: -6, z: 0}
-  - Type: 0
-    Position: {x: -13, y: -6, z: 0}
-  - Type: 9
-    Position: {x: 13, y: 0, z: 0}
   FreeSpace:
+  - {x: -13, y: -6}
   - {x: -13, y: -5}
   - {x: -13, y: -4}
   - {x: -13, y: -3}
@@ -161,6 +154,8 @@ MonoBehaviour:
   - {x: -13, y: 3}
   - {x: -13, y: 4}
   - {x: -13, y: 5}
+  - {x: -13, y: 6}
+  - {x: -12, y: -6}
   - {x: -12, y: -5}
   - {x: -12, y: -4}
   - {x: -12, y: -3}
@@ -172,6 +167,8 @@ MonoBehaviour:
   - {x: -12, y: 3}
   - {x: -12, y: 4}
   - {x: -12, y: 5}
+  - {x: -12, y: 6}
+  - {x: -11, y: -6}
   - {x: -11, y: -5}
   - {x: -11, y: -4}
   - {x: -11, y: -3}
@@ -183,6 +180,8 @@ MonoBehaviour:
   - {x: -11, y: 3}
   - {x: -11, y: 4}
   - {x: -11, y: 5}
+  - {x: -11, y: 6}
+  - {x: -10, y: -6}
   - {x: -10, y: -5}
   - {x: -10, y: -4}
   - {x: -10, y: -3}
@@ -194,6 +193,8 @@ MonoBehaviour:
   - {x: -10, y: 3}
   - {x: -10, y: 4}
   - {x: -10, y: 5}
+  - {x: -10, y: 6}
+  - {x: -9, y: -6}
   - {x: -9, y: -5}
   - {x: -9, y: -4}
   - {x: -9, y: -3}
@@ -205,6 +206,8 @@ MonoBehaviour:
   - {x: -9, y: 3}
   - {x: -9, y: 4}
   - {x: -9, y: 5}
+  - {x: -9, y: 6}
+  - {x: -8, y: -6}
   - {x: -8, y: -5}
   - {x: -8, y: -4}
   - {x: -8, y: -3}
@@ -216,6 +219,8 @@ MonoBehaviour:
   - {x: -8, y: 3}
   - {x: -8, y: 4}
   - {x: -8, y: 5}
+  - {x: -8, y: 6}
+  - {x: -7, y: -6}
   - {x: -7, y: -5}
   - {x: -7, y: -4}
   - {x: -7, y: -3}
@@ -227,6 +232,8 @@ MonoBehaviour:
   - {x: -7, y: 3}
   - {x: -7, y: 4}
   - {x: -7, y: 5}
+  - {x: -7, y: 6}
+  - {x: -6, y: -6}
   - {x: -6, y: -5}
   - {x: -6, y: -4}
   - {x: -6, y: -3}
@@ -238,6 +245,8 @@ MonoBehaviour:
   - {x: -6, y: 3}
   - {x: -6, y: 4}
   - {x: -6, y: 5}
+  - {x: -6, y: 6}
+  - {x: -5, y: -6}
   - {x: -5, y: -5}
   - {x: -5, y: -4}
   - {x: -5, y: -3}
@@ -249,6 +258,8 @@ MonoBehaviour:
   - {x: -5, y: 3}
   - {x: -5, y: 4}
   - {x: -5, y: 5}
+  - {x: -5, y: 6}
+  - {x: -4, y: -6}
   - {x: -4, y: -5}
   - {x: -4, y: -4}
   - {x: -4, y: -3}
@@ -260,72 +271,36 @@ MonoBehaviour:
   - {x: -4, y: 3}
   - {x: -4, y: 4}
   - {x: -4, y: 5}
-  - {x: -3, y: -5}
-  - {x: -3, y: -4}
-  - {x: -3, y: -3}
-  - {x: -3, y: -2}
-  - {x: -3, y: -1}
-  - {x: -3, y: 0}
-  - {x: -3, y: 1}
-  - {x: -3, y: 2}
+  - {x: -4, y: 6}
   - {x: -3, y: 3}
   - {x: -3, y: 4}
   - {x: -3, y: 5}
-  - {x: -2, y: -5}
-  - {x: -2, y: -4}
-  - {x: -2, y: -3}
-  - {x: -2, y: 0}
-  - {x: -2, y: 1}
-  - {x: -2, y: 2}
+  - {x: -3, y: 6}
   - {x: -2, y: 3}
   - {x: -2, y: 4}
   - {x: -2, y: 5}
-  - {x: -1, y: -5}
-  - {x: -1, y: -4}
-  - {x: -1, y: -3}
-  - {x: -1, y: -2}
-  - {x: -1, y: 1}
-  - {x: -1, y: 2}
+  - {x: -2, y: 6}
   - {x: -1, y: 3}
   - {x: -1, y: 4}
   - {x: -1, y: 5}
-  - {x: 0, y: -5}
-  - {x: 0, y: -4}
-  - {x: 0, y: -3}
-  - {x: 0, y: -2}
-  - {x: 0, y: -1}
-  - {x: 0, y: 2}
+  - {x: -1, y: 6}
   - {x: 0, y: 3}
   - {x: 0, y: 4}
   - {x: 0, y: 5}
-  - {x: 1, y: -5}
-  - {x: 1, y: -4}
-  - {x: 1, y: -3}
-  - {x: 1, y: -2}
-  - {x: 1, y: -1}
+  - {x: 0, y: 6}
   - {x: 1, y: 3}
   - {x: 1, y: 4}
   - {x: 1, y: 5}
-  - {x: 2, y: -5}
-  - {x: 2, y: -4}
-  - {x: 2, y: -3}
-  - {x: 2, y: -2}
-  - {x: 2, y: -1}
-  - {x: 2, y: 0}
+  - {x: 1, y: 6}
   - {x: 2, y: 3}
   - {x: 2, y: 4}
   - {x: 2, y: 5}
-  - {x: 3, y: -5}
-  - {x: 3, y: -4}
-  - {x: 3, y: -3}
-  - {x: 3, y: -2}
-  - {x: 3, y: -1}
-  - {x: 3, y: 0}
-  - {x: 3, y: 1}
-  - {x: 3, y: 2}
+  - {x: 2, y: 6}
   - {x: 3, y: 3}
   - {x: 3, y: 4}
   - {x: 3, y: 5}
+  - {x: 3, y: 6}
+  - {x: 4, y: -6}
   - {x: 4, y: -5}
   - {x: 4, y: -4}
   - {x: 4, y: -3}
@@ -337,6 +312,8 @@ MonoBehaviour:
   - {x: 4, y: 3}
   - {x: 4, y: 4}
   - {x: 4, y: 5}
+  - {x: 4, y: 6}
+  - {x: 5, y: -6}
   - {x: 5, y: -5}
   - {x: 5, y: -4}
   - {x: 5, y: -3}
@@ -348,6 +325,8 @@ MonoBehaviour:
   - {x: 5, y: 3}
   - {x: 5, y: 4}
   - {x: 5, y: 5}
+  - {x: 5, y: 6}
+  - {x: 6, y: -6}
   - {x: 6, y: -5}
   - {x: 6, y: -4}
   - {x: 6, y: -3}
@@ -359,6 +338,8 @@ MonoBehaviour:
   - {x: 6, y: 3}
   - {x: 6, y: 4}
   - {x: 6, y: 5}
+  - {x: 6, y: 6}
+  - {x: 7, y: -6}
   - {x: 7, y: -5}
   - {x: 7, y: -4}
   - {x: 7, y: -3}
@@ -370,6 +351,8 @@ MonoBehaviour:
   - {x: 7, y: 3}
   - {x: 7, y: 4}
   - {x: 7, y: 5}
+  - {x: 7, y: 6}
+  - {x: 8, y: -6}
   - {x: 8, y: -5}
   - {x: 8, y: -4}
   - {x: 8, y: -3}
@@ -381,6 +364,8 @@ MonoBehaviour:
   - {x: 8, y: 3}
   - {x: 8, y: 4}
   - {x: 8, y: 5}
+  - {x: 8, y: 6}
+  - {x: 9, y: -6}
   - {x: 9, y: -5}
   - {x: 9, y: -4}
   - {x: 9, y: -3}
@@ -392,6 +377,8 @@ MonoBehaviour:
   - {x: 9, y: 3}
   - {x: 9, y: 4}
   - {x: 9, y: 5}
+  - {x: 9, y: 6}
+  - {x: 10, y: -6}
   - {x: 10, y: -5}
   - {x: 10, y: -4}
   - {x: 10, y: -3}
@@ -403,6 +390,8 @@ MonoBehaviour:
   - {x: 10, y: 3}
   - {x: 10, y: 4}
   - {x: 10, y: 5}
+  - {x: 10, y: 6}
+  - {x: 11, y: -6}
   - {x: 11, y: -5}
   - {x: 11, y: -4}
   - {x: 11, y: -3}
@@ -414,6 +403,8 @@ MonoBehaviour:
   - {x: 11, y: 3}
   - {x: 11, y: 4}
   - {x: 11, y: 5}
+  - {x: 11, y: 6}
+  - {x: 12, y: -6}
   - {x: 12, y: -5}
   - {x: 12, y: -4}
   - {x: 12, y: -3}
@@ -425,6 +416,8 @@ MonoBehaviour:
   - {x: 12, y: 3}
   - {x: 12, y: 4}
   - {x: 12, y: 5}
+  - {x: 12, y: 6}
+  - {x: 13, y: -6}
   - {x: 13, y: -5}
   - {x: 13, y: -4}
   - {x: 13, y: -3}
@@ -435,3 +428,4 @@ MonoBehaviour:
   - {x: 13, y: 3}
   - {x: 13, y: 4}
   - {x: 13, y: 5}
+  - {x: 13, y: 6}
