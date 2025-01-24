@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Text.RegularExpressions;
 
 public class SeedSetter : MonoBehaviour
 {
@@ -11,28 +12,30 @@ public class SeedSetter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void SetSeed() //doesn't work because ObstacleManager isn't loaded
+    public void SetSeed()
     {
-        Debug.Log("Seed entered: " + _seedText.text + ". Seed Length: " + _seedText.text.Length);
-        if(_seedText.text.Length <= 1)
+        string tempSeed;
+        tempSeed = _seedText.text;
+        if (tempSeed.Length <= 1)
         {
-            _seedStorage.Seed = Random.Range(0, 999999999);
-            
+            tempSeed = Random.Range(0, 999999999).ToString();
         }
-       // else if(_seedText.text.ToIntArray())
         else
         {
-            _seedStorage.Seed = _seedText.text.GetHashCode();
+            tempSeed = tempSeed.ToString();
+            tempSeed = tempSeed.Substring(0, tempSeed.Length - 1);
         }
-        Debug.Log("New Seed: (" +  _seedStorage.Seed + ")");
+        Debug.Log("Seed: " + tempSeed);
+        _seedStorage.Seed = tempSeed.GetHashCode();
+        
     }
 }
