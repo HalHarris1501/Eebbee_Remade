@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7923ac0f1a24e3844a387a348a3052ea, type: 3}
   m_Name: ScoreStorage
   m_EditorClassIdentifier: 
-  PreviousScore: 1
-  TotalScore: 2
+  PreviousScore: 0
+  TotalScore: 0
+  HighScore: 0
