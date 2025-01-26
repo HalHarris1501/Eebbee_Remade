@@ -6,26 +6,30 @@ using TMPro;
 public class ScoreTextSetter : MonoBehaviour
 {
     [Header("Values")]
-    [SerializeField] private int _previousScore = 0;
+    [SerializeField] private int _previousWinScore = 0;
     [SerializeField] private int _totalScore = 0;
     [SerializeField] private int _highScore = 0;
+    [SerializeField] private int _previousRunScore = 0;
     [SerializeField] private ScoreStorage _scoreStorage;
 
     [Header("Text")]
     [SerializeField] private TMP_Text _previousScoreText;
     [SerializeField] private TMP_Text _totalScoreText;
     [SerializeField] private TMP_Text _highScoreText;
-
+    [SerializeField] private TMP_Text _previousRunScoreText;
     private void Awake()
     {
-        _previousScore = _scoreStorage.PreviousScore;
-        _previousScoreText.text = _previousScore.ToString();
+        _previousWinScore = _scoreStorage.PreviousWinScore;
+        _previousScoreText.text = _previousWinScore.ToString();
 
         _totalScore = _scoreStorage.TotalScore;
         _totalScoreText.text = _totalScore.ToString();
 
         _highScore = _scoreStorage.HighScore;
         _highScoreText.text = _highScore.ToString();
+
+        _previousRunScore = _scoreStorage.PreviousRunScore;
+        _previousRunScoreText.text = _previousRunScore.ToString();
     }
 
 

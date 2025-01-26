@@ -66,7 +66,8 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
     private void SetScore()
     {
         CheckHighScore();
-        _scoreStorage.PreviousScore = _currentScore.ScoreCount;
+        _scoreStorage.PreviousWinScore = _currentScore.ScoreCount;
+        _scoreStorage.PreviousRunScore = _currentScore.ScoreCount;
         _scoreStorage.TotalScore += _currentScore.ScoreCount;
     }
 
@@ -78,14 +79,21 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
         }
     }
 
+    private void SetFailScore()
+    {
+        _scoreStorage.PreviousRunScore = 0;
+    }
+
     private void OnEnable()
     {
         PlayerMovement.onPlayerWin += SetScore;
+        PlayerMovement.onPlayerDeath += SetFailScore;
     }
 
     private void OnDisable()
     {
         PlayerMovement.onPlayerWin -= SetScore;
+        PlayerMovement.onPlayerDeath -= SetFailScore;
     }
 
     // Start is called before the first frame update
