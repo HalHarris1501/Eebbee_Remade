@@ -65,8 +65,17 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
 
     private void SetScore()
     {
+        CheckHighScore();
         _scoreStorage.PreviousScore = _currentScore.ScoreCount;
         _scoreStorage.TotalScore += _currentScore.ScoreCount;
+    }
+
+    private void CheckHighScore()
+    {
+        if(_scoreStorage.HighScore < _currentScore.ScoreCount)
+        {
+            _scoreStorage.HighScore = _currentScore.ScoreCount;
+        }
     }
 
     private void OnEnable()
