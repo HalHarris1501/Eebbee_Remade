@@ -17,4 +17,10 @@ public class SaveData
             return _current;
         }
     }
+
+    public PlayerProfile Profile;
+
+    public List<PowerupData> Powerups;
+
+    public List<PlayerSkinData> Skins;
 }
