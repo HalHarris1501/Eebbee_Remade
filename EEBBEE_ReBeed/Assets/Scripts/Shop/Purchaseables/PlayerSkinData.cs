@@ -16,5 +16,4 @@ public class PlayerSkinData
 {
     public SkinName SkinName;
     public bool Owned;
-    public int Price;
 }
