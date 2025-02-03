@@ -63,11 +63,6 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
         _scoreMultiplier = multiplier;
     }
 
-    public int GetTotalScore()
-    {
-        return _scoreStorage.TotalScore;
-    }
-
     private void SetScore()
     {
         CheckHighScore();
