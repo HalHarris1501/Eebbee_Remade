@@ -15,5 +15,4 @@ public class PowerupData
 {
     public PowerupType PowerupType;
     public bool Purchased;
-    public int Price;
 }
