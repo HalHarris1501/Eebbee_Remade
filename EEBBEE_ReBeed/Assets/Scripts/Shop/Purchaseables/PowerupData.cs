@@ -14,5 +14,6 @@ public enum PowerupType
 public class PowerupData
 {
     public PowerupType PowerupType;
-    public bool Purchased;
+    public bool Owned;
+    public int Price;
 }
