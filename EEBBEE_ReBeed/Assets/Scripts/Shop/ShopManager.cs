@@ -26,7 +26,7 @@ public class ShopManager : MonoBehaviour
     #endregion
 
     [SerializeField] private List<SkinObject> _skinsData;
-    [SerializeField] private List<PowerupData> _powerupsData;
+    [SerializeField] private List<PowerupObject> _powerupsData;
     [SerializeField] private ScoreStorage _scoreStorage;
 
 
@@ -59,20 +59,20 @@ public class ShopManager : MonoBehaviour
         skinToBuy.SkinData.Owned = true;
     }
 
-    public void PurchaseItem(PowerupData powerupToBuy)
+    public void PurchaseItem(PowerupObject powerupToBuy)
     {
         if (!_powerupsData.Contains(powerupToBuy))
         {
-            Debug.LogError(powerupToBuy.PowerupType + " skin not in list");
+            Debug.LogError(powerupToBuy.PowerupData.PowerupType + " skin not in list");
             return;
         }
         if (powerupToBuy.Price > _scoreStorage.TotalScore)
         {
-            Debug.LogError(powerupToBuy.PowerupType + " is too expensive. Current Points: " + _scoreStorage.TotalScore);
+            Debug.LogError(powerupToBuy.PowerupData.PowerupType + " is too expensive. Current Points: " + _scoreStorage.TotalScore);
             return;
         }
 
         _scoreStorage.TotalScore -= powerupToBuy.Price;
-        powerupToBuy.Purchased = true;
+        powerupToBuy.PowerupData.Purchased = true;
     }
 }
