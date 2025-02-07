@@ -6,11 +6,20 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 {
     private List<IObserver<Direction>> _observers = new List<IObserver<Direction>>();
     private Direction _direction = Direction.Forward;
+
+    [Header("Object Referencese")]
     [SerializeField] private List<PowerupObject> _powerups;
     [SerializeField] private PlayerMovement _player;
+    
+    [Header("Invincibilty variables")]
+    [SerializeField] private bool _invincible;
+    [SerializeField] private float _invincibleTime = 1f;
+
+    [Header("Bee Visuals References")]
     [SerializeField] private GameObject _helperBee;
     [SerializeField] private GameObject _nectarDoubler;
     [SerializeField] private GameObject _helmet;
+    [SerializeField] private GameObject _beeSprite;
 
     //Singleton pattern
     #region Singleton
@@ -123,9 +132,15 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 
     public void ManageLose() // function called when the game is lost
     {
+        if(_invincible)
+        {
+            return;
+        }
         if(GetPowerup(PowerupType.Helmet).PowerupData.Active)
         {
             GetPowerup(PowerupType.Helmet).PowerupData.Active = false;
+            _helmet.SetActive(false);
+            StartCoroutine(InvincibleTimerCoroutine());
             return;
         }
 
@@ -161,6 +176,17 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 
         Debug.LogError("Powerup of type: " + powerupType + " not in list.");
         return null;
+    }
+
+    private IEnumerator InvincibleTimerCoroutine()
+    {
+        _invincible = true;
+        _beeSprite.GetComponent<SpriteRenderer>().color = Color.black;
+
+        yield return new WaitForSeconds(_invincibleTime);
+
+        _beeSprite.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+        _invincible = false;
     }
 }
 

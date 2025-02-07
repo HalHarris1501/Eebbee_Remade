@@ -4003,9 +4003,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fbb49cc8fe635ac4282383c29ffd48f2, type: 2}
   - {fileID: 11400000, guid: e5cb6893d580f65429a2f2c1e69e5435, type: 2}
   _player: {fileID: 2021216504}
+  _invincible: 0
+  _invincibleTime: 5
   _helperBee: {fileID: 353115585}
   _nectarDoubler: {fileID: 66690999}
   _helmet: {fileID: 1086189767}
+  _beeSprite: {fileID: 661677757}
 --- !u!4 &1200651751
 Transform:
   m_ObjectHideFlags: 0
