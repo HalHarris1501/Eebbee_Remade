@@ -63,7 +63,7 @@ public class ShopManager : MonoBehaviour
     {
         if (!_powerupsData.Contains(powerupToBuy))
         {
-            Debug.LogError(powerupToBuy.PowerupData.PowerupType + " skin not in list");
+            Debug.LogError(powerupToBuy.PowerupData.PowerupType + " powerup not in list");
             return;
         }
         if (powerupToBuy.Price > _scoreStorage.TotalScore)
@@ -73,6 +73,6 @@ public class ShopManager : MonoBehaviour
         }
 
         _scoreStorage.TotalScore -= powerupToBuy.Price;
-        powerupToBuy.PowerupData.Purchased = true;
+        powerupToBuy.PowerupData.Active = true;
     }
 }

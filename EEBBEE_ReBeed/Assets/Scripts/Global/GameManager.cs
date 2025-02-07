@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 {
     private List<IObserver<Direction>> _observers = new List<IObserver<Direction>>();
     private Direction _direction = Direction.Forward;
+    [SerializeField] private List<PowerupObject> _powerups;
 
     //Singleton pattern
     #region Singleton
@@ -83,13 +84,49 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     public void ManageWin() // function called when the game is won
     {
         Debug.Log("Bee Win");
+        DeactivateDoubler();
         SceneSwapper.Instance.LoadSceneByName("Menu Scene");
     }
 
     public void ManageLose() // function called when the game is lost
     {
+        if(GetPowerup(PowerupType.Helmet).PowerupData.Active)
+        {
+            GetPowerup(PowerupType.Helmet).PowerupData.Active = false;
+            return;
+        }
+
         Debug.Log("Bee ded");
+        foreach(PowerupObject powerup in _powerups)
+        {
+            powerup.PowerupData.Active = false;
+        }
         SceneSwapper.Instance.LoadSceneByName("Menu Scene");
+    }
+
+    private void DeactivateDoubler() //function to deactivate the points double on a win
+    {
+        foreach(PowerupObject powerup in _powerups)
+        {
+            if(powerup.PowerupData.PowerupType != PowerupType.NectarDoubler)
+            {
+                return;
+            }
+            powerup.PowerupData.Active = false;
+        }
+    }
+    private PowerupObject GetPowerup(PowerupType powerupType)
+    {
+        foreach(PowerupObject powerup in _powerups)
+        {
+            if(powerup.PowerupData.PowerupType == powerupType)
+            {
+                return powerup;
+            }
+        }
+
+        Debug.LogError("Powerup of type: " + powerupType + " not in list.");
+        return null;
     }
 }
 

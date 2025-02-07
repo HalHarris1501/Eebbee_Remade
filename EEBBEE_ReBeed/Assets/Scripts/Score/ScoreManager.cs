@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
     [SerializeField] private Score _currentScore;
     [SerializeField] private int _scoreMultiplier = 1;
     [SerializeField] private ScoreStorage _scoreStorage;
+    [SerializeField] private PowerupObject _helperPowerup;
 
     //Singleton pattern
     #region Singleton
@@ -81,6 +82,10 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
 
     private void SetFailScore()
     {
+        if(_helperPowerup.PowerupData.Active)
+        {
+            _scoreStorage.TotalScore +=  Mathf.FloorToInt(_currentScore.ScoreCount / 4);
+        }
         _scoreStorage.PreviousRunScore = 0;
     }
 
