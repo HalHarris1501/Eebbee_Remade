@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ScoreStorage
   m_EditorClassIdentifier: 
   PreviousWinScore: 0
-  TotalScore: 0
+  TotalScore: 9795
   HighScore: 0
   PreviousRunScore: 0

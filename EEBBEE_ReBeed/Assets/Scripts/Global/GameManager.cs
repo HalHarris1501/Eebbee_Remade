@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     {
         Debug.Log("Bee Win");
         ScoreManager.Instance.SetScore();
-        DeactivateDoubler();
+        GetPowerup(PowerupType.NectarDoubler).PowerupData.Active = false; //deactivate point doubler on win
         SceneSwapper.Instance.LoadSceneByName("Menu Scene");
     }
 
@@ -153,17 +153,6 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         SceneSwapper.Instance.LoadSceneByName("Menu Scene");
     }
 
-    private void DeactivateDoubler() //function to deactivate the points double on a win
-    {
-        foreach(PowerupObject powerup in _powerups)
-        {
-            if(powerup.PowerupData.PowerupType != PowerupType.NectarDoubler)
-            {
-                return;
-            }
-            powerup.PowerupData.Active = false;
-        }
-    }
     private PowerupObject GetPowerup(PowerupType powerupType)
     {
         foreach(PowerupObject powerup in _powerups)

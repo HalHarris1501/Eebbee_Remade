@@ -49,6 +49,7 @@ public class ShopItemPrefab : MonoBehaviour
         _purchaseButton.GetComponentInChildren<TMP_Text>().text = _powerup.Price + " Nectar";
         _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_powerup, this);  });
         _itemSprite.sprite = _powerup.sprite;
+        UpdateUI(_powerup);
     }
 
     private void SkinSetUP()
@@ -56,5 +57,6 @@ public class ShopItemPrefab : MonoBehaviour
         _purchaseButton.GetComponentInChildren<TMP_Text>().text = _skin.Price + " Nectar";
         _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_skin, this); });
         _itemSprite.sprite = _skin.Skin;
+        UpdateUI(_skin);
     }
 }
