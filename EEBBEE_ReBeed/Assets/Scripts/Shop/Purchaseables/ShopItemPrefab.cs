@@ -11,6 +11,7 @@ public class ShopItemPrefab : MonoBehaviour
     [SerializeField] private PowerupObject _powerup;
 
     [Header("Child References")]
+    [SerializeField] private TMP_Text _nameText;
     [SerializeField] private Button _purchaseButton;
     [SerializeField] private Image _itemSprite;
 
@@ -46,6 +47,7 @@ public class ShopItemPrefab : MonoBehaviour
 
     private void PowerUpSetUp()
     {
+        _nameText.text = _powerup.PowerupData.PowerupType.ToString();
         _purchaseButton.GetComponentInChildren<TMP_Text>().text = _powerup.Price + " Nectar";
         _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_powerup, this);  });
         _itemSprite.sprite = _powerup.sprite;
@@ -54,6 +56,7 @@ public class ShopItemPrefab : MonoBehaviour
 
     private void SkinSetUP()
     {
+        _nameText.text = _skin.SkinData.SkinName.ToString();
         _purchaseButton.GetComponentInChildren<TMP_Text>().text = _skin.Price + " Nectar";
         _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_skin, this); });
         _itemSprite.sprite = _skin.Skin;
