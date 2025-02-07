@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     [SerializeField] private PlayerMovement _player;
     [SerializeField] private GameObject _helperBee;
     [SerializeField] private GameObject _nectarDoubler;
+    [SerializeField] private GameObject _helmet;
 
     //Singleton pattern
     #region Singleton
@@ -63,6 +64,15 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         else
         {
             _nectarDoubler.SetActive(false);
+        }
+
+        if (GetPowerup(PowerupType.Helmet).PowerupData.Active)
+        {
+            _helmet.SetActive(true);
+        }
+        else
+        {
+            _helmet.SetActive(false);
         }
 
         PlayerMovement.onPlayerDeath += ManageLose;
