@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
     private List<IObserver<Score>> _observers = new List<IObserver<Score>>();
     [SerializeField] private Score _currentScore;
     [SerializeField] private int _scoreMultiplier = 1;
-    public int ScoreMultiplier => _scoreMultiplier;
+    private Dictionary<string, int> _multipliersDictionary = new Dictionary<string, int>();
     [SerializeField] private ScoreStorage _scoreStorage;
     [SerializeField] private PowerupObject _helperPowerup;
 
@@ -55,14 +55,29 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
     }
 
     public void AlterScore(int change)
-    {
-        _currentScore.ScoreCount += change * ScoreMultiplier;
+    { 
+        _currentScore.ScoreCount += change * TotalMultiplier();
         NotifyObservers(_currentScore, ISubject<Score>.NotificationType.Changed);
     }
 
-    public void SetMultiplier(int multiplier)
+    private int TotalMultiplier()
     {
-        _scoreMultiplier = multiplier;
+        int totalMultiplier = 1;
+        foreach(KeyValuePair<string, int> multiplier in _multipliersDictionary)
+        {
+            totalMultiplier = totalMultiplier * multiplier.Value;
+        }
+        return totalMultiplier;
+    }
+
+    public void AddMultiplier(string key, int multiplier)
+    {
+        _multipliersDictionary.Add(key, multiplier);
+    }
+
+    public void RemoveMultiplier(string key)
+    {
+        _multipliersDictionary.Remove(key);
     }
 
     public void SetScore()
@@ -92,12 +107,14 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
 
     private void OnEnable()
     {
+        _multipliersDictionary.Add("Base", _scoreMultiplier);
         //PlayerMovement.onPlayerWin += SetScore;
         //PlayerMovement.onPlayerDeath += SetFailScore;
     }
 
     private void OnDisable()
     {
+        _multipliersDictionary.Clear();
         //PlayerMovement.onPlayerWin -= SetScore;
         //PlayerMovement.onPlayerDeath -= SetFailScore;
     }

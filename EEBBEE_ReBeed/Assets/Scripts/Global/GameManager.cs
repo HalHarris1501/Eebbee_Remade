@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     [SerializeField] private List<PowerupObject> _powerups;
     [SerializeField] private PlayerMovement _player;
     [SerializeField] private GameObject _helperBee;
+    [SerializeField] private GameObject _nectarDoubler;
 
     //Singleton pattern
     #region Singleton
@@ -52,6 +53,16 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         else
         {
             _helperBee.SetActive(false);
+        }
+
+        if(GetPowerup(PowerupType.NectarDoubler).PowerupData.Active)
+        {
+            ScoreManager.Instance.AddMultiplier("NectarDoubler", 2);
+            _nectarDoubler.SetActive(true);
+        }
+        else
+        {
+            _nectarDoubler.SetActive(false);
         }
 
         PlayerMovement.onPlayerDeath += ManageLose;

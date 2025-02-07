@@ -7,6 +7,7 @@ public class HoneyCollectable : CollectableData
 {
     [SerializeField] private int _affectTime;
     [SerializeField] private int _scoreMultiplier = 2;
+    [SerializeField] private string _honeyMultiplierKey = "HoneyMultiplier";
     // Start is called before the first frame update
     public override void OnCollect(GameObject objectToAffect)
     {
@@ -25,7 +26,7 @@ public class HoneyCollectable : CollectableData
     private IEnumerator HoneyCoroutine()
     {
         Time.timeScale = 0.5f;
-        ScoreManager.Instance.SetMultiplier(_scoreMultiplier);
+        ScoreManager.Instance.AddMultiplier(_honeyMultiplierKey, _scoreMultiplier);
         int timeSpent = 0;
 
         while(timeSpent < _affectTime)
@@ -42,6 +43,6 @@ public class HoneyCollectable : CollectableData
     private void EndEffect()
     {
         Time.timeScale = 1f;
-        ScoreManager.Instance.SetMultiplier(1);
+        ScoreManager.Instance.RemoveMultiplier(_honeyMultiplierKey);
     }
 }
