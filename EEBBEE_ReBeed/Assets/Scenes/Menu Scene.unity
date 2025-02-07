@@ -2693,8 +2693,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5cb6893d580f65429a2f2c1e69e5435, type: 2}
   _scoreStorage: {fileID: 11400000, guid: bd7c93eb1b0c48540b4d9af97140eed9, type: 2}
   _purchableItemPrefab: {fileID: 6851289159978075496, guid: 333db267e1585694fb400b478f9c012d, type: 3}
-  _powerupsGridLayout: {fileID: 316459539}
-  _skinsGridLayout: {fileID: 958419923}
+  _powerupsGridLayout: {fileID: 997460212}
+  _skinsGridLayout: {fileID: 1050388035}
 --- !u!4 &788522537
 Transform:
   m_ObjectHideFlags: 0
@@ -3220,10 +3220,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
-    m_Top: 20
-    m_Bottom: 20
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
@@ -3449,10 +3449,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
-    m_Top: 20
-    m_Bottom: 20
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0

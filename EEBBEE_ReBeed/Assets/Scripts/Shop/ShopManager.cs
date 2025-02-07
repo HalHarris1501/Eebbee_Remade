@@ -37,7 +37,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject _powerupsGridLayout;
     [SerializeField] private GameObject _skinsGridLayout;
 
-    public void PurchaseItem(SkinObject skinToBuy)
+    public void PurchaseItem(SkinObject skinToBuy, ShopItemPrefab buttonPressed)
     {
         if (!_skinsData.Contains(skinToBuy))
         {
@@ -52,9 +52,10 @@ public class ShopManager : MonoBehaviour
 
         _scoreStorage.TotalScore -= skinToBuy.Price;
         skinToBuy.SkinData.Owned = true;
+        buttonPressed.UpdateUI(skinToBuy);
     }
 
-    public void PurchaseItem(PowerupObject powerupToBuy)
+    public void PurchaseItem(PowerupObject powerupToBuy, ShopItemPrefab buttonPressed)
     {
         if (!_powerupsData.Contains(powerupToBuy))
         {
@@ -69,6 +70,7 @@ public class ShopManager : MonoBehaviour
 
         _scoreStorage.TotalScore -= powerupToBuy.Price;
         powerupToBuy.PowerupData.Active = true;
+        buttonPressed.UpdateUI(powerupToBuy);
     }
 
     private void Awake()
