@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     private List<IObserver<Direction>> _observers = new List<IObserver<Direction>>();
     private Direction _direction = Direction.Forward;
     [SerializeField] private List<PowerupObject> _powerups;
+    [SerializeField] private PlayerMovement _player;
+    [SerializeField] private GameObject _helperBee;
 
     //Singleton pattern
     #region Singleton
@@ -43,6 +45,15 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 
     private void OnEnable()
     {
+        if(GetPowerup(PowerupType.BeeHelper).PowerupData.Active)
+        {
+            _helperBee.SetActive(true);
+        }
+        else
+        {
+            _helperBee.SetActive(false);
+        }
+
         PlayerMovement.onPlayerDeath += ManageLose;
         PlayerMovement.onPlayerWin += ManageWin;
     }
@@ -84,6 +95,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     public void ManageWin() // function called when the game is won
     {
         Debug.Log("Bee Win");
+        ScoreManager.Instance.SetScore();
         DeactivateDoubler();
         SceneSwapper.Instance.LoadSceneByName("Menu Scene");
     }
@@ -97,6 +109,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         }
 
         Debug.Log("Bee ded");
+        ScoreManager.Instance.SetFailScore();
         foreach(PowerupObject powerup in _powerups)
         {
             powerup.PowerupData.Active = false;

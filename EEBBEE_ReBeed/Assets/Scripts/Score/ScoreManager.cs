@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
     private List<IObserver<Score>> _observers = new List<IObserver<Score>>();
     [SerializeField] private Score _currentScore;
     [SerializeField] private int _scoreMultiplier = 1;
+    public int ScoreMultiplier => _scoreMultiplier;
     [SerializeField] private ScoreStorage _scoreStorage;
     [SerializeField] private PowerupObject _helperPowerup;
 
@@ -55,7 +56,7 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
 
     public void AlterScore(int change)
     {
-        _currentScore.ScoreCount += change * _scoreMultiplier;
+        _currentScore.ScoreCount += change * ScoreMultiplier;
         NotifyObservers(_currentScore, ISubject<Score>.NotificationType.Changed);
     }
 
@@ -64,7 +65,7 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
         _scoreMultiplier = multiplier;
     }
 
-    private void SetScore()
+    public void SetScore()
     {
         CheckHighScore();
         _scoreStorage.PreviousWinScore = _currentScore.ScoreCount;
@@ -80,7 +81,7 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
         }
     }
 
-    private void SetFailScore()
+    public void SetFailScore()
     {
         if(_helperPowerup.PowerupData.Active)
         {
@@ -91,14 +92,14 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
 
     private void OnEnable()
     {
-        PlayerMovement.onPlayerWin += SetScore;
-        PlayerMovement.onPlayerDeath += SetFailScore;
+        //PlayerMovement.onPlayerWin += SetScore;
+        //PlayerMovement.onPlayerDeath += SetFailScore;
     }
 
     private void OnDisable()
     {
-        PlayerMovement.onPlayerWin -= SetScore;
-        PlayerMovement.onPlayerDeath -= SetFailScore;
+        //PlayerMovement.onPlayerWin -= SetScore;
+        //PlayerMovement.onPlayerDeath -= SetFailScore;
     }
 
     // Start is called before the first frame update
