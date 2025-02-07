@@ -2692,6 +2692,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fbb49cc8fe635ac4282383c29ffd48f2, type: 2}
   - {fileID: 11400000, guid: e5cb6893d580f65429a2f2c1e69e5435, type: 2}
   _scoreStorage: {fileID: 11400000, guid: bd7c93eb1b0c48540b4d9af97140eed9, type: 2}
+  _purchableItemPrefab: {fileID: 6851289159978075496, guid: 333db267e1585694fb400b478f9c012d, type: 3}
+  _powerupsGridLayout: {fileID: 316459539}
+  _skinsGridLayout: {fileID: 958419923}
 --- !u!4 &788522537
 Transform:
   m_ObjectHideFlags: 0
@@ -3202,7 +3205,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -0}
-  m_SizeDelta: {x: 750.99994, y: 89.01019}
+  m_SizeDelta: {x: 750.99994, y: 90.342285}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &997460214
 MonoBehaviour:
@@ -3431,7 +3434,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -0}
-  m_SizeDelta: {x: 750.99994, y: 89.01017}
+  m_SizeDelta: {x: 750.99994, y: 90.342255}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1050388037
 MonoBehaviour:
@@ -3882,7 +3885,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 103965443}
   m_HandleRect: {fileID: 103965442}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4738,7 +4741,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1236504723}
   m_HandleRect: {fileID: 1236504722}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

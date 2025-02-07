@@ -25,22 +25,17 @@ public class ShopManager : MonoBehaviour
     }
     #endregion
 
+    [Header("Purchaseable Items References")]
     [SerializeField] private List<SkinObject> _skinsData;
     [SerializeField] private List<PowerupObject> _powerupsData;
+
+    [Header("Score Reference")]
     [SerializeField] private ScoreStorage _scoreStorage;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [Header("UI Objects References")]
+    [SerializeField] private ShopItemPrefab _purchableItemPrefab;
+    [SerializeField] private GameObject _powerupsGridLayout;
+    [SerializeField] private GameObject _skinsGridLayout;
 
     public void PurchaseItem(SkinObject skinToBuy)
     {
@@ -74,5 +69,22 @@ public class ShopManager : MonoBehaviour
 
         _scoreStorage.TotalScore -= powerupToBuy.Price;
         powerupToBuy.PowerupData.Active = true;
+    }
+
+    private void Awake()
+    {
+        foreach(SkinObject skin in _skinsData)
+        {
+            ShopItemPrefab newItem = Instantiate(_purchableItemPrefab);
+            newItem.gameObject.transform.SetParent(_skinsGridLayout.transform);
+            newItem.SetSkin(skin);
+        }
+
+        foreach(PowerupObject powerup in _powerupsData)
+        {
+            ShopItemPrefab newItem = Instantiate(_purchableItemPrefab);
+            newItem.gameObject.transform.SetParent(_powerupsGridLayout.transform);
+            newItem.SetPowerup(powerup);
+        }
     }
 }

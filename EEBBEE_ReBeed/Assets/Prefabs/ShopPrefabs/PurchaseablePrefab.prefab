@@ -339,6 +339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8302587618691575602}
+  - component: {fileID: 6851289159978075496}
   m_Layer: 5
   m_Name: PurchaseablePrefab
   m_TagString: Untagged
@@ -368,6 +369,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 70, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6851289159978075496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8044617376013567840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc298352498c91142966393d4d59617d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Skin: {fileID: 0}
+  Powerup: {fileID: 0}
+  _purchaseButton: {fileID: 8748348528005033464}
+  _itemSprite: {fileID: 7853515589018050643}
 --- !u!1 &8665214586694943462
 GameObject:
   m_ObjectHideFlags: 0
