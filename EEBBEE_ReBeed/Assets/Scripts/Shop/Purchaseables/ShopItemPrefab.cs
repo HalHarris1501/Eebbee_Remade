@@ -41,7 +41,7 @@ public class ShopItemPrefab : MonoBehaviour
 
     public void UpdateUI(SkinObject skin)
     {
-        if(GameManager.Instance.CurrentSkin ==  _skin)
+        if(ShopManager.Instance.GetPlayerSkin() == _skin)
         {
             _purchaseButton.interactable = false;
             _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Selected!";
@@ -49,7 +49,7 @@ public class ShopItemPrefab : MonoBehaviour
         else if(_skin.SkinData.Owned)
         {
             _purchaseButton.onClick.RemoveAllListeners();
-            _purchaseButton.onClick.AddListener(delegate { GameManager.Instance.SetPlayerSkin(_skin); });
+            _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.SetPlayerSkin(_skin); });
             _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Select";
         }
     }

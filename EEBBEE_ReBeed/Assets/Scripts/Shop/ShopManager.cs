@@ -30,8 +30,9 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private List<PowerupObject> _powerupsData;
     [SerializeField] private List<ShopItemPrefab> _shopItems;
 
-    [Header("Score Reference")]
+    [Header("Data References")]
     [SerializeField] private ScoreStorage _scoreStorage;
+    [SerializeField] private PlayerData _playerData;
 
     [Header("UI Objects References")]
     [SerializeField] private ShopItemPrefab _purchableItemPrefab;
@@ -99,5 +100,16 @@ public class ShopManager : MonoBehaviour
             newItem.SetPowerup(powerup);
             _shopItems.Add(newItem);
         }
+    }
+
+    public void SetPlayerSkin(SkinObject skinToSet)
+    {
+        _playerData.CurrentSkin = skinToSet;
+        UpdateAllShopItems();
+    }
+
+    public SkinObject GetPlayerSkin()
+    {
+        return _playerData.CurrentSkin;
     }
 }

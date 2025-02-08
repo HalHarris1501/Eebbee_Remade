@@ -20,8 +20,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     [SerializeField] private GameObject _nectarDoubler;
     [SerializeField] private GameObject _helmet;
     [SerializeField] private GameObject _beeSprite;
-    [SerializeField] private SkinObject _currentSkin;
-    public SkinObject CurrentSkin => _currentSkin;
+    [SerializeField] private PlayerData _playerData;
 
     //Singleton pattern
     #region Singleton
@@ -85,6 +84,8 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         {
             _helmet.SetActive(false);
         }
+
+        _beeSprite.GetComponent<SpriteRenderer>().sprite = _playerData.CurrentSkin.Skin;
 
         PlayerMovement.onPlayerDeath += ManageLose;
         PlayerMovement.onPlayerWin += ManageWin;
@@ -178,13 +179,6 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 
         _beeSprite.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
         _invincible = false;
-    }
-
-    public void SetPlayerSkin(SkinObject skinToSet)
-    {
-        _currentSkin = skinToSet;
-        _beeSprite.GetComponent<SpriteRenderer>().sprite = _currentSkin.Skin;
-        ShopManager.Instance.UpdateAllShopItems();
     }
 }
 
