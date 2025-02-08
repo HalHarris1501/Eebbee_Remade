@@ -48,6 +48,7 @@ public class ShopItemPrefab : MonoBehaviour
         }
         else if(_skin.SkinData.Owned)
         {
+            _purchaseButton.interactable = true;
             _purchaseButton.onClick.RemoveAllListeners();
             _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.SetPlayerSkin(_skin); });
             _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Select";

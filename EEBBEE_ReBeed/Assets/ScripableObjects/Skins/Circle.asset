@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a20fa384e5795574ca4b634a942b5a8e, type: 3}
-  m_Name: PlayerData
+  m_Script: {fileID: 11500000, guid: e031e4e5072973947ba35cfef7d1dc68, type: 3}
+  m_Name: Circle
   m_EditorClassIdentifier: 
-  CurrentSkin: {fileID: 11400000, guid: dca9d196b5af7a34c86d64c6a7a701db, type: 2}
+  SkinData:
+    SkinName: 0
+    Owned: 0
+  Skin: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  Price: 0
