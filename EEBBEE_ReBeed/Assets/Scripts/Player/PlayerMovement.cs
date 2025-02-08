@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _playerInputActions.FindAction("Go Back").Disable();
             GameManager.Instance.GoBack();
-            this.GetComponentInChildren<SpriteRenderer>().flipX = true;
+            this.gameObject.transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
         }
     }
 
