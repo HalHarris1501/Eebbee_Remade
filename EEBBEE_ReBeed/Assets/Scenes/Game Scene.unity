@@ -4009,6 +4009,7 @@ MonoBehaviour:
   _nectarDoubler: {fileID: 66690999}
   _helmet: {fileID: 1086189767}
   _beeSprite: {fileID: 661677757}
+  _currentSkin: {fileID: 11400000, guid: dca9d196b5af7a34c86d64c6a7a701db, type: 2}
 --- !u!4 &1200651751
 Transform:
   m_ObjectHideFlags: 0

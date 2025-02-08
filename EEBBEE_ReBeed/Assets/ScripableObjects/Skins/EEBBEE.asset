@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7923ac0f1a24e3844a387a348a3052ea, type: 3}
-  m_Name: ScoreStorage
+  m_Script: {fileID: 11500000, guid: e031e4e5072973947ba35cfef7d1dc68, type: 3}
+  m_Name: EEBBEE
   m_EditorClassIdentifier: 
-  PreviousWinScore: 0
-  TotalScore: 10000
-  HighScore: 0
-  PreviousRunScore: 0
+  SkinData:
+    SkinName: 0
+    Owned: 0
+  Skin: {fileID: 21300000, guid: 7c4b69e2d4098564496fce87f853b003, type: 3}
+  Price: 0

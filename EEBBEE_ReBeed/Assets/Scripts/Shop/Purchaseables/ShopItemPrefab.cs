@@ -27,12 +27,30 @@ public class ShopItemPrefab : MonoBehaviour
         PowerUpSetUp();
     }
 
+    public void UpdateUI()
+    {
+        if(_skin != null)
+        {
+            UpdateUI(_skin);
+        }
+        if(_powerup != null)
+        {
+            UpdateUI(_powerup);
+        }
+    }
+
     public void UpdateUI(SkinObject skin)
     {
-        if(_skin.SkinData.Owned)
+        if(GameManager.Instance.CurrentSkin ==  _skin)
         {
             _purchaseButton.interactable = false;
-            _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Owned!";
+            _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Selected!";
+        }
+        else if(_skin.SkinData.Owned)
+        {
+            _purchaseButton.onClick.RemoveAllListeners();
+            _purchaseButton.onClick.AddListener(delegate { GameManager.Instance.SetPlayerSkin(_skin); });
+            _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Select";
         }
     }
 
