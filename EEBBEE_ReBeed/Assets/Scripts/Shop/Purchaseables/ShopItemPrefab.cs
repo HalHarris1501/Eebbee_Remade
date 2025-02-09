@@ -66,7 +66,7 @@ public class ShopItemPrefab : MonoBehaviour
 
     private void PowerUpSetUp()
     {
-        _nameText.text = _powerup.PowerupData.PowerupType.ToString();
+        _nameText.text = UnderscoreRemover(_powerup.PowerupData.PowerupType.ToString());
         _purchaseButton.GetComponentInChildren<TMP_Text>().text = _powerup.Price + " Nectar";
         _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_powerup, this);  });
         _itemSprite.sprite = _powerup.sprite;
@@ -75,10 +75,27 @@ public class ShopItemPrefab : MonoBehaviour
 
     private void SkinSetUP()
     {
-        _nameText.text = _skin.SkinData.SkinName.ToString();
+        _nameText.text =  UnderscoreRemover(_skin.SkinData.SkinName.ToString());
         _purchaseButton.GetComponentInChildren<TMP_Text>().text = _skin.Price + " Nectar";
         _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_skin, this); });
         _itemSprite.sprite = _skin.Skin;
         UpdateUI(_skin);
+    }
+
+    private string UnderscoreRemover(string stringToCheck)
+    {
+        string newString = "";
+        for (int i = 0; i < stringToCheck.Length; i++)
+        {
+            if(stringToCheck[i] == '_')
+            {
+                newString += ' ';
+            }
+            else
+            {
+                newString += stringToCheck[i];
+            }            
+        }
+        return newString;
     }
 }

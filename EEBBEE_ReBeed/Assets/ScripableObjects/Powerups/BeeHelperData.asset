@@ -15,5 +15,5 @@ MonoBehaviour:
   PowerupData:
     PowerupType: 0
     Active: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 7c4b69e2d4098564496fce87f853b003, type: 3}
   Price: 10

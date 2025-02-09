@@ -9,6 +9,7 @@ public enum SkinName
     Inverted,
     Bee,
     RGBee,
+    Circle,
 }
 
 [System.Serializable]

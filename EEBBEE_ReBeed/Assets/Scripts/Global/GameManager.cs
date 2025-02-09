@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 
     private void OnEnable()
     {
-        if(GetPowerup(PowerupType.BeeHelper).PowerupData.Active)
+        if(GetPowerup(PowerupType.Bee_Helper).PowerupData.Active)
         {
             _helperBee.SetActive(true);
         }
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
             _helperBee.SetActive(false);
         }
 
-        if(GetPowerup(PowerupType.NectarDoubler).PowerupData.Active)
+        if(GetPowerup(PowerupType.Nectar_Doubler).PowerupData.Active)
         {
             ScoreManager.Instance.AddMultiplier("NectarDoubler", 2);
             _nectarDoubler.SetActive(true);
@@ -129,7 +129,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     {
         Debug.Log("Bee Win");
         ScoreManager.Instance.SetScore();
-        GetPowerup(PowerupType.NectarDoubler).PowerupData.Active = false; //deactivate point doubler on win
+        GetPowerup(PowerupType.Nectar_Doubler).PowerupData.Active = false; //deactivate point doubler on win
         SceneSwapper.Instance.LoadSceneByName("Menu Scene");
     }
 

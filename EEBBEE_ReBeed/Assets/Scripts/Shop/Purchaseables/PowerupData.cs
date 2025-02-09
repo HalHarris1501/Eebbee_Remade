@@ -5,8 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public enum PowerupType
 {
-    BeeHelper,
-    NectarDoubler,
+    Bee_Helper,
+    Nectar_Doubler,
     Helmet,
 }
 
