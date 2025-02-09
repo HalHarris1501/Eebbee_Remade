@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Circle
   m_EditorClassIdentifier: 
   SkinData:
-    SkinName: 0
+    SkinName: 4
     Owned: 0
   Skin: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
   Price: 0
