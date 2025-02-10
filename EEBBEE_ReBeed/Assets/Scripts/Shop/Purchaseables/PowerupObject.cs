@@ -6,6 +6,7 @@ using UnityEngine;
 public class PowerupObject : ScriptableObject
 {
     public PowerupData PowerupData;
-    public Sprite sprite;
+    public Sprite Sprite;
+    public string Info;
     public int Price;
 }

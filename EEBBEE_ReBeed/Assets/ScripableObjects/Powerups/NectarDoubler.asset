@@ -15,5 +15,7 @@ MonoBehaviour:
   PowerupData:
     PowerupType: 1
     Active: 0
-  sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  Sprite: {fileID: 0}
+  Info: A starnge aura that seems to double the amount of nectar you recieve from
+    flowers
   Price: 25

@@ -69,7 +69,7 @@ public class ShopItemPrefab : MonoBehaviour
         _nameText.text = UnderscoreRemover(_powerup.PowerupData.PowerupType.ToString());
         _purchaseButton.GetComponentInChildren<TMP_Text>().text = _powerup.Price + " Nectar";
         _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_powerup, this);  });
-        _itemSprite.sprite = _powerup.sprite;
+        _itemSprite.sprite = _powerup.Sprite;
         UpdateUI(_powerup);
     }
 
@@ -80,6 +80,28 @@ public class ShopItemPrefab : MonoBehaviour
         _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_skin, this); });
         _itemSprite.sprite = _skin.Skin;
         UpdateUI(_skin);
+    }
+
+    private void OnMouseOver()
+    {
+        Debug.Log("Mouse Over");
+        if(_powerup != null)
+        {
+            InfoBubbleController.Instance.PlaceInfoBubble(this.transform.position, _powerup.Info);
+        }
+    }
+    private void OnMouseExit()
+    {
+        Debug.Log("Mouse left");
+        if (_powerup != null)
+        {
+            InfoBubbleController.Instance.HideInfoBubble();
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        Debug.Log("Clicked on me!");
     }
 
     private string UnderscoreRemover(string stringToCheck)
