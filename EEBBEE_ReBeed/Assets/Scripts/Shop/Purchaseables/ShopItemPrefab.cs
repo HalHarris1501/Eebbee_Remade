@@ -41,7 +41,8 @@ public class ShopItemPrefab : MonoBehaviour
 
     public void UpdateUI(SkinObject skin)
     {
-        if(ShopManager.Instance.GetPlayerSkin() == _skin)
+        Debug.Log("UI Updated: " + this.gameObject.name + skin.SkinData.SkinName);
+        if (ShopManager.Instance.GetPlayerSkin() == _skin)
         {
             _purchaseButton.interactable = false;
             _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Selected!";
@@ -56,7 +57,7 @@ public class ShopItemPrefab : MonoBehaviour
     }
 
     public void UpdateUI(PowerupObject powerup)
-    {
+    {        
         if (_powerup.PowerupData.Active)
         {
             _purchaseButton.interactable = false;
