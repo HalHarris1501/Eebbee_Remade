@@ -4217,12 +4217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cam: {fileID: 963194227}
-  _objectsToEncapsulate:
-  - {fileID: 883056771}
-  - {fileID: 723952443}
-  - {fileID: 1554125051}
-  - {fileID: 2075336704}
-  _buffer: -1
+  _orthographicSize: 5.68
+  _aspect: 1.78
 --- !u!1 &969193200
 GameObject:
   m_ObjectHideFlags: 0
