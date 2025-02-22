@@ -15,6 +15,9 @@ public class UIManager : MonoBehaviour, IObserver<Score>, IObserver<CollectableD
     [SerializeField] private TMP_Text _affectTitleText;
     [SerializeField] private TMP_Text _effectTimeText;
 
+    [Header("MobileControls")]
+    [SerializeField] private GameObject _mobileUI;
+
     public void ItemAltered(Score type, int count)
     {
         _scoreText.text = type.ScoreCount.ToString();
@@ -77,6 +80,15 @@ public class UIManager : MonoBehaviour, IObserver<Score>, IObserver<CollectableD
         ScoreManager.Instance.RegisterObserver(this);
         AffectManager.Instance.RegisterObserver(this);
         _affectDisplay.SetActive(false);
+        CheckIfMobile();
+    }
+
+    private void CheckIfMobile()
+    {
+        if(SystemInfo.deviceType == DeviceType.Desktop)
+        {
+            _mobileUI.SetActive(false);
+        }
     }
 
     // Update is called once per frame

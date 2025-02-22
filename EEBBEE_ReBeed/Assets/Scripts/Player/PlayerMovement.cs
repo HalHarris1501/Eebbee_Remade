@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     public static OnPlayerDeath onPlayerDeath;
     public delegate void OnPlayerWin();
     public static OnPlayerWin onPlayerWin;
+    private Vector2 inputVector = new Vector2();
 
     private void Awake()
     {
@@ -28,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     //movebee
     private void Movement()
     {
-        Vector2 inputVector = _playerInputActions.FindAction("Movement").ReadValue<Vector2>();
+        inputVector = _playerInputActions.FindAction("Movement").ReadValue<Vector2>();
         _beeRigidBody.AddForce(new Vector3(inputVector.x, inputVector.y, 0) * _acceleration, ForceMode2D.Force);
         if (_beeRigidBody.velocity.magnitude > _maxSpeed)
         {
