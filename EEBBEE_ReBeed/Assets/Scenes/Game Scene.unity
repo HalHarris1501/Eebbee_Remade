@@ -4151,7 +4151,7 @@ Camera:
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 0
+  m_FOVAxisMode: 1
   m_Iso: 200
   m_ShutterSpeed: 0.005
   m_Aperture: 16
@@ -4169,9 +4169,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 100
+  near clip plane: 0
+  far clip plane: 1
+  field of view: 160
   orthographic: 1
   orthographic size: 5.68
   m_Depth: 0
@@ -4216,8 +4216,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb798c177811a3c4595b7b21eb71c977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orthographicSize: 5.68
-  aspect: 1.78
+  _cam: {fileID: 963194227}
+  _objectsToEncapsulate:
+  - {fileID: 883056771}
+  - {fileID: 723952443}
+  - {fileID: 1554125051}
+  - {fileID: 2075336704}
+  _buffer: -1
 --- !u!1 &969193200
 GameObject:
   m_ObjectHideFlags: 0
