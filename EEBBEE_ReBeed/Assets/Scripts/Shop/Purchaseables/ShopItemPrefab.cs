@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
-public class ShopItemPrefab : MonoBehaviour
+public class ShopItemPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Item Data")]
     [SerializeField] private SkinObject _skin;
@@ -82,28 +83,6 @@ public class ShopItemPrefab : MonoBehaviour
         UpdateUI(_skin);
     }
 
-    private void OnMouseOver()
-    {
-        Debug.Log("Mouse Over");
-        if(_powerup != null)
-        {
-            InfoBubbleController.Instance.PlaceInfoBubble(this.transform.position, _powerup.Info);
-        }
-    }
-    private void OnMouseExit()
-    {
-        Debug.Log("Mouse left");
-        if (_powerup != null)
-        {
-            InfoBubbleController.Instance.HideInfoBubble();
-        }
-    }
-
-    private void OnMouseDown()
-    {
-        Debug.Log("Clicked on me!");
-    }
-
     private string UnderscoreRemover(string stringToCheck)
     {
         string newString = "";
@@ -119,5 +98,21 @@ public class ShopItemPrefab : MonoBehaviour
             }            
         }
         return newString;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (_powerup != null)
+        {
+            InfoBubbleController.Instance.PlaceInfoBubble(this.transform.position, _powerup.Info);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (_powerup != null)
+        {
+            InfoBubbleController.Instance.HideInfoBubble();
+        }
     }
 }
