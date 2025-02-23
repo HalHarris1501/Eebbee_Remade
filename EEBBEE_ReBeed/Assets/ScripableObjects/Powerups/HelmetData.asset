@@ -16,5 +16,5 @@ MonoBehaviour:
     PowerupType: 2
     Active: 0
   Sprite: {fileID: 0}
-  Info: A helmet to proctect you from the first time you hit brambles
+  Info: A helmet to protect you from the first time you hit brambles
   Price: 5

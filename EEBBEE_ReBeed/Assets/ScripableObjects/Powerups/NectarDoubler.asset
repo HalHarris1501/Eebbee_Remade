@@ -16,6 +16,6 @@ MonoBehaviour:
     PowerupType: 1
     Active: 0
   Sprite: {fileID: 0}
-  Info: A starnge aura that seems to double the amount of nectar you recieve from
+  Info: A strange aura that seems to double the amount of nectar you receive from
     flowers
   Price: 25
