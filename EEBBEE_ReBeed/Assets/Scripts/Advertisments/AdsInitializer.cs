@@ -11,6 +11,27 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     [SerializeField] RewardedAdsButton rewardedAdsButton;
     private string _gameId;
 
+    //Singleton pattern
+    #region Singleton
+    private static AdsInitializer _instance;
+    public static AdsInitializer Instance
+    {
+        get //making sure that a game manager always exists
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<AdsInitializer>();
+            }
+            if (_instance == null)
+            {
+                GameObject go = new GameObject("AdsInitializer");
+                _instance = go.AddComponent<AdsInitializer>();
+            }
+            return _instance;
+        }
+    }
+    #endregion
+
     void Awake()
     {
         InitializeAds();
@@ -35,16 +56,6 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     public void OnInitializationComplete()
     {
         Debug.Log("Unity Ads initialization complete.");
-        StartCoroutine(nameof(Wait));
-    }
-
-    private IEnumerator Wait()
-    {
-        while (rewardedAdsButton._adUnitId == "")
-        {
-            yield return new WaitForSeconds(0.25f);
-        }
-        rewardedAdsButton.LoadAd();
     }
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
