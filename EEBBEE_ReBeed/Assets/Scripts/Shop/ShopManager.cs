@@ -25,6 +25,9 @@ public class ShopManager : MonoBehaviour
     }
     #endregion
 
+    [Header("ScoreTextManager")]
+    [SerializeField] private ScoreTextSetter scoreTextSetter;
+
     [Header("Purchaseable Items References")]
     [SerializeField] private List<SkinObject> _skinsData;
     [SerializeField] private List<PowerupObject> _powerupsData;
@@ -38,6 +41,9 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private ShopItemPrefab _purchableItemPrefab;
     [SerializeField] private GameObject _powerupsGridLayout;
     [SerializeField] private GameObject _skinsGridLayout;
+
+    [Header("Ad reward variables")]
+    [SerializeField] private int _adPointsReward;
 
     public void PurchaseItem(SkinObject skinToBuy, ShopItemPrefab buttonPressed)
     {
@@ -55,6 +61,7 @@ public class ShopManager : MonoBehaviour
         _scoreStorage.TotalScore -= skinToBuy.Price;
         skinToBuy.SkinData.Owned = true;
         buttonPressed.UpdateUI(skinToBuy);
+        scoreTextSetter.UpdateUI();
     }
 
     public void PurchaseItem(PowerupObject powerupToBuy, ShopItemPrefab buttonPressed)
@@ -73,6 +80,13 @@ public class ShopManager : MonoBehaviour
         _scoreStorage.TotalScore -= powerupToBuy.Price;
         powerupToBuy.PowerupData.Active = true;
         buttonPressed.UpdateUI(powerupToBuy);
+        scoreTextSetter.UpdateUI();
+    }
+
+    public void GiveAdReward()
+    {
+        _scoreStorage.TotalScore += _adPointsReward;
+        scoreTextSetter.UpdateUI();
     }
 
     public void UpdateAllShopItems()

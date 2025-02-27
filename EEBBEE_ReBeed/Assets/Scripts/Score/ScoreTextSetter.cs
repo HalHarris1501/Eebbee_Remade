@@ -15,16 +15,23 @@ public class ScoreTextSetter : MonoBehaviour
     [Header("Text")]
     [SerializeField] private TMP_Text _previousScoreText;
     [SerializeField] private TMP_Text _totalScoreText;
+    [SerializeField] private TMP_Text _shopTotalScoreText;
     [SerializeField] private TMP_Text _highScoreText;
     [SerializeField] private TMP_Text _leaderboardMenuHighScoreText;
     [SerializeField] private TMP_Text _previousRunScoreText;
     private void Awake()
+    {
+        UpdateUI();
+    }
+
+    public void UpdateUI()
     {
         _previousWinScore = _scoreStorage.PreviousWinScore;
         _previousScoreText.text = _previousWinScore.ToString();
 
         _totalScore = _scoreStorage.TotalScore;
         _totalScoreText.text = _totalScore.ToString();
+        _shopTotalScoreText.text = _totalScore.ToString();
 
         _highScore = _scoreStorage.HighScore;
         _highScoreText.text = _highScore.ToString();
