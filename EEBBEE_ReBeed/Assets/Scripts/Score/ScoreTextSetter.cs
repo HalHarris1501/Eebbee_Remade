@@ -22,6 +22,7 @@ public class ScoreTextSetter : MonoBehaviour
     private void Awake()
     {
         UpdateUI();
+        SaveManager.Instance.SaveScoreData();
     }
 
     public void UpdateUI()

@@ -6,19 +6,28 @@ using UnityEngine;
 public class SaveData
 {
     private static SaveData _current;
-    public static SaveData Current
+    public static SaveData current
     {
         get
         {
-            if(_current == null)
+            if (_current == null)
             {
                 _current = new SaveData();
             }
             return _current;
         }
+        set
+        {
+            if (value != null)
+            {
+                _current = value;
+            }
+        }
     }
 
-    public PlayerProfile Profile;
+    public PlayerData PlayerData;
+
+    public ScoreStorage ScoreStorage;
 
     public List<PowerupData> Powerups;
 

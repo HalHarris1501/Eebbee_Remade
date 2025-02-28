@@ -56,12 +56,15 @@ public class ShopManager : MonoBehaviour
         {
             Debug.LogError(skinToBuy.SkinData.SkinName + " is too expensive. Current Points: " + _scoreStorage.TotalScore);
             return;
-        }
+        }       
 
         _scoreStorage.TotalScore -= skinToBuy.Price;
         skinToBuy.SkinData.Owned = true;
         buttonPressed.UpdateUI(skinToBuy);
         scoreTextSetter.UpdateUI();
+
+        SaveManager.Instance.SaveSkinData(skinToBuy.SkinData);
+        SaveManager.Instance.SaveScoreData();
     }
 
     public void PurchaseItem(PowerupObject powerupToBuy, ShopItemPrefab buttonPressed)
@@ -75,12 +78,15 @@ public class ShopManager : MonoBehaviour
         {
             Debug.LogError(powerupToBuy.PowerupData.PowerupType + " is too expensive. Current Points: " + _scoreStorage.TotalScore);
             return;
-        }
+        }       
 
         _scoreStorage.TotalScore -= powerupToBuy.Price;
         powerupToBuy.PowerupData.Active = true;
         buttonPressed.UpdateUI(powerupToBuy);
         scoreTextSetter.UpdateUI();
+
+        SaveManager.Instance.SavePowerupData(powerupToBuy.PowerupData);
+        SaveManager.Instance.SaveScoreData();
     }
 
     public void GiveAdReward()
@@ -120,6 +126,7 @@ public class ShopManager : MonoBehaviour
     {
         _playerData.CurrentSkin = skinToSet;
         UpdateAllShopItems();
+        SaveManager.Instance.SavePlayerData();
     }
 
     public SkinObject GetPlayerSkin()

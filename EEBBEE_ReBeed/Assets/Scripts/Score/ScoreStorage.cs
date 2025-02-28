@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 [CreateAssetMenu(fileName = "Storage", menuName = "ScriptableObjects/Storage/ScoreStorage", order = 1)]
 public class ScoreStorage : ScriptableObject
 {
