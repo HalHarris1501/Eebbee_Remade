@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 
     [Header("Object Referencese")]
     [SerializeField] private List<PowerupObject> _powerups;
+    [SerializeField] private List<SkinObject> _skins;
     [SerializeField] private PlayerMovement _player;
     
     [Header("Invincibilty variables")]
@@ -20,7 +21,6 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     [SerializeField] private GameObject _nectarDoubler;
     [SerializeField] private GameObject _helmet;
     [SerializeField] private GameObject _beeSprite;
-    [SerializeField] private PlayerData _playerData;
 
     //Singleton pattern
     #region Singleton
@@ -85,10 +85,29 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
             _helmet.SetActive(false);
         }
 
-        _beeSprite.GetComponent<SpriteRenderer>().sprite = _playerData.CurrentSkin.Skin;
+        try
+        {
+            _beeSprite.GetComponent<SpriteRenderer>().sprite = FindSkin(PlayerData.current.CurrentSkinData).Skin;
+        }
+        catch 
+        {
+            Debug.Log("Player skin not set");
+        }
 
         PlayerMovement.onPlayerDeath += ManageLose;
         PlayerMovement.onPlayerWin += ManageWin;
+    }
+
+    private SkinObject FindSkin(PlayerSkinData data)
+    {
+        foreach(SkinObject skin in _skins)
+        {
+            if(skin.SkinData == data)
+            {
+                return skin;
+            }
+        }
+        return null;
     }
 
     private void OnDisable()
@@ -130,6 +149,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         Debug.Log("Bee Win");
         ScoreManager.Instance.SetScore();
         GetPowerup(PowerupType.Nectar_Doubler).PowerupData.Active = false; //deactivate point doubler on win
+        SaveManager.Instance.SaveScoreData();
         SceneSwapper.Instance.LoadSceneByName("Menu Scene");
     }
 
@@ -153,6 +173,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         {
             powerup.PowerupData.Active = false;
         }
+        SaveManager.Instance.SaveScoreData();
         SceneSwapper.Instance.LoadSceneByName("Menu Scene");
     }
 

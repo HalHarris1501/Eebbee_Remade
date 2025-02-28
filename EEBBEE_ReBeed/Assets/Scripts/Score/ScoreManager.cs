@@ -8,7 +8,6 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
     [SerializeField] private Score _currentScore;
     [SerializeField] private int _scoreMultiplier = 1;
     private Dictionary<string, int> _multipliersDictionary = new Dictionary<string, int>();
-    [SerializeField] private ScoreStorage _scoreStorage;
     [SerializeField] private PowerupObject _helperPowerup;
 
     //Singleton pattern
@@ -83,16 +82,16 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
     public void SetScore()
     {
         CheckHighScore();
-        _scoreStorage.PreviousWinScore = _currentScore.ScoreCount;
-        _scoreStorage.PreviousRunScore = _currentScore.ScoreCount;
-        _scoreStorage.TotalScore += _currentScore.ScoreCount;
+        ScoreStorage.current.PreviousWinScore = _currentScore.ScoreCount;
+        ScoreStorage.current.PreviousRunScore = _currentScore.ScoreCount;
+        ScoreStorage.current.TotalScore += _currentScore.ScoreCount;
     }
 
     private void CheckHighScore()
     {
-        if(_scoreStorage.HighScore < _currentScore.ScoreCount)
+        if(ScoreStorage.current.HighScore < _currentScore.ScoreCount)
         {
-            _scoreStorage.HighScore = _currentScore.ScoreCount;
+            ScoreStorage.current.HighScore = _currentScore.ScoreCount;
         }
     }
 
@@ -100,9 +99,9 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
     {
         if(_helperPowerup.PowerupData.Active)
         {
-            _scoreStorage.TotalScore +=  Mathf.FloorToInt(_currentScore.ScoreCount / 4);
+            ScoreStorage.current.TotalScore +=  Mathf.FloorToInt(_currentScore.ScoreCount / 4);
         }
-        _scoreStorage.PreviousRunScore = 0;
+        ScoreStorage.current.PreviousRunScore = 0;
     }
 
     private void OnEnable()

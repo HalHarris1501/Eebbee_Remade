@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ScoreTextSetter : MonoBehaviour
+public class ScoreTextSetter : MonoBehaviour, IObserver<SaveManager>
 {
     [Header("Values")]
     [SerializeField] private int _previousWinScore = 0;
     [SerializeField] private int _totalScore = 0;
     [SerializeField] private int _highScore = 0;
     [SerializeField] private int _previousRunScore = 0;
-    [SerializeField] private ScoreStorage _scoreStorage;
 
     [Header("Text")]
     [SerializeField] private TMP_Text _previousScoreText;
@@ -21,24 +20,24 @@ public class ScoreTextSetter : MonoBehaviour
     [SerializeField] private TMP_Text _previousRunScoreText;
     private void Awake()
     {
+        SaveManager.Instance.RegisterObserver(this);
         UpdateUI();
-        SaveManager.Instance.SaveScoreData();
     }
 
     public void UpdateUI()
     {
-        _previousWinScore = _scoreStorage.PreviousWinScore;
+        _previousWinScore = ScoreStorage.current.PreviousWinScore;
         _previousScoreText.text = _previousWinScore.ToString();
 
-        _totalScore = _scoreStorage.TotalScore;
+        _totalScore = ScoreStorage.current.TotalScore;
         _totalScoreText.text = _totalScore.ToString();
         _shopTotalScoreText.text = _totalScore.ToString();
 
-        _highScore = _scoreStorage.HighScore;
+        _highScore = ScoreStorage.current.HighScore;
         _highScoreText.text = _highScore.ToString();
         _leaderboardMenuHighScoreText.text = _highScore.ToString();
 
-        _previousRunScore = _scoreStorage.PreviousRunScore;
+        _previousRunScore = ScoreStorage.current.PreviousRunScore;
         _previousRunScoreText.text = _previousRunScore.ToString();
     }
 
@@ -53,5 +52,21 @@ public class ScoreTextSetter : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void NewItemAdded(SaveManager type)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ItemRemoved(SaveManager type)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ItemAltered(SaveManager type, int count)
+    {
+        UpdateUI();
+        Debug.Log("Updating UI with save data");
     }
 }

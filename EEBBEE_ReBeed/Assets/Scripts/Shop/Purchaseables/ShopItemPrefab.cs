@@ -42,7 +42,7 @@ public class ShopItemPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void UpdateUI(SkinObject skin)
     {
-        if (ShopManager.Instance.GetPlayerSkin() == _skin)
+        if (PlayerData.current.CurrentSkinData == _skin.SkinData)
         {
             _purchaseButton.interactable = false;
             _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Selected!";

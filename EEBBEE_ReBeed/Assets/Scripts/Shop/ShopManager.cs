@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopManager : MonoBehaviour
+public class ShopManager : MonoBehaviour, IObserver<SaveManager>
 {
     //Singleton pattern
     #region Singleton
@@ -33,10 +33,6 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private List<PowerupObject> _powerupsData;
     [SerializeField] private List<ShopItemPrefab> _shopItems;
 
-    [Header("Data References")]
-    [SerializeField] private ScoreStorage _scoreStorage;
-    [SerializeField] private PlayerData _playerData;
-
     [Header("UI Objects References")]
     [SerializeField] private ShopItemPrefab _purchableItemPrefab;
     [SerializeField] private GameObject _powerupsGridLayout;
@@ -52,13 +48,13 @@ public class ShopManager : MonoBehaviour
             Debug.LogError(skinToBuy.SkinData.SkinName + " skin not in list");
             return;
         }
-        if(skinToBuy.Price > _scoreStorage.TotalScore)
+        if(skinToBuy.Price > ScoreStorage.current.TotalScore)
         {
-            Debug.LogError(skinToBuy.SkinData.SkinName + " is too expensive. Current Points: " + _scoreStorage.TotalScore);
+            Debug.LogError(skinToBuy.SkinData.SkinName + " is too expensive. Current Points: " + ScoreStorage.current.TotalScore);
             return;
-        }       
+        }
 
-        _scoreStorage.TotalScore -= skinToBuy.Price;
+        ScoreStorage.current.TotalScore -= skinToBuy.Price;
         skinToBuy.SkinData.Owned = true;
         buttonPressed.UpdateUI(skinToBuy);
         scoreTextSetter.UpdateUI();
@@ -74,13 +70,13 @@ public class ShopManager : MonoBehaviour
             Debug.LogError(powerupToBuy.PowerupData.PowerupType + " powerup not in list");
             return;
         }
-        if (powerupToBuy.Price > _scoreStorage.TotalScore)
+        if (powerupToBuy.Price > ScoreStorage.current.TotalScore)
         {
-            Debug.LogError(powerupToBuy.PowerupData.PowerupType + " is too expensive. Current Points: " + _scoreStorage.TotalScore);
+            Debug.LogError(powerupToBuy.PowerupData.PowerupType + " is too expensive. Current Points: " + ScoreStorage.current.TotalScore);
             return;
-        }       
+        }
 
-        _scoreStorage.TotalScore -= powerupToBuy.Price;
+        ScoreStorage.current.TotalScore -= powerupToBuy.Price;
         powerupToBuy.PowerupData.Active = true;
         buttonPressed.UpdateUI(powerupToBuy);
         scoreTextSetter.UpdateUI();
@@ -91,7 +87,7 @@ public class ShopManager : MonoBehaviour
 
     public void GiveAdReward()
     {
-        _scoreStorage.TotalScore += _adPointsReward;
+        ScoreStorage.current.TotalScore += _adPointsReward;
         scoreTextSetter.UpdateUI();
     }
 
@@ -120,17 +116,30 @@ public class ShopManager : MonoBehaviour
             newItem.SetPowerup(powerup);
             _shopItems.Add(newItem);
         }
+        SaveManager.Instance.RegisterObserver(this);
+        UpdateAllShopItems();
     }
 
     public void SetPlayerSkin(SkinObject skinToSet)
     {
-        _playerData.CurrentSkin = skinToSet;
+        PlayerData.current.CurrentSkinData = skinToSet.SkinData;
         UpdateAllShopItems();
         SaveManager.Instance.SavePlayerData();
     }
 
-    public SkinObject GetPlayerSkin()
+    public void NewItemAdded(SaveManager type)
     {
-        return _playerData.CurrentSkin;
+        throw new System.NotImplementedException();
+    }
+
+    public void ItemRemoved(SaveManager type)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ItemAltered(SaveManager type, int count)
+    {
+        Debug.Log("Updating shop items with loaded data");
+        UpdateAllShopItems();
     }
 }

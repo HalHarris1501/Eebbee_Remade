@@ -12604,8 +12604,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0eed31c54952a44bb5cb5ad195451bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skins: []
-  _powerups: []
+  _skins:
+  - {fileID: 11400000, guid: dca9d196b5af7a34c86d64c6a7a701db, type: 2}
+  - {fileID: 11400000, guid: 1c6251135f591ab4da244a469b8f7141, type: 2}
+  _powerups:
+  - {fileID: 11400000, guid: 40a141fc3ba5b1c4a97d921120beff73, type: 2}
+  - {fileID: 11400000, guid: fbb49cc8fe635ac4282383c29ffd48f2, type: 2}
+  - {fileID: 11400000, guid: e5cb6893d580f65429a2f2c1e69e5435, type: 2}
   _scoreStorage: {fileID: 11400000, guid: bd7c93eb1b0c48540b4d9af97140eed9, type: 2}
   _playerData: {fileID: 11400000, guid: f5898eae1adeed44b89b6232bb9adeeb, type: 2}
 --- !u!4 &2050745937

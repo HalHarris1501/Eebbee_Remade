@@ -27,7 +27,10 @@ public class SaveData
 
     public PlayerData PlayerData;
 
-    public ScoreStorage ScoreStorage;
+    public int PreviousWinScore = 0;
+    public int TotalScore = 0;
+    public int HighScore = 0;
+    public int PreviousRunScore = 0;
 
     public List<PowerupData> Powerups;
 
