@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _beeRigidBody;
+    private BoxCollider2D _beeCollider;
     private static PlayerInputActions _playerInputActions;
     [SerializeField] private float _acceleration = 5f;
     [SerializeField] private float _speed;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _beeRigidBody = GetComponent<Rigidbody2D>();
+        _beeCollider = GetComponent<BoxCollider2D>();
 
         _playerInputActions = new PlayerInputActions();
         
@@ -56,6 +58,21 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    public void DisableCollider()
+    {
+        _beeCollider.enabled = false;
+    }
+
+    public void DisableRigidbody()
+    {
+        Component.Destroy(_beeRigidBody);
+    }
+
+    public void DisableControls()
+    {
+        _playerInputActions.Disable();
+    }
+
     public static void SetDefaultControls()
     {
         _playerInputActions.Disable();
@@ -70,8 +87,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _speed = _beeRigidBody.velocity.magnitude;
-        Movement();
+        if (_beeRigidBody != null)
+        {
+            _speed = _beeRigidBody.velocity.magnitude;
+            Movement();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

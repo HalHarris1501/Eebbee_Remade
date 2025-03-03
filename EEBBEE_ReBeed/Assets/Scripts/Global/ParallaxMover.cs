@@ -23,11 +23,11 @@ public abstract class ParallaxMover : MonoBehaviour, IObserver<Direction>
     // Update is called once per frame
     void FixedUpdate()
     {
-        MoveBackground();
+        Move();
     }
 
     //Bad, need different approach
-    private void MoveBackground()
+    private void Move()
     {
         transform.position = new Vector3(transform.position.x + _currentSpeed, transform.position.y, transform.position.z);
     }
@@ -54,6 +54,11 @@ public abstract class ParallaxMover : MonoBehaviour, IObserver<Direction>
     {
         _currentSpeed = _backwordParallaxSpeed;
         _resetPosition = -_resetPosition;
+
+        if(type == Direction.Stop)
+        {
+            _currentSpeed = 0;
+        }
     }
 
     public virtual void ResetterCollision()

@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     [SerializeField] private GameObject _nectarDoubler;
     [SerializeField] private GameObject _helmet;
     [SerializeField] private GameObject _beeSprite;
+    [SerializeField] private Animator _beeAnimator;
 
     //Singleton pattern
     #region Singleton
@@ -172,12 +173,27 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         }
 
         Debug.Log("Bee ded");
+        _direction = Direction.Stop;
+        NotifyObservers(_direction, ISubject<Direction>.NotificationType.Changed);
+        DisableBee();
         ScoreManager.Instance.SetFailScore();
         foreach(PowerupObject powerup in _powerups)
         {
             powerup.PowerupData.Active = false;
         }
         SaveManager.Instance.SaveScoreData();
+        _beeAnimator.SetTrigger("IsDead");        
+    }
+
+    private void DisableBee()
+    {
+        _player.DisableCollider();
+        _player.DisableRigidbody();
+        _player.DisableControls();
+    }
+
+    public void LoadMenu()
+    {
         SceneSwapper.Instance.LoadSceneByName("Menu Scene");
     }
 
@@ -210,5 +226,6 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 public enum Direction
 {
     Forward,
-    Backward
+    Backward,
+    Stop
 }

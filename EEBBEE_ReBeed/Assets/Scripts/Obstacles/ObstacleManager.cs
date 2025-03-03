@@ -76,7 +76,11 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
 
     public void LoadObstacle()
     {
-        if(_direction == Direction.Forward)
+        if(_direction == Direction.Stop)
+        {
+            return;
+        }
+        else if(_direction == Direction.Forward)
         {
             GenerateNewObstacle();
         }
@@ -241,6 +245,11 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     public void ItemAltered(Direction type, int count)
     {
         _direction = type;
+        if (type == Direction.Stop)
+        {
+            return;
+        }
+
         if (_currentBox > 0)
         {
             _currentBox--;
