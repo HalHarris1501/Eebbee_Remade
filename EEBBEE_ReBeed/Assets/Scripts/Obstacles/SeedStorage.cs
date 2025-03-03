@@ -6,4 +6,6 @@ using UnityEngine;
 public class SeedStorage : ScriptableObject
 {
     public int Seed;
+    public string UnhashedSeed;
+    public bool SeedRandomised;
 }
