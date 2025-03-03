@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShopManager : MonoBehaviour, IObserver<SaveManager>
 {
@@ -37,6 +38,8 @@ public class ShopManager : MonoBehaviour, IObserver<SaveManager>
     [SerializeField] private ShopItemPrefab _purchableItemPrefab;
     [SerializeField] private GameObject _powerupsGridLayout;
     [SerializeField] private GameObject _skinsGridLayout;
+    [SerializeField] private GameObject _notificationWindow;
+    [SerializeField] private TMP_Text _notificationText;
 
     [Header("Ad reward variables")]
     [SerializeField] private int _adPointsReward;
@@ -89,6 +92,11 @@ public class ShopManager : MonoBehaviour, IObserver<SaveManager>
     {
         ScoreStorage.current.TotalScore += _adPointsReward;
         scoreTextSetter.UpdateUI();
+
+        SaveManager.Instance.SaveScoreData();
+
+        _notificationText.text = _adPointsReward + " points added!";
+        _notificationWindow.SetActive(true);        
     }
 
     public void UpdateAllShopItems()
