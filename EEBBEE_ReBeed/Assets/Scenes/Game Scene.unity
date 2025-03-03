@@ -4963,6 +4963,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c6251135f591ab4da244a469b8f7141, type: 2}
   - {fileID: 11400000, guid: dca9d196b5af7a34c86d64c6a7a701db, type: 2}
   _player: {fileID: 2021216504}
+  _seedStorage: {fileID: 11400000, guid: 89395f773aea56e4c819959d7059acba, type: 2}
   _invincible: 0
   _invincibleTime: 2
   _helperBee: {fileID: 353115585}

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     [SerializeField] private List<PowerupObject> _powerups;
     [SerializeField] private List<SkinObject> _skins;
     [SerializeField] private PlayerMovement _player;
+    [SerializeField] private SeedStorage _seedStorage;
     
     [Header("Invincibilty variables")]
     [SerializeField] private bool _invincible;
@@ -147,7 +148,10 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     public void ManageWin() // function called when the game is won
     {
         Debug.Log("Bee Win");
-        ScoreManager.Instance.SetScore();
+        if (_seedStorage.SeedRandomised == true)
+        {
+            ScoreManager.Instance.SetScore();
+        }
         GetPowerup(PowerupType.Nectar_Doubler).PowerupData.Active = false; //deactivate point doubler on win
         SaveManager.Instance.SaveScoreData();
         SceneSwapper.Instance.LoadSceneByName("Menu Scene");
