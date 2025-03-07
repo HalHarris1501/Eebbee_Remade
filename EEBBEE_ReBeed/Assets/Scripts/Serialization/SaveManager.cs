@@ -62,7 +62,7 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         }
         Add:
         SaveData.current.Skins.Add(skinData);//if not in, add save data
-        Debug.Log("Saving Skins data");
+        //Debug.Log("Saving Skins data");
         Save();
     }
 
@@ -84,14 +84,14 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         }
         Add:
         SaveData.current.Powerups.Add(powerupData);//if not in, add save data#
-        Debug.Log("Saving Powerup data");
+        //Debug.Log("Saving Powerup data");
         Save();
     }
 
     public void SavePlayerData()
     {
         SaveData.current.PlayerData = PlayerData.current;
-        Debug.Log("Saving Player data");
+        //Debug.Log("Saving Player data");
         Save();
     }
 
@@ -102,7 +102,7 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         SaveData.current.TotalScore = ScoreStorage.current.TotalScore;
         SaveData.current.HighScore = ScoreStorage.current.HighScore;
 
-        Debug.Log("Saving score data");
+        //Debug.Log("Saving score data");
         Save();
     }
 
@@ -116,42 +116,42 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/MainSave.save");
         if(SaveData.current == null)
         {
-            Debug.Log("No Save Loaded");
+            //Debug.Log("No Save Loaded");
             return;
         }
 
 
         PlayerData.current = SaveData.current.PlayerData;
-        Debug.Log("Player data loaded and set");
+        //Debug.Log("Player data loaded and set");
 
         ScoreStorage.current.PreviousWinScore = SaveData.current.PreviousWinScore;
         ScoreStorage.current.PreviousRunScore = SaveData.current.PreviousRunScore;
         ScoreStorage.current.TotalScore = SaveData.current.TotalScore;
         ScoreStorage.current.HighScore = SaveData.current.HighScore;
-        Debug.Log("Score data loaded and set");
+        //Debug.Log("Score data loaded and set");
 
         if (SaveData.current.Powerups == null  || SaveData.current.Powerups.Count <= 0)
         {
-            Debug.Log("No powerup save data");
+            //Debug.Log("No powerup save data");
             goto Skins;
         }
         foreach(PowerupData data in SaveData.current.Powerups)
         {
             FindPowerUp(data).PowerupData = data;
         }
-        Debug.Log("Powerups data loaded and set");
+        //Debug.Log("Powerups data loaded and set");
 
         Skins:
         if(SaveData.current.Skins == null || SaveData.current.Skins.Count <= 0)
         {
-            Debug.Log("No Skin save data");
+            //Debug.Log("No Skin save data");
             goto end;
         }
         foreach(PlayerSkinData data in SaveData.current.Skins)
         {
             FindSkinObject(data).SkinData = data;
         }
-        Debug.Log("Skins data loaded and set");
+        //Debug.Log("Skins data loaded and set");
 
         end:
         NotifyObservers(this, ISubject<SaveManager>.NotificationType.Changed);
@@ -184,7 +184,7 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
     public void RegisterObserver(IObserver<SaveManager> o)
     {
         _observers.Add(o);
-        Debug.Log("Observer added");
+        //Debug.Log("Observer added");
     }
 
     public void RemoveObserver(IObserver<SaveManager> o)
@@ -194,7 +194,7 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
 
     public void NotifyObservers(SaveManager type, ISubject<SaveManager>.NotificationType notificationType)
     {
-        Debug.Log("Notifiying observers");
+        //Debug.Log("Notifiying observers");
         foreach(IObserver<SaveManager> observer in _observers)
         {
             observer.ItemAltered(this, 0);

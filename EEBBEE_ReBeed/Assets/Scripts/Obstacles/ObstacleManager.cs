@@ -37,7 +37,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     private Stack<List<SaveableObjectInfo>> _obstacleStack;
     private Dictionary<int, List<ObjectType>> _activeCollectablesDictionary;
     private int _obstacleNumTracker = 0;
-    private Direction _direction = Direction.Forward;
+    private Direction _direction = Direction.Stop;
 
     [Header("Collectables")]
     [SerializeField] private Collectable[] _collectables;
@@ -53,9 +53,12 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     void Start()
     {
         GameManager.Instance.RegisterObserver(this);
+
         _obstacleStack = new Stack<List<SaveableObjectInfo>>();
         _activeCollectablesDictionary = new Dictionary<int, List<ObjectType>>();
         _obstacleNumTracker = 0;
+        _currentBox = 0;
+
         ObjectPooler.Instance.objectPoolerReady.AddListener(() => GenerateSpecificObstacle(0, false));
         ObjectPooler.Instance.objectPoolerReady.AddListener(() => GenerateNewObstacle());
         ObjectPooler.Instance.objectPoolerReady.AddListener(() => GenerateNewObstacle());
@@ -106,7 +109,6 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
 
         LoadObjects(currentObstacle.ObjectList);
 
-
         _currentBox++;
         if (_currentBox > 2)
         {
@@ -126,8 +128,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
 
         _obstacleStack.Push(currentObstacle.ObjectList);
 
-        LoadObjects(currentObstacle.ObjectList);
-        
+        LoadObjects(currentObstacle.ObjectList);        
 
         _currentBox++;
         if (_currentBox > 2)
@@ -145,7 +146,6 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
             LoadObjects(_obstacleStack.Pop());
         }
         _obstacleNumTracker--;
-
 
         _currentBox--;
         if (_currentBox < 0)
@@ -175,8 +175,8 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
             CheckIfCollectable(currentObject, currentObstacleCollectableTypeList);
             currentObject.transform.SetParent(_obstacleBoxes[_currentBox].transform);
         }
-        //only add new entry if going forward
-        if (_direction == Direction.Forward)
+        //only add new entry if going forward or stopped
+        if (_direction == Direction.Forward || _direction == Direction.Stop)
         {
             _activeCollectablesDictionary.Add(_obstacleNumTracker, currentObstacleCollectableTypeList);
         }
@@ -188,7 +188,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         if (currentObject.GetComponent<Collectable>() == null)     
             return;
         
-        if(_direction == Direction.Forward)
+        if(_direction == Direction.Forward || _direction == Direction.Stop)
         {
             //add to dictionary if going forwards
             currentList.Add(currentObject.GetComponent<SaveableObject>().ObjectType);
@@ -245,7 +245,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     public void ItemAltered(Direction type, int count)
     {
         _direction = type;
-        if (type == Direction.Stop)
+        if (_direction == Direction.Stop || _direction == Direction.Forward)
         {
             return;
         }

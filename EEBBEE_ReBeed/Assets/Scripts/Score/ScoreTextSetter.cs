@@ -67,6 +67,6 @@ public class ScoreTextSetter : MonoBehaviour, IObserver<SaveManager>
     public void ItemAltered(SaveManager type, int count)
     {
         UpdateUI();
-        Debug.Log("Updating UI with save data");
+        //Debug.Log("Updating UI with save data");
     }
 }

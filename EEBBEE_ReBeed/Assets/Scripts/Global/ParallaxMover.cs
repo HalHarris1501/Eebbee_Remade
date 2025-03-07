@@ -6,7 +6,7 @@ public abstract class ParallaxMover : MonoBehaviour, IObserver<Direction>
 {
     [SerializeField] private float _length;
     [SerializeField] private float _forwardParallaxSpeed, _backwordParallaxSpeed;
-    private float _currentSpeed;
+    [SerializeField] private float _currentSpeed;
     [SerializeField] private LayerMask _resetterLayer;
     [SerializeField] private float _resetPosition;
 

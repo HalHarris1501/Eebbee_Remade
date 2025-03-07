@@ -147,7 +147,7 @@ public class ShopManager : MonoBehaviour, IObserver<SaveManager>
 
     public void ItemAltered(SaveManager type, int count)
     {
-        Debug.Log("Updating shop items with loaded data");
+        //Debug.Log("Updating shop items with loaded data");
         UpdateAllShopItems();
     }
 }

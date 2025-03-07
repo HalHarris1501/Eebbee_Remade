@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         _direction = Direction.Forward;
         NotifyObservers(_direction, ISubject<Direction>.NotificationType.Changed);
         _beeAnimator.SetTrigger("IsMovable");
+        EnableBee();
     }
 
     private SkinObject FindSkin(PlayerSkinData data)
@@ -131,6 +132,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         {
             Observer.ItemAltered(_direction, 0);
         }
+        Debug.Log("Notified all observers");
     }
 
     public void RegisterObserver(IObserver<Direction> o)

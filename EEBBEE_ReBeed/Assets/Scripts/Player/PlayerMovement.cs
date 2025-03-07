@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case false:
                 _beeRigidBody.bodyType = RigidbodyType2D.Kinematic;
+                _beeRigidBody.velocity = new Vector2(0f, 0f);
                 break;
         }
     }
@@ -87,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
                 _playerInputActions.Disable();
                 break;
             case true:
-                _playerInputActions.Enable();
+                _playerInputActions.Keyboard.Enable();
                 break;
         }
     }
