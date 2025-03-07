@@ -15,7 +15,7 @@ public abstract class ParallaxMover : MonoBehaviour, IObserver<Direction>
     {
         GameManager.Instance.RegisterObserver(this);
 
-        _currentSpeed = _forwardParallaxSpeed;
+        _currentSpeed = 0;
         _length = GetComponent<SpriteRenderer>().bounds.size.x;
         _resetPosition = _length * 3;
     }
@@ -52,10 +52,16 @@ public abstract class ParallaxMover : MonoBehaviour, IObserver<Direction>
 
     public void ItemAltered(Direction type, int count)
     {
-        _currentSpeed = _backwordParallaxSpeed;
-        _resetPosition = -_resetPosition;
-
-        if(type == Direction.Stop)
+        if (type == Direction.Forward)
+        {
+            _currentSpeed = _forwardParallaxSpeed;
+        }
+        if (type == Direction.Backward)
+        {
+            _currentSpeed = _backwordParallaxSpeed;
+            _resetPosition = -_resetPosition;
+        }
+        else if(type == Direction.Stop)
         {
             _currentSpeed = 0;
         }

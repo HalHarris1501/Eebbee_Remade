@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
         _playerInputActions = new PlayerInputActions();
         
         SetDefaultControls();
+        SetColliderActive(false);
+        SetControlsActive(false);
+        SetRigidbodyActive(false);
     }
 
     //movebee
@@ -58,19 +61,35 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    public void DisableCollider()
+    public void SetColliderActive(bool activeState)
     {
-        _beeCollider.enabled = false;
+        _beeCollider.enabled = activeState;
     }
 
-    public void DisableRigidbody()
+    public void SetRigidbodyActive(bool activeState)
     {
-        Component.Destroy(_beeRigidBody);
+        switch(activeState)
+        {
+            case true:
+                _beeRigidBody.bodyType = RigidbodyType2D.Dynamic;
+                break;
+            case false:
+                _beeRigidBody.bodyType = RigidbodyType2D.Kinematic;
+                break;
+        }
     }
 
-    public void DisableControls()
+    public void SetControlsActive(bool activeState)
     {
-        _playerInputActions.Disable();
+        switch(activeState)
+        {
+            case false:
+                _playerInputActions.Disable();
+                break;
+            case true:
+                _playerInputActions.Enable();
+                break;
+        }
     }
 
     public static void SetDefaultControls()

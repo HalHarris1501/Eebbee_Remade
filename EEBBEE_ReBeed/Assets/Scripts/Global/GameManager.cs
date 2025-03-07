@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour, ISubject<Direction>
 {
     private List<IObserver<Direction>> _observers = new List<IObserver<Direction>>();
-    private Direction _direction = Direction.Forward;
+    private Direction _direction = Direction.Stop;
 
     [Header("Object Referencese")]
     [SerializeField] private List<PowerupObject> _powerups;
@@ -100,6 +100,13 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         PlayerMovement.onPlayerWin += ManageWin;
     }
 
+    public void StartGame()
+    {        
+        _direction = Direction.Forward;
+        NotifyObservers(_direction, ISubject<Direction>.NotificationType.Changed);
+        _beeAnimator.SetTrigger("IsMovable");
+    }
+
     private SkinObject FindSkin(PlayerSkinData data)
     {
         foreach(SkinObject skin in _skins)
@@ -185,11 +192,18 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         _beeAnimator.SetTrigger("IsDead");        
     }
 
+    private void EnableBee()
+    {
+        _player.SetColliderActive(true);
+        _player.SetRigidbodyActive(true);
+        _player.SetControlsActive(true);
+    }
+
     private void DisableBee()
     {
-        _player.DisableCollider();
-        _player.DisableRigidbody();
-        _player.DisableControls();
+        _player.SetColliderActive(false);
+        _player.SetRigidbodyActive(false);
+        _player.SetControlsActive(false);
     }
 
     public void LoadMenu()
