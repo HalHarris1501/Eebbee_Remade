@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleBox : ParallaxMover
 {
-    public int ObstacleNumber;    
+    public int ObstacleNumber;
 
     public override void ResetterCollision()
     {

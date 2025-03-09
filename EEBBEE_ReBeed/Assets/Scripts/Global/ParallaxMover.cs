@@ -9,11 +9,14 @@ public abstract class ParallaxMover : MonoBehaviour, IObserver<Direction>
     [SerializeField] private float _currentSpeed;
     [SerializeField] private LayerMask _resetterLayer;
     [SerializeField] private float _resetPosition;
+    [SerializeField] private Vector3 _startPos;
+    public bool StopAtStart = false;
 
     // Start is called before the first frame update
     void Start()
     {
         GameManager.Instance.RegisterObserver(this);
+        _startPos = this.transform.position;
 
         _currentSpeed = 0;
         _length = GetComponent<SpriteRenderer>().bounds.size.x;
@@ -24,12 +27,25 @@ public abstract class ParallaxMover : MonoBehaviour, IObserver<Direction>
     void FixedUpdate()
     {
         Move();
+        if(StopAtStart)
+        {
+            StopAtStartFunc();
+        }
     }
 
     //Bad, need different approach
     private void Move()
     {
         transform.position = new Vector3(transform.position.x + _currentSpeed, transform.position.y, transform.position.z);
+    }
+
+    private void StopAtStartFunc()
+    {
+        if(this.transform.position.x == _startPos.x)
+        {
+            _currentSpeed = 0;
+            GameManager.Instance.StopMovers();
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

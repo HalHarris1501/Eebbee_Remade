@@ -194,6 +194,12 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         _beeAnimator.SetTrigger("IsDead");        
     }
 
+    public void StopMovers()
+    {
+        _direction = Direction.Stop;
+        NotifyObservers(_direction, ISubject<Direction>.NotificationType.Changed);
+    }
+
     private void EnableBee()
     {
         _player.SetColliderActive(true);

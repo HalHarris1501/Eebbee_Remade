@@ -44,6 +44,9 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     [Range(0f, 100f)]
     [SerializeField] private float _collectableSpawnPercentage = 35.5f;
 
+    [Header("Background Objects")]
+    [SerializeField] private List<Background> _backgroundObjects;
+
     private void Awake()
     {
         SetSeed();
@@ -145,12 +148,28 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         {
             LoadObjects(_obstacleStack.Pop());
         }
+        else if(_obstacleStack.Count == 0)
+        {
+            StopAllMove();
+        }
         _obstacleNumTracker--;
 
         _currentBox--;
         if (_currentBox < 0)
         {
             _currentBox = 2;
+        }
+    }
+
+    private void StopAllMove()
+    {
+        foreach (ObstacleBox box in _obstacleBoxes)
+        {
+            box.StopAtStart = true;
+        }
+        foreach (Background background in _backgroundObjects)
+        {
+            background.StopAtStart = true;
         }
     }
 

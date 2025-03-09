@@ -408,6 +408,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &66690999
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,6 +781,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
   ObstacleNumber: 0
 --- !u!1 &353115585
 GameObject:
@@ -1212,6 +1216,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &443934386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,6 +1872,19 @@ MonoBehaviour:
   - {fileID: -4524711508918608352, guid: d1aa4f919708375428a718bc726db470, type: 3}
   - {fileID: 2255069549421285990, guid: fcb2e895f9cd2e5428e7e710c2103941, type: 3}
   _collectableSpawnPercentage: 33.3
+  _backgroundObjects:
+  - {fileID: 669010435}
+  - {fileID: 1341953409}
+  - {fileID: 897868618}
+  - {fileID: 603654990}
+  - {fileID: 50161535}
+  - {fileID: 1017074963}
+  - {fileID: 424708496}
+  - {fileID: 850116441}
+  - {fileID: 600221163}
+  - {fileID: 813000827}
+  - {fileID: 1473620736}
+  - {fileID: 724710361}
 --- !u!1 &593672542
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,6 +2170,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &603654985
 GameObject:
   m_ObjectHideFlags: 0
@@ -2302,6 +2323,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &660363673
 GameObject:
   m_ObjectHideFlags: 0
@@ -2709,6 +2732,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3246,6 +3271,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &809868944
 GameObject:
   m_ObjectHideFlags: 0
@@ -3397,6 +3424,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
   ObstacleNumber: 0
 --- !u!1 &813000822
 GameObject:
@@ -3549,6 +3578,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &850116436
 GameObject:
   m_ObjectHideFlags: 0
@@ -3700,6 +3731,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &882239789
 GameObject:
   m_ObjectHideFlags: 0
@@ -3711,7 +3744,6 @@ GameObject:
   - component: {fileID: 882239790}
   - component: {fileID: 882239791}
   - component: {fileID: 882239793}
-  - component: {fileID: 882239794}
   m_Layer: 6
   m_Name: 5th Layer (2)
   m_TagString: Untagged
@@ -3831,26 +3863,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19.2, y: 10.8}
   m_EdgeRadius: 0
---- !u!114 &882239794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 882239789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6af5bc24d326d4941be394da3e32aa9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _length: 0
-  _forwardParallaxSpeed: 0
-  _backwordParallaxSpeed: 0
-  _currentSpeed: 0
-  _resetterLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  _resetPosition: 0
 --- !u!1 &883056769
 GameObject:
   m_ObjectHideFlags: 0
@@ -4160,6 +4172,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4419,6 +4433,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
   ObstacleNumber: 0
 --- !u!1 &1017074958
 GameObject:
@@ -4571,6 +4587,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &1056625100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4581,7 +4599,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1056625101}
   - component: {fileID: 1056625102}
-  - component: {fileID: 1056625105}
   - component: {fileID: 1056625104}
   m_Layer: 6
   m_Name: 5th Layer
@@ -4702,26 +4719,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 19.2, y: 10.8}
   m_EdgeRadius: 0
---- !u!114 &1056625105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056625100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6af5bc24d326d4941be394da3e32aa9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _length: 0
-  _forwardParallaxSpeed: 0
-  _backwordParallaxSpeed: 0
-  _currentSpeed: 0
-  _resetterLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  _resetPosition: 0
 --- !u!1 &1072630104
 GameObject:
   m_ObjectHideFlags: 0
@@ -5459,6 +5456,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &1462979293
 GameObject:
   m_ObjectHideFlags: 0
@@ -5650,6 +5649,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _resetPosition: 0
+  _startPos: {x: 0, y: 0, z: 0}
+  StopAtStart: 0
 --- !u!1 &1550381574
 GameObject:
   m_ObjectHideFlags: 0
