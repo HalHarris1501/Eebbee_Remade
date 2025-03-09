@@ -157,14 +157,17 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 
     public void ManageWin() // function called when the game is won
     {
+        _player.gameObject.transform.position = new Vector3(_player.gameObject.transform.position.x, 0f, 0f);
         Debug.Log("Bee Win");
+        StopMovers();
+        DisableBee();
         if (_seedStorage.SeedRandomised == true)
         {
             ScoreManager.Instance.SetScore();
         }
         GetPowerup(PowerupType.Nectar_Doubler).PowerupData.Active = false; //deactivate point doubler on win
         SaveManager.Instance.SaveScoreData();
-        SceneSwapper.Instance.LoadSceneByName("Menu Scene");
+        _beeAnimator.SetTrigger("HasWon");
     }
 
     public void ManageLose() // function called when the game is lost
@@ -182,8 +185,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         }
 
         Debug.Log("Bee ded");
-        _direction = Direction.Stop;
-        NotifyObservers(_direction, ISubject<Direction>.NotificationType.Changed);
+        StopMovers();
         DisableBee();
         ScoreManager.Instance.SetFailScore();
         foreach(PowerupObject powerup in _powerups)
