@@ -5426,6 +5426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 843690024}
   - component: {fileID: 843690023}
+  - component: {fileID: 843690025}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -5447,6 +5448,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _musicSource: {fileID: 1301104059}
   _soundEffectsSource: {fileID: 2116022567}
+  _musicEnabled: 1
+  _musicVolume: 0
+  _sfxEnabled: 1
+  _sfxVolume: 0
   _audioClips:
   - Tag: 0
     Clip: {fileID: 8300000, guid: 8de609720ac25044c84937a6eef842b8, type: 3}
@@ -5469,6 +5474,19 @@ Transform:
   - {fileID: 2116022566}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &843690025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843690022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ba9ecbd192a4a4fa229a44a26b6831, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectID: 
 --- !u!1 &854306862
 GameObject:
   m_ObjectHideFlags: 0
@@ -14288,7 +14306,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

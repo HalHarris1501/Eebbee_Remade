@@ -36,6 +36,12 @@ public class PlayerMovement : MonoBehaviour
     {
         inputVector = _playerInputActions.FindAction("Movement").ReadValue<Vector2>();
         _beeRigidBody.AddForce(new Vector3(inputVector.x, inputVector.y, 0) * _acceleration, ForceMode2D.Force);
+
+        if (_playerInputActions.FindAction("Movement").ReadValue<Vector2>().magnitude != 0f)
+        {
+            AudioManager.Instance.PlaySoundAffect(AudioTag.BuzzSound, false);
+        }
+
         if (_beeRigidBody.velocity.magnitude > _maxSpeed)
         {
             _beeRigidBody.velocity = Vector2.ClampMagnitude(_beeRigidBody.velocity, _maxSpeed);

@@ -29,6 +29,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource _musicSource;
     [SerializeField] private AudioSource _soundEffectsSource;
 
+    [Header("Audio Settings")]
+    [SerializeField] private bool _musicEnabled = true;
+    [SerializeField] private float _musicVolume;
+    [SerializeField] private bool _sfxEnabled = true;
+    [SerializeField] private float _sfxVolume;
+
     [Header("Audio clips")]
     [SerializeField] private List<AudioStorage> _audioClips;
 
@@ -41,11 +47,20 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
-    public void PlaySoundAffect(AudioTag tag)
+    public void PlaySoundAffect(AudioTag tag, bool overrideSound)
     {
+        if (!_sfxEnabled)
+        {
+            return;
+        }
+
+        if(_soundEffectsSource.isPlaying == true && overrideSound == false)
+        {
+            return;
+        }
+
         if (FindClip(tag) != null)
         {
             _soundEffectsSource.clip = FindClip(tag);
@@ -59,6 +74,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioTag tag)
     {
+        if(!_musicEnabled)
+        {
+            return;
+        }
+
         if (FindClip(tag) != null)
         {
             _musicSource.clip = FindClip(tag);

@@ -17,5 +17,8 @@ public enum AudioTag
     DeathSound,
     WinSound,
     StartSound,
+    ButtonSound,
+    SkinChangeSound,
+    PurchaseSound
 }
 
