@@ -35,4 +35,6 @@ public class SaveData
     public List<PowerupData> Powerups;
 
     public List<PlayerSkinData> Skins;
+
+    public SettingsData settingsData;
 }

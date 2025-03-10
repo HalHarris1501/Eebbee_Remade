@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviour, IObserver<SaveManager>
 {
     //Singleton pattern
     #region Singleton
@@ -34,13 +34,17 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private float _musicVolume;
     [SerializeField] private bool _sfxEnabled = true;
     [SerializeField] private float _sfxVolume;
+    [SerializeField] private SettingsSO _settingsObject;
 
     [Header("Audio clips")]
     [SerializeField] private List<AudioStorage> _audioClips;
 
+
     // Start is called before the first frame update
     void Start()
     {
+        SaveManager.Instance.RegisterObserver(this);
+        UpdateSettings();
         PlayMusic(AudioTag.MenuMusic);
     }
 
@@ -51,11 +55,6 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySoundAffect(AudioTag tag, bool overrideSound)
     {
-        if (!_sfxEnabled)
-        {
-            return;
-        }
-
         if(_soundEffectsSource.isPlaying == true && overrideSound == false)
         {
             return;
@@ -74,11 +73,6 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusic(AudioTag tag)
     {
-        if(!_musicEnabled)
-        {
-            return;
-        }
-
         if (FindClip(tag) != null)
         {
             _musicSource.clip = FindClip(tag);
@@ -103,5 +97,38 @@ public class AudioManager : MonoBehaviour
         }
 
         return soundToPlay;
+    }
+
+    public void UpdateSettings()
+    {
+        _musicEnabled = _settingsObject.SettingsData.MusicOn;
+        _musicVolume = _settingsObject.SettingsData.MusicVolume;
+        _sfxEnabled = _settingsObject.SettingsData.SFXOn;
+        _sfxVolume = _settingsObject.SettingsData.SFXVolume;
+        UpdateSources();
+    }
+    
+    private void UpdateSources()
+    {
+        _soundEffectsSource.mute = !_sfxEnabled;
+        _soundEffectsSource.volume = _sfxVolume;
+        _musicSource.mute = !_musicEnabled;
+        _musicSource.volume = _musicVolume;
+    }
+
+    public void NewItemAdded(SaveManager type)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ItemRemoved(SaveManager type)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void ItemAltered(SaveManager type, int count)
+    {
+        UpdateSettings();
+        SettingsHandler.Instance.LoadSettings();
     }
 }

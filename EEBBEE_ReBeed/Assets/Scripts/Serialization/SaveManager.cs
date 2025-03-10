@@ -31,6 +31,7 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
     [Header("Save Fields")]
     [SerializeField] private List<SkinObject> _skins;
     [SerializeField] private List<PowerupObject> _powerups;
+    [SerializeField] private SettingsSO _settingsObject;
 
     // Start is called before the first frame update
     void Start()
@@ -106,6 +107,13 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         Save();
     }
 
+    public void SaveSettingsData()
+    {
+        SaveData.current.settingsData = _settingsObject.SettingsData;
+
+        Save();
+    }
+
     public void Save()
     {
         SerializationManager.Save("MainSave", SaveData.current);
@@ -129,6 +137,8 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         ScoreStorage.current.TotalScore = SaveData.current.TotalScore;
         ScoreStorage.current.HighScore = SaveData.current.HighScore;
         //Debug.Log("Score data loaded and set");
+
+        _settingsObject.SettingsData = SaveData.current.settingsData;
 
         if (SaveData.current.Powerups == null  || SaveData.current.Powerups.Count <= 0)
         {
