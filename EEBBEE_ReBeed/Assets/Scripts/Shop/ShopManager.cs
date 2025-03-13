@@ -26,6 +26,18 @@ public class ShopManager : MonoBehaviour, IObserver<SaveManager>
     }
     #endregion
 
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     [Header("ScoreTextManager")]
     [SerializeField] private ScoreTextSetter scoreTextSetter;
 

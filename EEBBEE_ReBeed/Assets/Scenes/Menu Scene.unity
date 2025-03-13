@@ -4216,7 +4216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3246d2c8e7a6ca4fab8b36c68fd9c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _settingsSO: {fileID: 11400000, guid: 0fadac90c46cd044898c1c29fdf73d11, type: 2}
+  _settingsSO: {fileID: 11400000, guid: ca65a571ed7d0f34ab329b6baad83688, type: 2}
   _musicToggle: {fileID: 1203350236}
   _musicVolumeSlider: {fileID: 1173648720}
   _sfxToggle: {fileID: 1878305501}
@@ -4311,6 +4311,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 1848512960}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 567870534}
+        m_TargetAssemblyTypeName: SettingsHandler, Assembly-CSharp
+        m_MethodName: LoadSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6667,7 +6679,7 @@ MonoBehaviour:
   _musicVolume: 0
   _sfxEnabled: 1
   _sfxVolume: 0
-  _settingsObject: {fileID: 11400000, guid: 0fadac90c46cd044898c1c29fdf73d11, type: 2}
+  _settingsObject: {fileID: 11400000, guid: ca65a571ed7d0f34ab329b6baad83688, type: 2}
   _audioClips:
   - Tag: 0
     Clip: {fileID: 8300000, guid: 8de609720ac25044c84937a6eef842b8, type: 3}
@@ -16886,7 +16898,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 40a141fc3ba5b1c4a97d921120beff73, type: 2}
   - {fileID: 11400000, guid: fbb49cc8fe635ac4282383c29ffd48f2, type: 2}
   - {fileID: 11400000, guid: e5cb6893d580f65429a2f2c1e69e5435, type: 2}
-  _settingsObject: {fileID: 11400000, guid: 0fadac90c46cd044898c1c29fdf73d11, type: 2}
+  _settingsObject: {fileID: 11400000, guid: ca65a571ed7d0f34ab329b6baad83688, type: 2}
 --- !u!4 &2050745937
 Transform:
   m_ObjectHideFlags: 0

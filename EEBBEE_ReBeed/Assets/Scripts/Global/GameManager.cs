@@ -47,13 +47,13 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 
     private void Awake()
     {
-        if (_instance == null) //if there's no instance of the Money manager, make this the GameManager, ortherwise delete this to avoid duplicates
+        if (_instance != null && _instance != this)
         {
-            _instance = this;
+            Destroy(this.gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            _instance = this;
         }
     }
 

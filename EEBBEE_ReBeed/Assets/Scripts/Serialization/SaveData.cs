@@ -36,5 +36,5 @@ public class SaveData
 
     public List<PlayerSkinData> Skins;
 
-    public SettingsData settingsData;
+    public SettingsData SettingsData;
 }

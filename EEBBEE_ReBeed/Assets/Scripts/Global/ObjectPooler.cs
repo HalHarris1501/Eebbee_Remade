@@ -35,6 +35,18 @@ public class ObjectPooler : MonoBehaviour
     }
     #endregion
 
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     [SerializeField] private List<Pool> pools;
     private Dictionary<string, Queue<GameObject>> poolDictionary;
 

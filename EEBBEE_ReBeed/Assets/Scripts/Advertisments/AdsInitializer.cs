@@ -30,10 +30,21 @@ public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
             return _instance;
         }
     }
+
+
     #endregion
 
-    void Awake()
+    private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         InitializeAds();
     }
 

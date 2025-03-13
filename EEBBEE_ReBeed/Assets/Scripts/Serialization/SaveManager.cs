@@ -24,6 +24,17 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         }
     }
     #endregion
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
 
     [Header("Observers")]
     private List<IObserver<SaveManager>> _observers = new List<IObserver<SaveManager>>();
@@ -109,7 +120,7 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
 
     public void SaveSettingsData()
     {
-        SaveData.current.settingsData = _settingsObject.SettingsData;
+        SaveData.current.SettingsData = _settingsObject.SettingsData;
 
         Save();
     }
@@ -138,7 +149,10 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         ScoreStorage.current.HighScore = SaveData.current.HighScore;
         //Debug.Log("Score data loaded and set");
 
-        _settingsObject.SettingsData = SaveData.current.settingsData;
+        if (SaveData.current.SettingsData != null && _settingsObject.SettingsData != null)
+        {
+            _settingsObject.SettingsData = SaveData.current.SettingsData;
+        }
 
         if (SaveData.current.Powerups == null  || SaveData.current.Powerups.Count <= 0)
         {

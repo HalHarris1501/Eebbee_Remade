@@ -23,6 +23,18 @@ public class AudioManager : MonoBehaviour, IObserver<SaveManager>
             return _instance;
         }
     }
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
     #endregion
 
     [Header("Audio Sources")]

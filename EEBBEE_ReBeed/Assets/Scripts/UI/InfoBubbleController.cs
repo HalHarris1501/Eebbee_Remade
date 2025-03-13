@@ -26,6 +26,18 @@ public class InfoBubbleController : MonoBehaviour
     }
     #endregion
 
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     [SerializeField] private GameObject _infoBubble;
     [SerializeField] private TextMeshProUGUI _infoBubbleText;
 

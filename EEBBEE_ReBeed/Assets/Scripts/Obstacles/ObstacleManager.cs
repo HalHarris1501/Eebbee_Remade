@@ -47,8 +47,17 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     [Header("Background Objects")]
     [SerializeField] private List<Background> _backgroundObjects;
 
+
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
         SetSeed();
     }
 

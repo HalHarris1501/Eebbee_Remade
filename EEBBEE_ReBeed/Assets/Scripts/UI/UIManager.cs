@@ -87,7 +87,13 @@ public class UIManager : MonoBehaviour, IObserver<Score>, IObserver<CollectableD
     {
         if(SystemInfo.deviceType == DeviceType.Desktop)
         {
+            Debug.Log("Desktop");
             _mobileUI.SetActive(false);
+        }
+        else if(SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            Debug.Log("Handheld");
+            _mobileUI.SetActive(true);
         }
     }
 
