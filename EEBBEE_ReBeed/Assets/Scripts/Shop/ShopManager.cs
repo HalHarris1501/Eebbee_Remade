@@ -36,6 +36,24 @@ public class ShopManager : MonoBehaviour, IObserver<SaveManager>
         {
             _instance = this;
         }
+
+        foreach (SkinObject skin in _skinsData)
+        {
+            ShopItemPrefab newItem = Instantiate(_purchableItemPrefab);
+            newItem.gameObject.transform.SetParent(_skinsGridLayout.transform);
+            newItem.SetSkin(skin);
+            _shopItems.Add(newItem);
+        }
+
+        foreach (PowerupObject powerup in _powerupsData)
+        {
+            ShopItemPrefab newItem = Instantiate(_purchableItemPrefab);
+            newItem.gameObject.transform.SetParent(_powerupsGridLayout.transform);
+            newItem.SetPowerup(powerup);
+            _shopItems.Add(newItem);
+        }
+        SaveManager.Instance.RegisterObserver(this);
+        UpdateAllShopItems();
     }
 
     [Header("ScoreTextManager")]
@@ -117,27 +135,6 @@ public class ShopManager : MonoBehaviour, IObserver<SaveManager>
         {
             shopItem.UpdateUI();
         }
-    }
-
-    private void Awake()
-    {
-        foreach(SkinObject skin in _skinsData)
-        {
-            ShopItemPrefab newItem = Instantiate(_purchableItemPrefab);
-            newItem.gameObject.transform.SetParent(_skinsGridLayout.transform);
-            newItem.SetSkin(skin);
-            _shopItems.Add(newItem);
-        }
-
-        foreach(PowerupObject powerup in _powerupsData)
-        {
-            ShopItemPrefab newItem = Instantiate(_purchableItemPrefab);
-            newItem.gameObject.transform.SetParent(_powerupsGridLayout.transform);
-            newItem.SetPowerup(powerup);
-            _shopItems.Add(newItem);
-        }
-        SaveManager.Instance.RegisterObserver(this);
-        UpdateAllShopItems();
     }
 
     public void SetPlayerSkin(SkinObject skinToSet)
