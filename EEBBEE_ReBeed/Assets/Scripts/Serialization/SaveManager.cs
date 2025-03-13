@@ -121,7 +121,7 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
     public void SaveSettingsData()
     {
         SaveData.current.SettingsData = _settingsObject.SettingsData;
-
+        Debug.Log("Saving settings data");
         Save();
     }
 
@@ -152,6 +152,7 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         if (SaveData.current.SettingsData != null && _settingsObject.SettingsData != null)
         {
             _settingsObject.SettingsData = SaveData.current.SettingsData;
+            Debug.Log("loaded settings data");
         }
 
         if (SaveData.current.Powerups == null  || SaveData.current.Powerups.Count <= 0)
