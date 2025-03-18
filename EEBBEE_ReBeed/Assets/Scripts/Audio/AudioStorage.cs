@@ -19,6 +19,7 @@ public enum AudioTag
     StartSound,
     ButtonSound,
     SkinChangeSound,
-    PurchaseSound
+    PurchaseSound,
+    HelmetSound
 }
 

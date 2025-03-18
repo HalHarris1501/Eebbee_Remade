@@ -178,6 +178,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         }
         if(GetPowerup(PowerupType.Helmet).PowerupData.Active)
         {
+            AudioManager.Instance.PlaySoundAffect(AudioTag.HelmetSound, true);
             GetPowerup(PowerupType.Helmet).PowerupData.Active = false;
             _helmet.SetActive(false);
             StartCoroutine(InvincibleTimerCoroutine());

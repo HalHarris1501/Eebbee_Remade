@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class PlayerAnimationEventHandler : MonoBehaviour
 {
+    private void StartingAnimationStarted()
+    {
+        AudioManager.Instance.PlaySoundAffect(AudioTag.StartSound, true);
+    }
     private void StartingAnimationFinished()
     {
         GameManager.Instance.StartGame();
+    }
+    private void WiningAnimationStarted()
+    {
+        AudioManager.Instance.PlaySoundAffect(AudioTag.WinSound, true);
+    }
+    private void DeathAnimationStarted()
+    {
+        AudioManager.Instance.PlaySoundAffect(AudioTag.DeathSound, true);
     }
     private void EndingAnimationFinished()
     {

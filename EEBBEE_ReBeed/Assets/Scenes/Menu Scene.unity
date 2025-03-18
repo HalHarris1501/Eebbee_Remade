@@ -6779,6 +6779,8 @@ MonoBehaviour:
     Clip: {fileID: 8300000, guid: e99983246acb4d44e94b9e7fdb822fa0, type: 3}
   - Tag: 8
     Clip: {fileID: 8300000, guid: a9b526c2999a024418c539eb36ce9fd7, type: 3}
+  - Tag: 9
+    Clip: {fileID: 8300000, guid: 84d4a9a94d3edb04bb2e56f2bd3036e8, type: 3}
   - Tag: 1
     Clip: {fileID: 8300000, guid: 110ac5e93e0a14d468f11e17dd5fe3e0, type: 3}
 --- !u!4 &843690024
