@@ -83,6 +83,11 @@ public class AudioManager : MonoBehaviour, IObserver<SaveManager>
         }
     }
 
+    public void PlayButtonSoundAffect()
+    {
+        PlaySoundAffect(AudioTag.ButtonSound, true);
+    }
+
     public void PlayMusic(AudioTag tag)
     {
         if (FindClip(tag) != null)

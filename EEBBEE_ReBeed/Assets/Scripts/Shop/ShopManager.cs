@@ -92,6 +92,8 @@ public class ShopManager : MonoBehaviour, IObserver<SaveManager>
         buttonPressed.UpdateUI(skinToBuy);
         scoreTextSetter.UpdateUI();
 
+        AudioManager.Instance.PlaySoundAffect(AudioTag.PurchaseSound, true);
+
         SaveManager.Instance.SaveSkinData(skinToBuy.SkinData);
         SaveManager.Instance.SaveScoreData();
     }
@@ -114,6 +116,8 @@ public class ShopManager : MonoBehaviour, IObserver<SaveManager>
         buttonPressed.UpdateUI(powerupToBuy);
         scoreTextSetter.UpdateUI();
 
+        AudioManager.Instance.PlaySoundAffect(AudioTag.PurchaseSound, true);
+
         SaveManager.Instance.SavePowerupData(powerupToBuy.PowerupData);
         SaveManager.Instance.SaveScoreData();
     }
@@ -124,6 +128,8 @@ public class ShopManager : MonoBehaviour, IObserver<SaveManager>
         scoreTextSetter.UpdateUI();
 
         SaveManager.Instance.SaveScoreData();
+
+        AudioManager.Instance.PlaySoundAffect(AudioTag.PurchaseSound, true);
 
         _notificationText.text = _adPointsReward + " points added!";
         _notificationWindow.SetActive(true);        
@@ -142,6 +148,7 @@ public class ShopManager : MonoBehaviour, IObserver<SaveManager>
         PlayerData.current.CurrentSkinData = skinToSet.SkinData;
         UpdateAllShopItems();
         SaveManager.Instance.SavePlayerData();
+        AudioManager.Instance.PlaySoundAffect(AudioTag.SkinChangeSound, true);
     }
 
     public void NewItemAdded(SaveManager type)
