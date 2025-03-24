@@ -31,9 +31,12 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     // Call this public method when you want to get an ad ready to show.
     public void LoadAd()
     {
-        // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
-        Debug.Log("Loading Ad: " + _adUnitId);
-        Advertisement.Load(_adUnitId, this);
+        if (_adUnitId != null)
+        {
+            // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
+            Debug.Log("Loading Ad: " + _adUnitId);
+            Advertisement.Load(_adUnitId, this);
+        }
     }
 
     // If the ad successfully loads, add a listener to the button and enable it:

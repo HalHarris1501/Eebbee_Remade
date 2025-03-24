@@ -15,7 +15,7 @@ MonoBehaviour:
   PowerupData:
     PowerupType: 0
     Active: 0
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 8dc783fc80953b742b50a3b654ef5d82, type: 3}
   Info: A little bee friend that will save 1/4 of your nectar if you don't make it
     back to the hive!
   Price: 10

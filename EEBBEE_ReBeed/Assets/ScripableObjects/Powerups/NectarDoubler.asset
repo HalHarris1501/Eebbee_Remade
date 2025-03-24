@@ -15,7 +15,7 @@ MonoBehaviour:
   PowerupData:
     PowerupType: 1
     Active: 0
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 21300000, guid: 01def4d6a1cb39f42ac67b1f53728bcc, type: 3}
   Info: A strange aura that seems to double the amount of nectar you receive from
     flowers
   Price: 25
