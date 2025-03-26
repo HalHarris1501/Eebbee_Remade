@@ -54,6 +54,14 @@ public class ShopItemPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.SetPlayerSkin(_skin); });
             _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Select";
         }
+        else if(!_skin.SkinData.Owned)
+        {
+            _purchaseButton.interactable = true;
+            _nameText.text = UnderscoreRemover(_skin.SkinData.SkinName.ToString());
+            _purchaseButton.GetComponentInChildren<TMP_Text>().text = _skin.Price + " Nectar";
+            _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_skin, this); });
+            _itemSprite.sprite = _skin.Skin;
+        }
     }
 
     public void UpdateUI(PowerupObject powerup)
@@ -62,6 +70,14 @@ public class ShopItemPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             _purchaseButton.interactable = false;
             _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Active!";
+        }
+        else
+        {
+            _purchaseButton.interactable = true;
+            _nameText.text = UnderscoreRemover(_powerup.PowerupData.PowerupType.ToString());
+            _purchaseButton.GetComponentInChildren<TMP_Text>().text = _powerup.Price + " Nectar";
+            _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_powerup, this); });
+            _itemSprite.sprite = _powerup.Sprite;
         }
     }
 
@@ -76,7 +92,7 @@ public class ShopItemPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     private void SkinSetUP()
     {
-        _nameText.text =  UnderscoreRemover(_skin.SkinData.SkinName.ToString());
+        _nameText.text = UnderscoreRemover(_skin.SkinData.SkinName.ToString());
         _purchaseButton.GetComponentInChildren<TMP_Text>().text = _skin.Price + " Nectar";
         _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_skin, this); });
         _itemSprite.sprite = _skin.Skin;

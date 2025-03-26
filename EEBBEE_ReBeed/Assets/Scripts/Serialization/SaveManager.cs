@@ -44,6 +44,9 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
     [SerializeField] private List<PowerupObject> _powerups;
     [SerializeField] private SettingsSO _settingsObject;
 
+    [Header("Default Save Data")]
+    [SerializeField] private SaveData _default;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +57,13 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
     void Update()
     {
         
+    }
+
+    public void ResetData()
+    {
+        SaveData.current = _default;
+        Save();
+        OnLoad();
     }
 
     public void SaveSkinData(PlayerSkinData skinData)
@@ -135,8 +145,7 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/MainSave.save");
         if(SaveData.current == null)
         {
-            //Debug.Log("No Save Loaded");
-            return;
+            SaveData.current = _default;
         }
 
 
