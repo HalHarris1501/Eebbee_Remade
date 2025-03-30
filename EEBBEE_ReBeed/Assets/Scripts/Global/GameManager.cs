@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 
     private void OnEnable()
     {
-        if(GetPowerup(PowerupType.Bee_Helper).PowerupData.Active)
+        if (GetPowerup(PowerupType.Bee_Helper).PowerupData.Active)
         {
             _helperBee.SetActive(true);
         }
@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     }
 
     public void StartGame()
-    {        
+    {
         _direction = Direction.Forward;
         NotifyObservers(_direction, ISubject<Direction>.NotificationType.Changed);
         _beeAnimator.SetTrigger("IsMovable");

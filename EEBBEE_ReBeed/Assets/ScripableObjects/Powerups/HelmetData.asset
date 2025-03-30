@@ -17,4 +17,4 @@ MonoBehaviour:
     Active: 0
   Sprite: {fileID: 21300000, guid: 956535b46a0f3854a814298547625f3c, type: 3}
   Info: A helmet to protect you from the first time you hit brambles
-  Price: 5
+  Price: 20

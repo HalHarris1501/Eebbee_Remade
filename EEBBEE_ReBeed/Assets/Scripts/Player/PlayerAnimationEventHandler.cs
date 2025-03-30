@@ -6,6 +6,7 @@ public class PlayerAnimationEventHandler : MonoBehaviour
 {
     private void StartingAnimationStarted()
     {
+        AudioManager.Instance.PlayMusic(AudioTag.GameMusic);
         AudioManager.Instance.PlaySoundAffect(AudioTag.StartSound, true);
     }
     private void StartingAnimationFinished()
@@ -22,6 +23,7 @@ public class PlayerAnimationEventHandler : MonoBehaviour
     }
     private void EndingAnimationFinished()
     {
+        AudioManager.Instance.PlayMusic(AudioTag.MenuMusic);
         GameManager.Instance.LoadMenu();
     }
 }

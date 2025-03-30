@@ -6,10 +6,17 @@ using UnityEngine;
 public enum SkinName
 {
     Default,
-    Inverted,
+    Inverse,
+    Naked,
+    Horizontal,
     Bee,
+    eeB,
+    Orange,
+    Blue,
+    Green,
+    Pink,
+    Red,
     RGBee,
-    Circle,
 }
 
 [System.Serializable]
