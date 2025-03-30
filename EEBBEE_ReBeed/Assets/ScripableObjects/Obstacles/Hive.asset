@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectList:
   - Type: 10
-    Position: {x: -8, y: 0, z: 0}
+    Position: {x: -9, y: 0, z: 0}
   FreeSpace:
   - {x: -13, y: -6}
   - {x: -13, y: -5}
@@ -74,7 +74,6 @@ MonoBehaviour:
   - {x: -9, y: -3}
   - {x: -9, y: -2}
   - {x: -9, y: -1}
-  - {x: -9, y: 0}
   - {x: -9, y: 1}
   - {x: -9, y: 2}
   - {x: -9, y: 3}
@@ -87,6 +86,7 @@ MonoBehaviour:
   - {x: -8, y: -3}
   - {x: -8, y: -2}
   - {x: -8, y: -1}
+  - {x: -8, y: 0}
   - {x: -8, y: 1}
   - {x: -8, y: 2}
   - {x: -8, y: 3}
