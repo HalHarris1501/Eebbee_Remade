@@ -5,6 +5,7 @@ using UnityEngine;
 public class SaveableObject : MonoBehaviour
 {
     public ObjectType ObjectType;
+    public GameObject Background;
 }
 
 public enum ObjectType

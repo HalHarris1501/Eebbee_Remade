@@ -46,6 +46,7 @@ public class SettingsHandler : MonoBehaviour
     [SerializeField] private Slider _musicVolumeSlider;
     [SerializeField] private Toggle _sfxToggle;
     [SerializeField] private Slider _sfxVolumeSlider;
+    [SerializeField] private Toggle _obstacleVisibilityToggle;
 
     public void SaveSettings()
     {
@@ -53,6 +54,7 @@ public class SettingsHandler : MonoBehaviour
         _settingsSO.SettingsData.MusicVolume = _musicVolumeSlider.value;
         _settingsSO.SettingsData.SFXOn = _sfxToggle.isOn;
         _settingsSO.SettingsData.SFXVolume = _sfxVolumeSlider.value;
+        _settingsSO.SettingsData.IncreasedVisibility = _obstacleVisibilityToggle.isOn;
         SaveManager.Instance.SaveSettingsData();
         AudioManager.Instance.UpdateSettings();
     }
@@ -63,5 +65,6 @@ public class SettingsHandler : MonoBehaviour
         _musicVolumeSlider.value = _settingsSO.SettingsData.MusicVolume;
         _sfxToggle.isOn = _settingsSO.SettingsData.SFXOn;
         _sfxVolumeSlider.value = _settingsSO.SettingsData.SFXVolume;
+        _obstacleVisibilityToggle.isOn = _settingsSO.SettingsData.IncreasedVisibility;
     }
 }

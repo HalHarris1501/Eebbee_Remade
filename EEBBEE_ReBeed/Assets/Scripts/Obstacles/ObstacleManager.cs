@@ -47,6 +47,9 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
     [Header("Background Objects")]
     [SerializeField] private List<Background> _backgroundObjects;
 
+    [Header("Settings Data")]
+    [SerializeField] private SettingsSO settingsSO;
+
 
     private void Awake()
     {
@@ -200,6 +203,7 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         foreach (SaveableObjectInfo saveableObject in objectList)
         {
             GameObject currentObject = ObjectPooler.Instance.SpawnFromPool(saveableObject.Type.ToString(), _obstacleBoxes[_currentBox].transform.position + saveableObject.Position, Quaternion.identity);
+            ActivateBackground(currentObject);
             CheckIfCollectable(currentObject, currentObstacleCollectableTypeList);
             currentObject.transform.SetParent(_obstacleBoxes[_currentBox].transform);
         }
@@ -207,6 +211,18 @@ public class ObstacleManager : MonoBehaviour, IObserver<Direction>
         if (_direction == Direction.Forward || _direction == Direction.Stop)
         {
             _activeCollectablesDictionary.Add(_obstacleNumTracker, currentObstacleCollectableTypeList);
+        }
+    }
+
+    private void ActivateBackground(GameObject currentObject)
+    {
+        if(settingsSO.SettingsData.IncreasedVisibility)
+        {
+            currentObject.GetComponent<SaveableObject>().Background.SetActive(true);
+        }
+        else
+        {
+            currentObject.GetComponent<SaveableObject>().Background.SetActive(false);
         }
     }
 

@@ -9,4 +9,5 @@ public class SettingsData
     public float MusicVolume = 1f;
     public bool SFXOn = true;
     public float SFXVolume = 1f;
+    public bool IncreasedVisibility = false;
 }
