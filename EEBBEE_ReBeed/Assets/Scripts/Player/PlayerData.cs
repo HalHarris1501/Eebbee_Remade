@@ -25,5 +25,27 @@ public class PlayerData
         }
     }
 
-    public PlayerSkinData CurrentSkinData;
+    private static PlayerSkinData _currentSkin;
+
+    public PlayerSkinData CurrentSkinData
+    {
+        get
+        {
+            if(_currentSkin == null)
+            {
+                PlayerSkinData playerSkinData = new PlayerSkinData();
+                playerSkinData.SkinName = SkinName.Default;
+                playerSkinData.Owned = true;
+                _currentSkin = playerSkinData;
+            }
+            return _currentSkin;
+        }
+        set
+        {
+            if(value != null)
+            {
+                _currentSkin = value;
+            }
+        }
+    }
 }

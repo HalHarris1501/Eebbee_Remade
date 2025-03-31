@@ -113,7 +113,7 @@ public class ScoreManager : MonoBehaviour, ISubject<Score>
         {
             ScoreStorage.current.TotalScore +=  Mathf.FloorToInt(_currentScore.ScoreCount / 4);
         }
-        ScoreStorage.current.PreviousRunScore = 0;
+        ScoreStorage.current.PreviousRunScore = _currentScore.ScoreCount;
     }
 
     private void OnEnable()

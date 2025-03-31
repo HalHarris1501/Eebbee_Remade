@@ -2336,7 +2336,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 1
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -11025,6 +11025,18 @@ MonoBehaviour:
       - m_Target: {fileID: 843690023}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: PlayButtonSoundAffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 264876909}
+        m_TargetAssemblyTypeName: MenusUIManager, Assembly-CSharp
+        m_MethodName: SaveAndQuit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19840,10 +19852,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5cb6893d580f65429a2f2c1e69e5435, type: 2}
   _settingsObject: {fileID: 11400000, guid: ca65a571ed7d0f34ab329b6baad83688, type: 2}
   _default:
-    PlayerData:
-      CurrentSkinData:
-        SkinName: 0
-        Owned: 1
     PreviousWinScore: 0
     TotalScore: 0
     HighScore: 0

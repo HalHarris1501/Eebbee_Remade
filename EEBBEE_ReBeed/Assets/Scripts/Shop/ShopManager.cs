@@ -37,6 +37,8 @@ public class ShopManager : MonoBehaviour, IObserver<SaveManager>
             _instance = this;
         }
 
+        _shopItems.Clear();
+
         foreach (SkinObject skin in _skinsData)
         {
             ShopItemPrefab newItem = Instantiate(_purchableItemPrefab);

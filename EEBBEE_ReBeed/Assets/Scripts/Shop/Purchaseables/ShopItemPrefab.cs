@@ -42,25 +42,27 @@ public class ShopItemPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void UpdateUI(SkinObject skin)
     {
-        if (PlayerData.current.CurrentSkinData == _skin.SkinData)
-        {
-            _purchaseButton.interactable = false;
-            _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Selected!";
-        }
-        else if(_skin.SkinData.Owned)
+        if (_skin.SkinData.Owned)
         {
             _purchaseButton.interactable = true;
             _purchaseButton.onClick.RemoveAllListeners();
             _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.SetPlayerSkin(_skin); });
-            _purchaseButton.GetComponentInChildren<TMP_Text>().text = "Select";
+            _purchaseButton.GetComponentInChildren<TMP_Text>(true).text = "Select";
         }
-        else if(!_skin.SkinData.Owned)
+        else if (!_skin.SkinData.Owned)
         {
             _purchaseButton.interactable = true;
+            _purchaseButton.onClick.RemoveAllListeners();
             _nameText.text = UnderscoreRemover(_skin.SkinData.SkinName.ToString());
-            _purchaseButton.GetComponentInChildren<TMP_Text>().text = _skin.Price + " Nectar";
+            _purchaseButton.GetComponentInChildren<TMP_Text>(true).text = _skin.Price + " Nectar";
             _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_skin, this); });
             _itemSprite.sprite = _skin.Skin;
+        }
+
+        if (PlayerData.current.CurrentSkinData.SkinName == _skin.SkinData.SkinName)
+        {
+            _purchaseButton.interactable = false;
+            _purchaseButton.GetComponentInChildren<TMP_Text>(true).text = "Selected!";
         }
     }
 
@@ -75,7 +77,7 @@ public class ShopItemPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             _purchaseButton.interactable = true;
             _nameText.text = UnderscoreRemover(_powerup.PowerupData.PowerupType.ToString());
-            _purchaseButton.GetComponentInChildren<TMP_Text>().text = _powerup.Price + " Nectar";
+            _purchaseButton.GetComponentInChildren<TMP_Text>(true).text = _powerup.Price + " Nectar";
             _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_powerup, this); });
             _itemSprite.sprite = _powerup.Sprite;
         }
@@ -84,7 +86,7 @@ public class ShopItemPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private void PowerUpSetUp()
     {
         _nameText.text = UnderscoreRemover(_powerup.PowerupData.PowerupType.ToString());
-        _purchaseButton.GetComponentInChildren<TMP_Text>().text = _powerup.Price + " Nectar";
+        _purchaseButton.GetComponentInChildren<TMP_Text>(true).text = _powerup.Price + " Nectar";
         _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_powerup, this);  });
         _itemSprite.sprite = _powerup.Sprite;
         UpdateUI(_powerup);
@@ -93,7 +95,7 @@ public class ShopItemPrefab : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private void SkinSetUP()
     {
         _nameText.text = UnderscoreRemover(_skin.SkinData.SkinName.ToString());
-        _purchaseButton.GetComponentInChildren<TMP_Text>().text = _skin.Price + " Nectar";
+        _purchaseButton.GetComponentInChildren<TMP_Text>(true).text = _skin.Price + " Nectar";
         _purchaseButton.onClick.AddListener(delegate { ShopManager.Instance.PurchaseItem(_skin, this); });
         _itemSprite.sprite = _skin.Skin;
         UpdateUI(_skin);
