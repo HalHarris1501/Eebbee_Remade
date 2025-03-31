@@ -43,4 +43,9 @@ public class MenusUIManager : MonoBehaviour
         _confimationMenuText.text = _resetDataMenuMessage;
         _confirmButton.onClick.AddListener(delegate { SaveManager.Instance.ResetData(); });
     }
+
+    public void SaveAndQuit()
+    {
+        SaveManager.Instance.SaveAndQuit();
+    }
 }

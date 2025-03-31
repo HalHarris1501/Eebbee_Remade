@@ -59,6 +59,29 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         
     }
 
+    public void SaveAndQuit()
+    {
+        SaveAll();
+        Application.Quit();
+    }
+
+    public void SaveAll()
+    {
+        foreach (SkinObject skin in _skins)
+        {
+            UpdateSkinData(skin.SkinData);
+        }
+        foreach (PowerupObject powerup in _powerups)
+        {
+            UpdatePowerupData(powerup.PowerupData);
+        }
+
+        UpdatePlayerData();
+        UpdateScoreData();
+        UpdateSettingsData();
+        Save();
+    }
+
     public void ResetData()
     {
         SaveData.current = _default;
@@ -67,6 +90,12 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
     }
 
     public void SaveSkinData(PlayerSkinData skinData)
+    {
+        UpdateSkinData(skinData);
+        Save();
+    }
+
+    private void UpdateSkinData(PlayerSkinData skinData)
     {
         if (SaveData.current.Skins == null || SaveData.current.Skins.Count <= 0)
         {
@@ -82,42 +111,57 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
                 return;
             }
         }
-        Add:
+    Add:
         SaveData.current.Skins.Add(skinData);//if not in, add save data
         //Debug.Log("Saving Skins data");
-        Save();
     }
 
     public void SavePowerupData(PowerupData powerupData)
     {
-        if(SaveData.current.Powerups == null || SaveData.current.Powerups.Count <= 0)
+        UpdatePowerupData(powerupData);
+        Save();
+    }
+
+    private void UpdatePowerupData(PowerupData powerupData)
+    {
+        if (SaveData.current.Powerups == null || SaveData.current.Powerups.Count <= 0)
         {
             SaveData.current.Powerups = new List<PowerupData>();
             goto Add;
         }
-        foreach(PowerupData data in SaveData.current.Powerups)
+        foreach (PowerupData data in SaveData.current.Powerups)
         {
-            if(data.PowerupType == powerupData.PowerupType)//check if powerup data has already been saved
+            if (data.PowerupType == powerupData.PowerupType)//check if powerup data has already been saved
             {
                 SaveData.current.Powerups.Remove(data);//if it has delete and save new data
                 SaveData.current.Powerups.Add(powerupData);
                 return;
             }
         }
-        Add:
+    Add:
         SaveData.current.Powerups.Add(powerupData);//if not in, add save data#
         //Debug.Log("Saving Powerup data");
-        Save();
     }
 
     public void SavePlayerData()
     {
-        SaveData.current.PlayerData = PlayerData.current;
-        //Debug.Log("Saving Player data");
+        UpdatePlayerData();
         Save();
     }
 
+    private void UpdatePlayerData()
+    {
+        SaveData.current.PlayerData = PlayerData.current;
+        //Debug.Log("Saving Player data");
+    }
+
     public void SaveScoreData()
+    {
+        UpdateScoreData();
+        Save();
+    }
+
+    private void UpdateScoreData()
     {
         SaveData.current.PreviousWinScore = ScoreStorage.current.PreviousWinScore;
         SaveData.current.PreviousRunScore = ScoreStorage.current.PreviousRunScore;
@@ -125,14 +169,18 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         SaveData.current.HighScore = ScoreStorage.current.HighScore;
 
         //Debug.Log("Saving score data");
-        Save();
     }
 
     public void SaveSettingsData()
     {
+        UpdateSettingsData();
+        Save();
+    }
+
+    private void UpdateSettingsData()
+    {
         SaveData.current.SettingsData = _settingsObject.SettingsData;
         Debug.Log("Saving settings data");
-        Save();
     }
 
     public void Save()
