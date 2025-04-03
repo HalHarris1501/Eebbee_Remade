@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
     [SerializeField] private float _invincibleTime = 1f;
 
     [Header("Bee Visuals References")]
+    [SerializeField] private Sprite _defualtSkin;
     [SerializeField] private GameObject _helperBee;
     [SerializeField] private GameObject _nectarDoubler;
     [SerializeField] private GameObject _helmet;
@@ -89,7 +90,12 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
 
         try
         {
-            _beeSprite.GetComponent<SpriteRenderer>().sprite = FindSkin(PlayerData.current.CurrentSkinData).Skin;
+            Sprite temp = _beeSprite.GetComponent<SpriteRenderer>().sprite;
+            temp = FindSkin(PlayerData.current.CurrentSkinData).Skin;
+            if(temp == null)
+            {
+                temp = _defualtSkin;
+            }
         }
         catch 
         {

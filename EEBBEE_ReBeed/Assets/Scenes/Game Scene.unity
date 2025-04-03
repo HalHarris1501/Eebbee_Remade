@@ -5026,6 +5026,7 @@ MonoBehaviour:
   _seedStorage: {fileID: 11400000, guid: 89395f773aea56e4c819959d7059acba, type: 2}
   _invincible: 0
   _invincibleTime: 2
+  _defualtSkin: {fileID: 21300000, guid: 988368778d88de34cb1e02dcd6759fa8, type: 3}
   _helperBee: {fileID: 353115585}
   _nectarDoubler: {fileID: 66690999}
   _helmet: {fileID: 1086189767}
