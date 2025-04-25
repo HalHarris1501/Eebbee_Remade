@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class SaveableObject : MonoBehaviour
 {
-    public ObjectType ObjectType;
-    public GameObject Background;
+    public ObjectType ObjectType; //the enum for the type of object that this is
+    public GameObject Background; //a gameobject that can be activated in settings, making all objects more visible
 }
 
+//enum for all different object types
 public enum ObjectType
 {
     Wall,
