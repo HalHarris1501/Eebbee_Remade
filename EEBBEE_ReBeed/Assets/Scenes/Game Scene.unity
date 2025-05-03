@@ -773,8 +773,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _length: 0
-  _forwardParallaxSpeed: -0.2
-  _backwordParallaxSpeed: 0.2
+  _forwardParallaxSpeed: -0.175
+  _backwordParallaxSpeed: 0.175
   _currentSpeed: 0
   _resetterLayer:
     serializedVersion: 2
@@ -3417,8 +3417,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _length: 0
-  _forwardParallaxSpeed: -0.2
-  _backwordParallaxSpeed: 0.2
+  _forwardParallaxSpeed: -0.175
+  _backwordParallaxSpeed: 0.175
   _currentSpeed: 0
   _resetterLayer:
     serializedVersion: 2
@@ -4426,8 +4426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _length: 0
-  _forwardParallaxSpeed: -0.2
-  _backwordParallaxSpeed: 0.2
+  _forwardParallaxSpeed: -0.175
+  _backwordParallaxSpeed: 0.175
   _currentSpeed: 0
   _resetterLayer:
     serializedVersion: 2
@@ -6587,7 +6587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _acceleration: 100
   _speed: 0
-  _maxSpeed: 20
+  _maxSpeed: 15
   _obstacleLayer:
     serializedVersion: 2
     m_Bits: 256
