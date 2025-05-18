@@ -9,6 +9,7 @@ public class ParticleEffectsManager : MonoBehaviour, IObserver<Score>
 
     [Header("ParticleSystemReferences")]
     [SerializeField] private ParticleSystem _nectarSystem;
+    [SerializeField] private ParticleSystem _deathSystem;
 
     //Singleton pattern
     #region Singleton
@@ -47,7 +48,6 @@ public class ParticleEffectsManager : MonoBehaviour, IObserver<Score>
     void Start()
     {
         ScoreManager.Instance.RegisterObserver(this);
-        PlayerMovement.onPlayerDeath += StopNectar;
     }
 
     // Update is called once per frame
@@ -58,7 +58,7 @@ public class ParticleEffectsManager : MonoBehaviour, IObserver<Score>
 
     private void OnDisable()
     {
-        PlayerMovement.onPlayerDeath -= StopNectar;
+
     }
 
     private void UpNectarCount()
@@ -71,6 +71,11 @@ public class ParticleEffectsManager : MonoBehaviour, IObserver<Score>
     {
         ParticleSystem.EmissionModule nectarSystemEmission = _nectarSystem.emission;
         nectarSystemEmission.rateOverTime = 0;
+    }
+
+    public void TriggerDeathExplosion()
+    {
+        _deathSystem.Play();
     }
 
     public void ItemAltered(Score score, int count)

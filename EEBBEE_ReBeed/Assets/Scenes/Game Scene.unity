@@ -8651,6 +8651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nectarSystem: {fileID: 900063657}
+  _deathSystem: {fileID: 197006976}
 --- !u!4 &860273731
 Transform:
   m_ObjectHideFlags: 0

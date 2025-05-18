@@ -21,6 +21,10 @@ public class PlayerAnimationEventHandler : MonoBehaviour
     {
         AudioManager.Instance.PlaySoundAffect(AudioTag.DeathSound, true);
     }
+    private void DeathExplosionTrigger()
+    {
+        ParticleEffectsManager.Instance.TriggerDeathExplosion();
+    }
     private void EndingAnimationFinished()
     {
         AudioManager.Instance.PlayMusic(AudioTag.MenuMusic);
