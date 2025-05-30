@@ -5,7 +5,7 @@ using UnityEditor;
 
 //creates a custom editor for the level generator class
 [CustomEditor(typeof(LevelGenerator)), CanEditMultipleObjects]
-public class LevelGeneratorEditor : Editor
+public class LevelGeneratorEditor : UnityEditor.Editor
 {
     public override void OnInspectorGUI()
     {
