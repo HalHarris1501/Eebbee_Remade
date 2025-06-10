@@ -7511,7 +7511,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 59c6966b46d6f2c409ef30c5ea79b802, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 988368778d88de34cb1e02dcd6759fa8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14925,8 +14925,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7901655215380749429}
+  m_Children: []
   m_Father: {fileID: 661677758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1302694635
@@ -16862,68 +16861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21516783537d6c3438fa9f20be6ffd80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &7901655215380749428
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1264616613}
-    m_Modifications:
-    - target: {fileID: 51585793526579284, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-      propertyPath: m_Name
-      value: ChrisHeadphones
-      objectReference: {fileID: 0}
-    - target: {fileID: 3283350297466250761, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3283350297466250761, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3283350297466250761, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3283350297466250761, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3283350297466250761, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3283350297466250761, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3283350297466250761, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3283350297466250761, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3283350297466250761, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3283350297466250761, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
---- !u!4 &7901655215380749429 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3283350297466250761, guid: 71d5c526dbae6c64d968bb6cf688e353, type: 3}
-  m_PrefabInstance: {fileID: 7901655215380749428}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
