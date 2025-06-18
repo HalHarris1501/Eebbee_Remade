@@ -25,7 +25,7 @@ public class SaveData
         }
     }
 
-    public PlayerData PlayerData;
+    public PlayerSkinData CurrentSkin;
 
     public int PreviousWinScore = 0;
     public int TotalScore = 0;

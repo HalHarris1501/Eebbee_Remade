@@ -8,4 +8,6 @@ public class SkinObject : ScriptableObject
     public PlayerSkinData SkinData;
     public Sprite Skin;
     public int Price;
+    public List<GameObject> Accessories;
+    public List<AudioStorage> SoundEffects;
 }

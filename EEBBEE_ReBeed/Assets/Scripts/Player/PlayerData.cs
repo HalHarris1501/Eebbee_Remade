@@ -21,6 +21,9 @@ public class PlayerData
             if (value != null)
             {
                 _current = value;
+
+                _currentSkin = _current.CurrentSkinData;
+                Debug.Log("Current Skin: " + _currentSkin);
             }
         }
     }

@@ -151,7 +151,7 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
 
     private void UpdatePlayerData()
     {
-        SaveData.current.PlayerData = PlayerData.current;
+        SaveData.current.CurrentSkin = PlayerData.current.CurrentSkinData;
         //Debug.Log("Saving Player data");
     }
 
@@ -197,7 +197,8 @@ public class SaveManager : MonoBehaviour, ISubject<SaveManager>
         }
 
 
-        PlayerData.current = SaveData.current.PlayerData;
+        PlayerData.current.CurrentSkinData = SaveData.current.CurrentSkin;
+
         //Debug.Log("Player data loaded and set");
 
         ScoreStorage.current.PreviousWinScore = SaveData.current.PreviousWinScore;

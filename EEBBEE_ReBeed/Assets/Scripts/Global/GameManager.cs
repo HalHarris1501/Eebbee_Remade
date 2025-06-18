@@ -89,13 +89,15 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         }
 
         try
-        {
-            Sprite temp = _beeSprite.GetComponent<SpriteRenderer>().sprite;
-            temp = FindSkin(PlayerData.current.CurrentSkinData).Skin;
+        {            
+            Sprite temp = FindSkin(PlayerData.current.CurrentSkinData).Skin;
             if(temp == null)
             {
+                Debug.Log("Couldn't find skin");
                 temp = _defualtSkin;
             }
+            Debug.Log("Skin: " + temp);
+            _beeSprite.GetComponent<SpriteRenderer>().sprite = temp;
         }
         catch 
         {
@@ -138,7 +140,7 @@ public class GameManager : MonoBehaviour, ISubject<Direction>
         {
             Observer.ItemAltered(_direction, 0);
         }
-        Debug.Log("Notified all observers");
+        //Debug.Log("Notified all observers");
     }
 
     public void RegisterObserver(IObserver<Direction> o)
