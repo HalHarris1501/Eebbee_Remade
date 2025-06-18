@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 7.31016, g: 4.0504537, b: 0.29238692, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19852,6 +19851,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e5cb6893d580f65429a2f2c1e69e5435, type: 2}
   _settingsObject: {fileID: 11400000, guid: ca65a571ed7d0f34ab329b6baad83688, type: 2}
   _default:
+    CurrentSkin:
+      SkinName: 0
+      Owned: 0
     PreviousWinScore: 0
     TotalScore: 0
     HighScore: 0
